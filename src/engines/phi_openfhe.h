@@ -12,9 +12,9 @@ namespace phi_openfhe {
     inline void declare() {
         std::cout << "  Φ-OpenFHE Engine: ";
 #ifdef HAS_OPENFHE
-        std::cout << "ACTIVE" << std::endl;
+        std::cout << "ACTIVE (CKKS with φ-mirror healing)" << std::endl;
 #else
-        std::cout << "DECLARED (φ-mirror healing ready)" << std::endl;
+        std::cout << "DECLARED (install OpenFHE to activate)" << std::endl;
 #endif
     }
 }
