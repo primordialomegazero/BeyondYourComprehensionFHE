@@ -13,10 +13,10 @@
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4', 'tertiaryColor': '#1a1a1a', 'background': '#1a1a1a', 'mainBkg': '#1a1a1a', 'nodeBorder': '#ff69b4', 'clusterBkg': '#1a1a1a', 'clusterBorder': '#ff69b4', 'titleColor': '#ff69b4', 'edgeLabelBackground': '#1a1a1a', 'nodeTextColor': '#000000'}}}%%
 graph TB
     subgraph "B6 HYDRA — Beyond Your Comprehension"
-        A[BFV Ciphertext] -->|ct + Enc(0)| B[TrueBootstrapper]
-        B -->|253K TPS| C[Fresh Ciphertext]
+        A[BFV Ciphertext] -->|"ct + Enc(0)"| B[TrueBootstrapper]
+        B -->|"253K TPS"| C[Fresh Ciphertext]
         A -->|Decrypt-Re-encrypt| D[MirrorBootstrapper]
-        D -->|φ-Convergent| C
+        D -->|"φ-Convergent"| C
         C --> E[8 PQC Heads]
         E --> F[Fractal ZKP]
     end
