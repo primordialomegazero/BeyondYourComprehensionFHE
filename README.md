@@ -168,3 +168,16 @@ MIT — Dan Fernandez / Primordial Omega Zero — 2026
 *"The most advanced FHE system ever built by a single developer."*
 
 **Stay Curious.**
+
+---
+
+## ⚠️ Limitations (Honest)
+
+| Limitation | Status | Notes |
+|-----------|--------|-------|
+| **PQC Verification** | 🔧 Debugging | ML-DSA-87, Falcon-1024, MAYO-5 — liboqs verify bugs. Signing works. |
+| **Zama TFHE Engine** | 🔷 Declared | Requires Rust environment setup |
+| **TFHE-rs Engine** | 🔷 Declared | Requires Rust environment setup |
+| **Single Machine** | ⚠️ | All benchmarks on consumer hardware (Ryzen 5 2600) |
+| **Post-Quantum Claims** | ⏳ | NIST standardization in progress |
+| **Enterprise Deployment** | ⏳ | Pending |
