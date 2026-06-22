@@ -141,7 +141,7 @@ flowchart LR
 | **Zero-Anchor Bootstrapping** | IACR 2026/110174 | ✅ Published |
 | **Φ-SIG: Post-Key Signatures** | IACR 2026/110177 | ✅ Submitted |
 | **Microsoft SEAL TrueBootstrapper** | PR #746 | ✅ Open |
-| **Multi-Recursive Fractal FHE** | IACR (next) | ⏳ Preparing |
+| **Multi-Recursive Fractal FHE** | IACR 2026/110181 | ✅ Submitted |
 
 ---
 
