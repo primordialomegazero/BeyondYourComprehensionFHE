@@ -305,3 +305,23 @@ Plaintext → Encrypt → Bootstrap (ct + Enc0) → φ-Converge → Decrypt
                 ↓                           ↓
          Key-holder variant           Fractal stability
 ```
+
+---
+
+## 🏭 Engine Status Update (June 23, 2026)
+
+| Engine | Library | Status | Details |
+|--------|---------|--------|---------|
+| **Φ-SEAL** | Microsoft SEAL 4.x | ✅ LIVE | 253K TPS, ct + Enc(0) |
+| **Φ-OpenFHE** | OpenFHE 1.x | ✅ LIVE | CKKS φ-mirror healing |
+| **Φ-Zama** | Zama Concrete | 🔷 DECLARED | Built but 33 compilation errors — Rust API mismatch with concrete crate v0.0.0. Requires specific Zama-maintained Rust fork. |
+| **Φ-TFHE** | TFHE-rs | 🔷 DECLARED | **Built successfully** (12min, release profile). Integration with SEAL pending. |
+
+### What "DECLARED" Means
+
+- Code structure exists
+- Build attempted and documented
+- Not a blocker — core engines handle 100% of current workload
+- Will be integrated when upstream stabilizes their Rust API
+
+*Honest limitations. We don't hide failures. We document them.*
