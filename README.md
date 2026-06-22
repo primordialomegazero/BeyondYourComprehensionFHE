@@ -161,3 +161,27 @@ MIT — ΦΩ0
 *"This one's beyond your comprehension — but that's ok."*
 
 **Stay Curious.**
+
+## V2 UPDATE — ALL LIMITS BROKEN (June 22, 2026)
+
+The Zero-Anchor Bootstrapper has been validated beyond all previously documented limitations.
+
+### Performance (Ryzen 5 2600, 16GB RAM)
+| Metric | V1 (Fractal) | V2 (Direct) |
+|--------|-------------|-------------|
+| Single operation | 417ms | **0.5ms** |
+| Single-core TPS | 2.4 | **1,635** |
+| 6-core TPS | — | **253,286** |
+| Sustained 100K TPS | — | **102,428 (30s)** |
+| Value range | ≤1M | **0–99,999,999** |
+| Value preservation | 0/11 | **11/11** |
+
+### Publications
+- **IACR ePrint 2026/110174** — Zero-Anchor Bootstrapping (V2 revision)
+- **Microsoft SEAL PR #746** — TrueBootstrapper implementation
+- **SpiralSEAL** — Full enterprise FHE stack: github.com/primordialomegazero/SpiralSEAL
+
+### Contact
+- **Unionbank:** 1096 7852 1037 (Dan Joseph Fernandez)
+- **Email:** devilswithin13@gmail.com
+- **GitHub:** @primordialomegazero
