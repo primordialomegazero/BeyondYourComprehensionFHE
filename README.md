@@ -181,3 +181,96 @@ MIT — Dan Fernandez / Primordial Omega Zero — 2026
 | **Single Machine** | ⚠️ | All benchmarks on consumer hardware (Ryzen 5 2600) |
 | **Post-Quantum Claims** | ⏳ | NIST standardization in progress |
 | **Enterprise Deployment** | ⏳ | Pending |
+
+---
+
+## ⚡ Build & Test
+
+### Prerequisites
+
+```bash
+# Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install -y build-essential cmake libssl-dev libgsl-dev
+
+# liboqs (for PQC heads)
+git clone --depth 1 https://github.com/open-quantum-safe/liboqs.git
+cd liboqs && mkdir build && cd build
+cmake .. && make -j$(nproc) && sudo make install && sudo ldconfig
+
+# Microsoft SEAL 4.3+
+git clone https://github.com/microsoft/SEAL.git
+cd SEAL && mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release && make -j$(nproc) && sudo make install
+
+---
+
+## ⚡ Build & Test
+
+### Prerequisites
+
+```bash
+# Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install -y build-essential cmake libssl-dev libgsl-dev
+
+# liboqs (for PQC heads)
+git clone --depth 1 https://github.com/open-quantum-safe/liboqs.git
+cd liboqs && mkdir build && cd build
+cmake .. && make -j$(nproc) && sudo make install && sudo ldconfig
+
+# Microsoft SEAL 4.3+
+git clone https://github.com/microsoft/SEAL.git
+cd SEAL && mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release && make -j$(nproc) && sudo make install
+```
+
+### Build B6 HYDRA
+
+```bash
+git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
+cd BeyondYourComprehensionFHE
+mkdir build && cd build
+cmake .. -DSEAL_DIR=/usr/local/lib/cmake/SEAL-4.1
+make -j$(nproc)
+./b6_hydra
+```
+
+### Run Full Blown Test
+
+```bash
+cd BeyondYourComprehensionFHE
+g++ -std=c++17 -O3 \
+    -I . -I src \
+    -I /usr/local/include \
+    -I /path/to/SEAL/native/src \
+    -I /path/to/SEAL/build/native/src \
+    test_fullblown_cinematic.cpp \
+    src/fhe/multi_recursive_fhe.cpp \
+    -L /path/to/SEAL/build/lib \
+    -lseal-4.3 -lssl -lcrypto -pthread \
+    -o test_fullblown
+./test_fullblown
+```
+
+### Expected Output
+
+```
+╔══════════════════════════════════════════════╗
+║  FULL BLOWN RESULT: 7/7 passed              ║
+║  ALL TESTS PASSED ✅                        ║
+║  MULTI-RECURSIVE FHE — PROVEN                ║
+╚══════════════════════════════════════════════╝
+```
+
+---
+
+## 📦 Dependencies
+
+| Library | Version | Purpose |
+|---------|---------|---------|
+| **Microsoft SEAL** | 4.3+ | BFV FHE Scheme |
+| **OpenSSL** | 3.0+ | SHA-256, secp256k1 |
+| **liboqs** | 0.15.0+ | Post-Quantum Algorithms |
+| **CMake** | 3.16+ | Build System |
+| **GCC** | 12+ | C++17 Compiler |
