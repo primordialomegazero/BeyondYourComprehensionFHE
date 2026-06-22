@@ -161,3 +161,10 @@ MIT — ΦΩ0
 *"This one's beyond your comprehension — but that's ok."*
 
 **Stay Curious.**
+
+---
+
+## 📚 Companion Papers
+
+- **IACR ePrint 2026/110174** — Zero-Anchor Bootstrapping
+- **IACR ePrint 2026/110177** — Φ-SIG: Golden Ratio Post-Key Signatures
