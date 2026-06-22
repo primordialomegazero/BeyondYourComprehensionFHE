@@ -134,6 +134,13 @@ flowchart LR
 
 ---
 
+## 📖 Documentation
+
+- [Architecture Explained](#-architecture-explained)
+- [Contributing Guide](CONTRIBUTING.md)
+- [License Compatibility](doc/LICENSE_COMPATIBILITY.md)
+- [Known Issues](doc/KNOWN_ISSUES.md)
+
 ## 📚 Publications
 
 | Paper | ID | Status |
@@ -274,3 +281,27 @@ g++ -std=c++17 -O3 \
 | **liboqs** | 0.15.0+ | Post-Quantum Algorithms |
 | **CMake** | 3.16+ | Build System |
 | **GCC** | 12+ | C++17 Compiler |
+
+---
+
+## 🏗️ Architecture Explained
+
+### Core Components
+
+| Component | File | Purpose |
+|-----------|------|---------|
+| **TrueBootstrapper** | `src/spiralseal/true_bootstrapper.cpp` | ct + Enc(0) = ct — Noise refresh via homomorphic addition |
+| **MirrorBootstrapper** | `src/spiralseal/mirror_bootstrapper.cpp` | Decrypt-re-encrypt with Lyapunov convergence |
+| **RecursiveFHE** | `src/spiralseal/recursive_fhe.cpp` | 7-layer fractal noise stabilization |
+| **UnlimitedFHE** | `src/spiralseal/unlimited_fhe.cpp` | All-limits-broken value preservation |
+| **AntiMatter** | `src/spiralseal/antimatter.cpp` | Security layer against tampering |
+
+### Data Flow
+
+```
+Plaintext → Encrypt → Bootstrap (ct + Enc0) → φ-Converge → Decrypt
+                ↓                           ↓
+         MirrorBootstrapper           RecursiveFHE (7 layers)
+                ↓                           ↓
+         Key-holder variant           Fractal stability
+```
