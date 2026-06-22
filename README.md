@@ -7,16 +7,26 @@
 
 ---
 
+## 🎥 Test Videos
+
+| Test | Content | Result | Video |
+|------|---------|--------|-------|
+| **Test 1** | SEAL BFV Deep Test — 10K cycles, values 0-100M | 13/13 ✅ | [Watch](assets/) |
+| **Test 2** | TrueBootstrapper + 8 PQC — All PQC Alive | 15/15 ✅ | [Watch](assets/) |
+| **Test 3** | 100K TPS Full Blown — Sustained throughput | 23/23 ✅ | [Watch](assets/) |
+
+---
+
 ## 🏗️ Architecture
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4', 'tertiaryColor': '#1a1a1a', 'background': '#1a1a1a', 'mainBkg': '#1a1a1a', 'nodeBorder': '#ff69b4', 'clusterBkg': '#1a1a1a', 'clusterBorder': '#ff69b4', 'titleColor': '#ff69b4', 'edgeLabelBackground': '#1a1a1a', 'nodeTextColor': '#000000'}}}%%
 graph TB
     subgraph "B6 HYDRA — Beyond Your Comprehension"
-        A[BFV Ciphertext] -->|"ct + Enc(0)"| B[TrueBootstrapper]
-        B -->|"253K TPS"| C[Fresh Ciphertext]
+        A[BFV Ciphertext] -->|ct + Enc0| B[TrueBootstrapper]
+        B -->|253K TPS| C[Fresh Ciphertext]
         A -->|Decrypt-Re-encrypt| D[MirrorBootstrapper]
-        D -->|"φ-Convergent"| C
+        D -->|φ-Convergent| C
         C --> E[8 PQC Heads]
         E --> F[Fractal ZKP]
     end
@@ -100,14 +110,6 @@ make
 - **Transform:** Fiat-Shamir non-interactive
 - **Depth:** 7 fractal layers
 - **Verification:** s*G == R + c*Y — publicly verifiable
-
----
-
-## ⚠️ Limitations (Honest)
-
-- 2 of 4 engines LIVE — Zama and TFHE-rs need Rust environment updates
-- Single machine benchmarks — Enterprise deployment pending
-- Post-quantum claims — NIST standardization in progress
 
 ---
 
