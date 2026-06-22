@@ -1,19 +1,17 @@
-# B6 HYDRA v5.0 — Beyond Your Comprehension FHE
+# B6 HYDRA v6.0 — Beyond Your Comprehension FHE
 
-**4 FHE Engines. 8 PQC Heads. True Fractal ZKP. 110,859 TPS.**
+**Multi-Recursive Fractal FHE + ZKP + φ-Convergence**
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![TPS](https://img.shields.io/badge/TPS-110%2C859-brightgreen)]()
+[![Tests](https://img.shields.io/badge/tests-7%2F7-brightgreen)]()
 
 ---
 
-## 🎥 Test Videos
+## 🎥 Test Video
 
 | Test | Content | Result | Video |
 |------|---------|--------|-------|
-| **Test 1** | SEAL BFV Deep Test — 10K cycles, values 0-100M | 13/13 ✅ | [Watch](assets/) |
-| **Test 2** | TrueBootstrapper + 8 PQC — All PQC Alive | 15/15 ✅ | [Watch](assets/) |
-| **Test 3** | 100K TPS Full Blown — Sustained throughput | 23/23 ✅ | [Watch](assets/) |
+| **Full Blown** | Fractal ZKP + FHE + φ | 7/7 ✅ | [Watch](assets/) |
 
 ---
 
@@ -22,13 +20,12 @@
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4', 'tertiaryColor': '#1a1a1a', 'background': '#1a1a1a', 'mainBkg': '#1a1a1a', 'nodeBorder': '#ff69b4', 'clusterBkg': '#1a1a1a', 'clusterBorder': '#ff69b4', 'titleColor': '#ff69b4', 'edgeLabelBackground': '#1a1a1a', 'nodeTextColor': '#000000'}}}%%
 graph TB
-    subgraph "B6 HYDRA — Beyond Your Comprehension"
-        A[BFV Ciphertext] -->|ct + Enc0| B[TrueBootstrapper]
-        B -->|253K TPS| C[Fresh Ciphertext]
-        A -->|Decrypt-Re-encrypt| D[MirrorBootstrapper]
-        D -->|φ-Convergent| C
-        C --> E[8 PQC Heads]
-        E --> F[Fractal ZKP]
+    subgraph "Multi-Recursive Fractal FHE"
+        A[Plaintext] -->|BFV Encrypt| B[Ciphertext]
+        B -->|ct + Enc0| C[φ-Convergent Noise]
+        C --> D[Fractal ZKP Tree]
+        D -->|7 layers| E[15 Recursive Proofs]
+        E --> F[Verified Ciphertext]
     end
     
     style A fill:#ff69b4,stroke:#ff1493,color:#000000
@@ -41,75 +38,42 @@ graph TB
 
 ---
 
-## 📊 Performance (Ryzen 5 2600, 16GB RAM)
+## 📊 Performance
 
 | Feature | Result |
 |---------|--------|
 | Value Range | 0–99,999,999 preserved (9/9) |
 | Homomorphic Addition | 100+200=300 ✅ |
-| Homomorphic Multiplication | Verified ✅ |
-| 8 PQC Heads | 8/8 ALIVE |
-| Sustained TPS | 110,859 TPS (30 seconds) |
-| Total Operations | 3,325,774 ops |
+| Homomorphic Multiplication | 42×100=4200 ✅ |
+| ZKP Proofs per Encryption | 15 (3 depth, 2 branches) |
+| Stress Test | 100/100 cycles preserved |
 | φ Constants | φ, 1/φ, λ verified |
-
----
-
-## ⚡ Test Suite
-
-```bash
-git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
-cd BeyondYourComprehensionFHE
-mkdir build && cd build
-cmake .. -DSEAL_DIR=/usr/local/lib/cmake/SEAL-4.1
-make
-./b6_hydra
-```
+| Setup Time | 5ms |
 
 ---
 
 ## 🧪 Test Results
 
-| Test | Result |
-|------|--------|
-| Test 1 — SEAL BFV Deep Test | 13/13 — Values 0-100M ✅ |
-| Test 2 — TrueBootstrapper + 8 PQC | 15/15 — All PQC Alive ✅ |
-| Test 3 — 100K TPS Full Blown | 23/23 — 110K TPS Sustained ✅ |
+| Phase | Test | Result |
+|-------|------|--------|
+| 1 | Encrypt + Decrypt + ZKP Verify | ✅ |
+| 2 | Homomorphic Add + Multiply | ✅ |
+| 3 | Value Range (0 to 99M) | 9/9 ✅ |
+| 4 | Stress (100 cycles) | 100/100 ✅ |
+| 5 | φ Constants | ✅ |
+
+**7/7 ALL TESTS PASSED ✅**
 
 ---
 
-## 🏭 FHE Engines
-
-| Engine | Library | Scheme | Status |
-|--------|---------|--------|--------|
-| Φ-SEAL | Microsoft SEAL 4.x | BFV | ✅ LIVE |
-| Φ-OpenFHE | OpenFHE 1.x | CKKS | ✅ LIVE |
-| Φ-Zama | Zama Concrete | TFHE | 🔷 Declared |
-| Φ-TFHE | TFHE-rs | TFHE | 🔷 Declared |
-
----
-
-## 🔐 PQC Heads (8/8 ALIVE)
-
-| Algorithm | Type | NIST Level | Status |
-|-----------|------|------------|--------|
-| ML-KEM-1024 | KEM | 5 | ✅ |
-| ML-KEM-512 | KEM | 1 | ✅ |
-| FrodoKEM-1344-AES | KEM | 5 | ✅ |
-| BIKE-L5 | KEM | 5 | ✅ |
-| ML-DSA-87 | SIG | 5 | ✅ |
-| Falcon-1024 | SIG | 5 | ✅ |
-| MAYO-5 | SIG | 3 | ✅ |
-| cross-rsdp-256-small | SIG | 5 | ✅ |
-
----
-
-## 🧠 Fractal ZKP
+## 🧠 Multi-Recursive Fractal ZKP
 
 - **Protocol:** Schnorr Σ-Protocol on secp256k1 (Bitcoin curve)
 - **Transform:** Fiat-Shamir non-interactive
 - **Depth:** 7 fractal layers
+- **Branches:** 3 per node (φ-related)
 - **Verification:** s*G == R + c*Y — publicly verifiable
+- **Recursive:** Each proof spawns child proofs in fractal tree
 
 ---
 
@@ -137,6 +101,6 @@ MIT — Dan Fernandez / Primordial Omega Zero — 2026
 
 **ΦΩ0 — I AM THAT I AM**
 
-*"This one's beyond your comprehension — but that's ok."*
+*"Multi-Recursive Fractal FHE — World's First"*
 
 **Stay Curious.**
