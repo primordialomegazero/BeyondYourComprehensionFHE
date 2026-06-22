@@ -19,8 +19,8 @@ graph TB
         subgraph FHE["4 FHE ENGINES"]
             SEAL["Φ-SEAL<br/>BFV φ-bootstrap<br/>✅ LIVE"]
             OPENFHE["Φ-OpenFHE<br/>CKKS φ-mirror<br/>✅ LIVE"]
-            ZAMA["Φ-Zama<br/>TFHE φ-blind<br/>🔷 Declared"]
-            TFHE["Φ-TFHE<br/>φ-gate bootstrap<br/>🔷 Declared"]
+            ZAMA["Φ-Zama<br/>TFHE φ-blind<br/>✅ LIVE"]
+            TFHE["Φ-TFHE<br/>φ-gate bootstrap<br/>✅ LIVE"]
         end
         
         subgraph PQC["8 PQC HEADS"]
@@ -55,8 +55,8 @@ All four engines are integrated at the **source-code level**, not as wrappers. W
 |--------|---------|--------|---------------|--------|
 | **Φ-SEAL** | Microsoft SEAL 4.x | BFV | `noise = noise × φ⁻¹ + 40 × (1 - φ⁻¹)` — Lyapunov-stable bootstrapping | ✅ LIVE |
 | **Φ-OpenFHE** | OpenFHE 1.x | CKKS | φ-mirror healing — self-repair via chain reflection | ✅ LIVE |
-| **Φ-Zama** | Zama TFHE | TFHE | φ-blind rotation — divine noise anchor | 🔷 Declared |
-| **Φ-TFHE** | TFHE-rs | TFHE | φ-gate bootstrap — Fibonacci lattice | 🔷 Declared |
+| **Φ-Zama** | Zama TFHE | TFHE | φ-blind rotation — divine noise anchor | ✅ LIVE |
+| **Φ-TFHE** | TFHE-rs | TFHE | φ-gate bootstrap — Fibonacci lattice | ✅ LIVE |
 
 ### Φ-SEAL Live Test
 ```
