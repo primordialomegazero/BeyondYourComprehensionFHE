@@ -136,25 +136,7 @@ B6 HYDRA lets you **compute on encrypted data without ever decrypting it.** A cl
 
 ## 🚀 Quick Start
 
-```bash
 
-git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
-
-cd BeyondYourComprehensionFHE
-
-mkdir build && cd build
-
-cmake .. -DCMAKE_BUILD_TYPE=Release
-
-make -j$(nproc)
-
-./b6_hydra
-
-```
-
-
-
-## 🚀 Quick Start
 
 ```bash
 
@@ -186,9 +168,9 @@ make -j$(nproc)
 
 | OpenFHE | 1.5.1 | CKKS FHE Engine |
 
-| HElib | Latest (source) | BGV FHE Engine |
+| HElib | Latest | BGV FHE Engine |
 
-| Lattigo | Latest (source) | BGV/CKKS/BFV Engine |
+| Lattigo | Latest | BGV/CKKS/BFV Engine |
 
 | OpenSSL | 3.0+ | Cryptographic operations |
 
@@ -254,7 +236,7 @@ Ciphertext multiply(const Ciphertext& ct1, const Ciphertext& ct2);
 
 
 
-// TrueBootstrapper: ct + Enc(0) = ct (0.03ms)
+// TrueBootstrapper: ct + Enc(0) = ct
 
 void bootstrap(Ciphertext& ct);
 
@@ -266,15 +248,11 @@ FractalPartyKey generate_key(EngineType engine, int layer);
 
 
 
-// Verification
+// Verification & Performance
 
 bool verify_all_engines();
 
 bool verify_supply_chain();
-
-
-
-// Performance
 
 double get_tps(EngineType engine);
 
@@ -288,47 +266,31 @@ void harmonize();
 
 
 
-Contributions are welcome! Here is how you can help:
-
-
-
 | Area | What We Need |
 
 |------|-------------|
 
-| **FHE Engines** | Add support for more schemes (TFHE, FHEW, CKKS) |
+| FHE Engines | Add TFHE, FHEW, CKKS support |
 
-| **PQC Heads** | Integrate new NIST PQC finalists |
+| PQC Heads | Integrate NIST PQC finalists |
 
-| **Supply Chain** | Extend SCS to more build systems (Bazel, Maven) |
+| Supply Chain | Extend SCS to Bazel, Maven |
 
-| **Benchmarks** | Run on server-grade hardware (EPYC, Xeon) |
+| Benchmarks | Run on EPYC, Xeon hardware |
 
-| **Documentation** | Improve docs, add tutorials, translate |
+| Documentation | Tutorials, translations |
 
-| **Testing** | Add unit tests, fuzzing, formal verification |
+| Testing | Unit tests, fuzzing |
 
-| **Docker** | Multi-arch images (ARM64, RISC-V) |
+| Docker | Multi-arch images (ARM64) |
 
-| **Bounties** | Bug bounties for security vulnerabilities |
-
-
-
-**How to contribute:**
-
-1. Fork the repository
-
-2. Create a feature branch
-
-3. Make your changes
-
-4. Submit a Pull Request
-
-5. Ensure all tests pass
+| Bounties | Bug bounties for vulnerabilities |
 
 
 
-**Contact:** devilswithin13@gmail.com for major contributions or bounty inquiries.
+**How to contribute:** Fork → Branch → Code → Pull Request → Pass Tests
+
+**Contact:** devilswithin13@gmail.com
 
 ## 💼 Work With Me
 
