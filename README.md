@@ -112,20 +112,12 @@ B6 HYDRA lets you **compute on encrypted data without ever decrypting it.** A cl
 ## ⚠️ Honest Limitations
 
 | Limitation | Status | Notes |
-
 |------------|--------|-------|
-
 | Lattigo Engine | ✅ LIVE | Go auto-upgrades to required version |
-
 | HElib Engine | ✅ LIVE | Built from source with NTL/GMP |
-
 | PQC Verification | 🔧 Debugging | liboqs Falcon/ML-DSA verify bugs. Signing works. |
-
 | Single Machine | ⚠️ | All benchmarks on Ryzen 5 2600 consumer CPU. |
-
 | Formal Audit | ⏳ | Mathematical proofs provided, no third-party audit yet. |
-
-
 
 ## 📚 Publications (IACR ePrint)
 
