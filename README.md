@@ -154,7 +154,29 @@ make -j$(nproc)
 
 
 
+## 🚀 Quick Start
+
+```bash
+
+git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
+
+cd BeyondYourComprehensionFHE
+
+mkdir build && cd build
+
+cmake .. -DCMAKE_BUILD_TYPE=Release
+
+make -j$(nproc)
+
+./b6_hydra
+
+```
+
+
+
 ## 📦 Dependencies
+
+
 
 | Library | Version | Purpose |
 
@@ -172,9 +194,9 @@ make -j$(nproc)
 
 | liboqs | 0.15.0+ | Post-Quantum algorithms |
 
-| NTL | 11+ | Number Theory Library (HElib) |
+| NTL | 11+ | Number Theory Library |
 
-| GMP | 6+ | GNU Multiple Precision (HElib) |
+| GMP | 6+ | GNU Multiple Precision |
 
 | Go | 1.21+ | Lattigo engine |
 
@@ -183,6 +205,8 @@ make -j$(nproc)
 
 
 ## 🐳 Docker
+
+
 
 ```dockerfile
 
@@ -210,27 +234,21 @@ CMD ["./build/b6_hydra"]
 
 ## 📡 API Reference
 
+
+
 ```cpp
 
-// Encrypt data with any engine
+// Encrypt/Decrypt
 
 void encrypt(EngineType engine, const std::vector<double>& values);
-
-
-
-// Decrypt data
 
 std::vector<double> decrypt(EngineType engine, const Ciphertext& ct);
 
 
 
-// Homomorphic addition: Enc(a) + Enc(b) = Enc(a+b)
+// Homomorphic Operations
 
 Ciphertext add(const Ciphertext& ct1, const Ciphertext& ct2);
-
-
-
-// Homomorphic multiplication: Enc(a) × Enc(b) = Enc(a×b)
 
 Ciphertext multiply(const Ciphertext& ct1, const Ciphertext& ct2);
 
@@ -242,35 +260,75 @@ void bootstrap(Ciphertext& ct);
 
 
 
-// Generate fractal party keys
+// Fractal Party Keys
 
 FractalPartyKey generate_key(EngineType engine, int layer);
 
 
 
-// Cross-verify all engines
+// Verification
 
 bool verify_all_engines();
-
-
-
-// Supply chain integrity check
 
 bool verify_supply_chain();
 
 
 
-// Get engine TPS
+// Performance
 
 double get_tps(EngineType engine);
-
-
-
-// Harmonize all engines via φ
 
 void harmonize();
 
 ```
+
+
+
+## 🤝 Contributing
+
+
+
+Contributions are welcome! Here is how you can help:
+
+
+
+| Area | What We Need |
+
+|------|-------------|
+
+| **FHE Engines** | Add support for more schemes (TFHE, FHEW, CKKS) |
+
+| **PQC Heads** | Integrate new NIST PQC finalists |
+
+| **Supply Chain** | Extend SCS to more build systems (Bazel, Maven) |
+
+| **Benchmarks** | Run on server-grade hardware (EPYC, Xeon) |
+
+| **Documentation** | Improve docs, add tutorials, translate |
+
+| **Testing** | Add unit tests, fuzzing, formal verification |
+
+| **Docker** | Multi-arch images (ARM64, RISC-V) |
+
+| **Bounties** | Bug bounties for security vulnerabilities |
+
+
+
+**How to contribute:**
+
+1. Fork the repository
+
+2. Create a feature branch
+
+3. Make your changes
+
+4. Submit a Pull Request
+
+5. Ensure all tests pass
+
+
+
+**Contact:** devilswithin13@gmail.com for major contributions or bounty inquiries.
 
 ## 💼 Work With Me
 
