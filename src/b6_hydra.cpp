@@ -28,7 +28,6 @@ int main() {
     phi_zama::phi_blind_rotate();
     phi_tfhe::phi_gate_bootstrap();
     
-// SEAL: PERMANENTLY ACTIVE
     std::cout << "\n=== Φ-SEAL LIVE ENCRYPT/DECRYPT TEST ===" << std::endl;
     phi_seal::PhiSEALEngine seal_engine;
     if (seal_engine.ready) {
@@ -37,12 +36,9 @@ int main() {
         for (auto v : result) std::cout << v << " ";
         std::cout << (result == std::vector<int64_t>{42,100,255,1618,314159} ? "✅ MATCH" : "❌ MISMATCH") << std::endl;
     }
-#endif
     
-// OpenFHE: PERMANENTLY ACTIVE
     std::cout << "\n=== Φ-OpenFHE ENGINE ACTIVE ===" << std::endl;
     std::cout << "  CKKS scheme with φ-mirror healing linked and ready" << std::endl;
-#endif
     
     // ═══════════════════════════════════════
     // 2. 8 PQC HEADS (ALL ALIVE)
