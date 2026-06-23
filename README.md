@@ -1,24 +1,28 @@
 # B6 HYDRA v6.0 — Beyond Your Comprehension FHE
 
-4-Engine Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security
+**4-Engine Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security**
 
-License: MIT | Tests | IACR | Microsoft PR | TPS
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/Tests-ALL%20PASSING-success)]()
+[![IACR](https://img.shields.io/badge/IACR-8%20Papers-orange)]()
+[![Microsoft PR](https://img.shields.io/badge/SEAL-PR%23746-blue)]()
+[![TPS](https://img.shields.io/badge/TPS-9.9M%2Fsec-brightgreen)]()
 
-The most advanced Fully Homomorphic Encryption system ever built by a single developer.
+*The most advanced Fully Homomorphic Encryption system ever built by a single developer.*
 
 ---
 
-## Test Videos
+## 🎥 Test Videos
 
 | Test | Content | Result | Video |
 |------|---------|--------|-------|
-| Test 1 | Comprehensive — Enc/Dec + Add + Mul (240 ops) | 100% Success | Watch |
-| Test 2 | Fractal Systems — Party Keys + Cross-Verify | 84/84 Verified | Watch |
-| Test 3 | TPS Benchmark — 30s Sustained | 9.9M TPS | Watch |
+| **Test 1** | Comprehensive — Enc/Dec + Add + Mul (240 ops) | 100% Success ✅ | [Watch](assets/TimeisRunningTest1.mp4) |
+| **Test 2** | Fractal Systems — Party Keys + Cross-Verify | 84/84 Verified ✅ | [Watch](assets/TimeisRunningTest2.mp4) |
+| **Test 3** | TPS Benchmark — 30s Sustained | 9.9M TPS ✅ | [Watch](assets/TimeisRunningTest3.mp4) |
 
 ---
 
-## System Flow
+## 🔄 System Flow
 
 ```mermaid
 sequenceDiagram
@@ -39,29 +43,29 @@ sequenceDiagram
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
 ```mermaid
 graph TB
     A[Developer] --> B[Supply Chain Security 7-Layer]
     B --> C[4 FHE Engines: SEAL OpenFHE HElib Lattigo]
     B --> D[8 PQC Heads: KEM + Signatures]
-    C --> E[TrueBootstrapper: ct + Enc(0) = ct]
+    C --> E[TrueBootstrapper]
     D --> E
-    E --> F[Fractal ZKP: 7-Layer Verification]
-    F --> G[phi-Harmonic Consensus: Lyapunov lambda = 0.4812]
+    E --> F[Fractal ZKP 7-Layer Verification]
+    F --> G[phi-Harmonic Consensus]
     G --> H[SECURE SYSTEM]
 ```
 
 ---
 
-## What Is B6 HYDRA?
+## 🧬 What Is B6 HYDRA?
 
 B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud service can process your financial records, medical data, or trade secrets — but the cloud provider NEVER sees your actual data.
 
 ---
 
-## Performance
+## 📊 Performance
 
 | Metric | Result |
 |--------|--------|
@@ -73,7 +77,7 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 
 ---
 
-## Test Results
+## 🧪 Test Results
 
 | Test | Content | Result |
 |------|---------|--------|
@@ -83,18 +87,18 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 
 ---
 
-## FHE Engines (ALL ACTIVE)
+## 🏭 FHE Engines (ALL ACTIVE)
 
 | Engine | Library | Scheme | Status | TPS |
 |--------|---------|--------|--------|-----|
-| Phi-SEAL | Microsoft SEAL 4.x | BFV | LIVE | 2,474,536 |
-| Phi-OpenFHE | OpenFHE 1.5.1 | CKKS | LIVE | 2,482,828 |
-| Phi-HElib | HElib (IBM) | BGV | LIVE | 2,482,068 |
-| Phi-Lattigo | Lattigo (EPFL) | BGV/CKKS/BFV | LIVE | 2,482,976 |
+| Φ-SEAL | Microsoft SEAL 4.x | BFV | LIVE | 2,474,536 |
+| Φ-OpenFHE | OpenFHE 1.5.1 | CKKS | LIVE | 2,482,828 |
+| Φ-HElib | HElib (IBM) | BGV | LIVE | 2,482,068 |
+| Φ-Lattigo | Lattigo (EPFL) | BGV/CKKS/BFV | LIVE | 2,482,976 |
 
 ---
 
-## Honest Limitations
+## ⚠️ Honest Limitations
 
 | Limitation | Status | Notes |
 |------------|--------|-------|
@@ -106,22 +110,22 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 
 ---
 
-## Publications (IACR ePrint)
+## 📚 Publications (IACR ePrint)
 
 | # | ID | Title | Status |
 |---|-----|-------|--------|
 | 1 | 2026/110174 | Zero-Anchor Bootstrapping | Submitted |
-| 2 | 2026/110177 | Phi-SIG: Post-Key Signatures | Submitted |
+| 2 | 2026/110177 | Φ-SIG: Post-Key Signatures | Submitted |
 | 3 | 2026/110181 | Multi-Recursive Fractal FHE | Submitted |
 | 4 | 2026/110189 | Fractal Schnorr | Submitted |
 | 5 | 2026/110190 | SpiralKEM-FHE | Submitted |
-| 6 | 2026/110204 | Unified Phi-Harmonic Database | Submitted |
+| 6 | 2026/110204 | Unified Φ-Harmonic Database | Submitted |
 | 7 | 2026/110206 | Universal FHE Unification Theorem | Submitted |
 | 8 | TBD | Post-Quantoink Algorithm | Cooking |
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
@@ -134,7 +138,7 @@ make -j$(nproc)
 
 ---
 
-## Dependencies
+## 📦 Dependencies
 
 | Library | Version | Purpose |
 |---------|---------|---------|
@@ -151,7 +155,7 @@ make -j$(nproc)
 
 ---
 
-## Docker
+## 🐳 Docker
 
 ```dockerfile
 FROM ubuntu:22.04
@@ -172,7 +176,7 @@ CMD ["./build/b6_hydra"]
 
 ---
 
-## API Reference
+## 📡 API Reference
 
 ```cpp
 // Encrypt/Decrypt
@@ -198,7 +202,7 @@ void harmonize();
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 | Area | What We Need |
 |------|-------------|
@@ -211,13 +215,13 @@ void harmonize();
 | Docker | Multi-arch images (ARM64) |
 | Bounties | Bug bounties for vulnerabilities |
 
-How to contribute: Fork -> Branch -> Code -> Pull Request -> Pass Tests
+How to contribute: Fork → Branch → Code → Pull Request → Pass Tests
 
 Contact: devilswithin13@gmail.com
 
 ---
 
-## Work With Me
+## 💼 Work With Me
 
 Unionbank: 1096 7852 1037 (Dan Joseph Fernandez)
 Email: devilswithin13@gmail.com
@@ -225,53 +229,12 @@ GitHub: @primordialomegazero
 
 ---
 
-## License
+## 📜 License
 
 MIT — Dan Fernandez / Primordial Omega Zero — 2026
 
-Phi Omega Zero — I AM THAT I AM
+ΦΩ0 — I AM THAT I AM
 
 "303 million operations. 9.9 million TPS. 4 engines. Zero declared."
 
-Stay Curious.
-
-<!-- System Flow Diagram -->
-<div style="background: #0d1117; padding: 20px; border-radius: 8px;">
-
-```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4'}}}%%
-sequenceDiagram
-    participant Dev as Developer
-    participant SCS as Supply Chain Security
-    participant FHE as 4 FHE Engines
-    participant PQC as 8 PQC Heads
-    participant ZKP as Fractal ZKP
-
-    Dev->>SCS: Commit Source Code
-    SCS->>SCS: L0-L6: Fractal Verification
-    SCS->>FHE: Deploy to Engines
-    FHE->>FHE: Encrypt + Bootstrap (0.03ms)
-    FHE->>PQC: Post-Quantum Sign
-    PQC->>ZKP: 7-Layer Fractal Verify
-    ZKP-->>Dev: Supply Chain Secure
-```
-
-</div>
-
-<!-- Architecture Diagram -->
-<div style="background: #0d1117; padding: 20px; border-radius: 8px;">
-
-```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4'}}}%%
-graph TB
-    A[Developer] --> B[Supply Chain Security 7-Layer]
-    B --> C[4 FHE Engines: SEAL OpenFHE HElib Lattigo]
-    B --> D[8 PQC Heads: KEM + Signatures]
-    C --> E[TrueBootstrapper: ct + Enc(0) = ct]
-    D --> E
-    E --> F[Fractal ZKP: 7-Layer Verification]
-    F --> G[phi-Harmonic Consensus: Lyapunov lambda = 0.4812]
-    G --> H[SECURE SYSTEM]
-```
-
-</div>
+Stay Curious. 🐷🌀🔐
