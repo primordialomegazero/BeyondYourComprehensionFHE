@@ -134,6 +134,144 @@ B6 HYDRA lets you **compute on encrypted data without ever decrypting it.** A cl
 
 ---
 
+## 🚀 Quick Start
+
+```bash
+
+git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
+
+cd BeyondYourComprehensionFHE
+
+mkdir build && cd build
+
+cmake .. -DCMAKE_BUILD_TYPE=Release
+
+make -j$(nproc)
+
+./b6_hydra
+
+```
+
+
+
+## 📦 Dependencies
+
+| Library | Version | Purpose |
+
+|---------|---------|--------|
+
+| Microsoft SEAL | 4.3+ | BFV FHE Engine |
+
+| OpenFHE | 1.5.1 | CKKS FHE Engine |
+
+| HElib | Latest (source) | BGV FHE Engine |
+
+| Lattigo | Latest (source) | BGV/CKKS/BFV Engine |
+
+| OpenSSL | 3.0+ | Cryptographic operations |
+
+| liboqs | 0.15.0+ | Post-Quantum algorithms |
+
+| NTL | 11+ | Number Theory Library (HElib) |
+
+| GMP | 6+ | GNU Multiple Precision (HElib) |
+
+| Go | 1.21+ | Lattigo engine |
+
+| CMake | 3.16+ | Build system |
+
+
+
+## 🐳 Docker
+
+```dockerfile
+
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+
+    build-essential cmake git \
+
+    libssl-dev libntl-dev libgmp-dev \
+
+    golang-go
+
+RUN git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
+
+WORKDIR BeyondYourComprehensionFHE
+
+RUN mkdir build && cd build && cmake .. && make -j$(nproc)
+
+CMD ["./build/b6_hydra"]
+
+```
+
+
+
+## 📡 API Reference
+
+```cpp
+
+// Encrypt data with any engine
+
+void encrypt(EngineType engine, const std::vector<double>& values);
+
+
+
+// Decrypt data
+
+std::vector<double> decrypt(EngineType engine, const Ciphertext& ct);
+
+
+
+// Homomorphic addition: Enc(a) + Enc(b) = Enc(a+b)
+
+Ciphertext add(const Ciphertext& ct1, const Ciphertext& ct2);
+
+
+
+// Homomorphic multiplication: Enc(a) × Enc(b) = Enc(a×b)
+
+Ciphertext multiply(const Ciphertext& ct1, const Ciphertext& ct2);
+
+
+
+// TrueBootstrapper: ct + Enc(0) = ct (0.03ms)
+
+void bootstrap(Ciphertext& ct);
+
+
+
+// Generate fractal party keys
+
+FractalPartyKey generate_key(EngineType engine, int layer);
+
+
+
+// Cross-verify all engines
+
+bool verify_all_engines();
+
+
+
+// Supply chain integrity check
+
+bool verify_supply_chain();
+
+
+
+// Get engine TPS
+
+double get_tps(EngineType engine);
+
+
+
+// Harmonize all engines via φ
+
+void harmonize();
+
+```
+
 ## 💼 Work With Me
 
 **Unionbank**: 1096 7852 1037 (Dan Joseph Fernandez)
