@@ -23,31 +23,18 @@
 
 ## 🏗️ Architecture
 
+```mermaid
+%%{init: {\"theme\": \"dark\", \"themeVariables\": { \"primaryColor\": \"#ff69b4\", \"primaryTextColor\": \"#000\", \"primaryBorderColor\": \"#ff1493\", \"lineColor\": \"#ff69b4\", \"secondaryColor\": \"#ff1493\", \"tertiaryColor\": \"#ff69b4\"}}}%%
+graph TB
+    A[🌐 Developer] --> B[🔐 Supply Chain Security<br/>7-Layer φ-Harmonic]
+    B --> C[🧬 4 FHE Engines<br/>SEAL, OpenFHE, TFHE, Zama]
+    B --> D[🛡️ 8 PQC Heads<br/>KEM + Signatures]
+    C --> E[⚡ TrueBootstrapper<br/>ct+Enc0=ct]
+    D --> E
+    E --> F[🔍 Fractal ZKP<br/>7-Layer Verification]
+    F --> G[🌀 φ-Harmonic Consensus<br/>Lyapunov λ=0.4812]
+    G --> H[✅ SECURE SYSTEM]
 ```
-┌─────────────────────────────────────────────────┐
-│              B6 HYDRA v6.0                        │
-├─────────────────────────────────────────────────┤
-│                                                   │
-│  ┌─────────────┐  ┌──────────────┐               │
-│  │  4 FHE       │  │  8 PQC Heads │               │
-│  │  Engines     │  │  (KEM + SIG) │               │
-│  └──────┬──────┘  └──────┬───────┘               │
-│         │                │                        │
-│  ┌──────▼────────────────▼───────┐                │
-│  │  Recursive Fractal True       │                │
-│  │  Supply Chain Security (7L)   │                │
-│  └──────┬────────────────┬───────┘                │
-│         │                │                        │
-│  ┌──────▼──────┐  ┌──────▼──────┐                │
-│  │  Fractal ZKP│  │  φ-Harmony  │                │
-│  │  7-Layer    │  │  Consensus  │                │
-│  └─────────────┘  └─────────────┘                │
-│                                                   │
-└─────────────────────────────────────────────────┘
-```
-
----
-
 ## 📊 Performance (Ryzen 5 2600, 16GB RAM)
 
 | Feature | Result |
@@ -204,7 +191,7 @@ sequenceDiagram
 ## 🏗️ Architecture
 
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4', 'secondaryColor': '#ff1493', 'tertiaryColor': '#ff69b4'}}}%%
+%%{init: {\"theme\": \"dark\", \"themeVariables\": { \"primaryColor\": \"#ff69b4\", \"primaryTextColor\": \"#000\", \"primaryBorderColor\": \"#ff1493\", \"lineColor\": \"#ff69b4\", \"secondaryColor\": \"#ff1493\", \"tertiaryColor\": \"#ff69b4\"}}}%%
 graph TB
     A[🌐 Developer] --> B[🔐 Supply Chain Security<br/>7-Layer φ-Harmonic]
     B --> C[🧬 4 FHE Engines<br/>SEAL, OpenFHE, TFHE, Zama]
@@ -214,19 +201,7 @@ graph TB
     E --> F[🔍 Fractal ZKP<br/>7-Layer Verification]
     F --> G[🌀 φ-Harmonic Consensus<br/>Lyapunov λ=0.4812]
     G --> H[✅ SECURE SYSTEM]
-    
-    style A fill:#ff69b4,stroke:#ff1493,color:#000
-    style B fill:#ff69b4,stroke:#ff1493,color:#000
-    style C fill:#ff1493,stroke:#ff69b4,color:#000
-    style D fill:#ff1493,stroke:#ff69b4,color:#000
-    style E fill:#ff69b4,stroke:#ff1493,color:#000
-    style F fill:#ff1493,stroke:#ff69b4,color:#000
-    style G fill:#ff69b4,stroke:#ff1493,color:#000
-    style H fill:#ff1493,stroke:#ff69b4,color:#000
 ```
-
----
-
 ## 🧬 What Is B6 HYDRA?
 
 ### Technical Overview
