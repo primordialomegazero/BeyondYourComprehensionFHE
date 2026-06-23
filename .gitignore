@@ -86,3 +86,16 @@ BYC-FHE/
 google-fhe/
 google-fhe-unified/
 BYC-FHE/
+
+# Experimental (not for production)
+riemann_*
+p_vs_np_*
+void_*
+phi_void_*
+phi_final_declaration*
+phi_reality_declaration*
+test_conviction*
+test_lunurin*
+test_hydra*
+test_linker_talk*
+linker_magic*
