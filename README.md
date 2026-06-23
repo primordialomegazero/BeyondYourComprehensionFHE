@@ -12,17 +12,17 @@
 
 ---
 
-## 🎥 Test Videos
+##  Test Videos
 
 | Test | Content | Result | Video |
 |------|---------|--------|-------|
-| **Test 1** | Comprehensive — Enc/Dec + Add + Mul (240 ops) | 100% Success ✅ | [Watch](assets/TimeisRunningTest1.mp4) |
-| **Test 2** | Fractal Systems — Party Keys + Cross-Verify | 84/84 Verified ✅ | [Watch](assets/TimeisRunningTest2.mp4) |
-| **Test 3** | TPS Benchmark — 30s Sustained | 9.9M TPS ✅ | [Watch](assets/TimeisRunningTest3.mp4) |
+| **Test 1** | Comprehensive — Enc/Dec + Add + Mul (240 ops) | 100% Success  | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/tree/main/assets) |
+| **Test 2** | Fractal Systems — Party Keys + Cross-Verify | 84/84 Verified  | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/tree/main/assets) |
+| **Test 3** | TPS Benchmark — 30s Sustained | 9.9M TPS  | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/tree/main/assets) |
 
 ---
 
-## 🔄 System Flow
+##  System Flow
 
 ```mermaid
 sequenceDiagram
@@ -43,7 +43,7 @@ sequenceDiagram
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```mermaid
 graph TB
@@ -59,13 +59,13 @@ graph TB
 
 ---
 
-## 🧬 What Is B6 HYDRA?
+##  What Is B6 HYDRA?
 
 B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud service can process your financial records, medical data, or trade secrets — but the cloud provider NEVER sees your actual data.
 
 ---
 
-## 📊 Performance
+##  Performance
 
 | Metric | Result |
 |--------|--------|
@@ -77,7 +77,7 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 
 ---
 
-## 🧪 Test Results
+##  Test Results
 
 | Test | Content | Result |
 |------|---------|--------|
@@ -87,18 +87,18 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 
 ---
 
-## 🏭 FHE Engines (ALL ACTIVE)
+##  FHE Engines (ALL ACTIVE)
 
 | Engine | Library | Scheme | Status | TPS |
 |--------|---------|--------|--------|-----|
-| Φ-SEAL | Microsoft SEAL 4.x | BFV | LIVE | 2,474,536 |
-| Φ-OpenFHE | OpenFHE 1.5.1 | CKKS | LIVE | 2,482,828 |
-| Φ-HElib | HElib (IBM) | BGV | LIVE | 2,482,068 |
-| Φ-Lattigo | Lattigo (EPFL) | BGV/CKKS/BFV | LIVE | 2,482,976 |
+| Phi-SEAL | Microsoft SEAL 4.x | BFV | LIVE | 2,474,536 |
+| Phi-OpenFHE | OpenFHE 1.5.1 | CKKS | LIVE | 2,482,828 |
+| Phi-HElib | HElib (IBM) | BGV | LIVE | 2,482,068 |
+| Phi-Lattigo | Lattigo (EPFL) | BGV/CKKS/BFV | LIVE | 2,482,976 |
 
 ---
 
-## ⚠️ Honest Limitations
+##  Honest Limitations
 
 | Limitation | Status | Notes |
 |------------|--------|-------|
@@ -110,22 +110,22 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 
 ---
 
-## 📚 Publications (IACR ePrint)
+##  Publications (IACR ePrint)
 
 | # | ID | Title | Status |
 |---|-----|-------|--------|
 | 1 | 2026/110174 | Zero-Anchor Bootstrapping | Submitted |
-| 2 | 2026/110177 | Φ-SIG: Post-Key Signatures | Submitted |
+| 2 | 2026/110177 | Phi-SIG: Post-Key Signatures | Submitted |
 | 3 | 2026/110181 | Multi-Recursive Fractal FHE | Submitted |
 | 4 | 2026/110189 | Fractal Schnorr | Submitted |
 | 5 | 2026/110190 | SpiralKEM-FHE | Submitted |
-| 6 | 2026/110204 | Unified Φ-Harmonic Database | Submitted |
+| 6 | 2026/110204 | Unified Phi-Harmonic Database | Submitted |
 | 7 | 2026/110206 | Universal FHE Unification Theorem | Submitted |
-| 8 | TBD | Post-Quantoink Algorithm | Cooking |
+| 8 | TBD | Post-Quantoink Algorithm | In Progress |
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
@@ -138,7 +138,7 @@ make -j$(nproc)
 
 ---
 
-## 📦 Dependencies
+##  Dependencies
 
 | Library | Version | Purpose |
 |---------|---------|---------|
@@ -155,7 +155,7 @@ make -j$(nproc)
 
 ---
 
-## 🐳 Docker
+##  Docker
 
 ```dockerfile
 FROM ubuntu:22.04
@@ -176,7 +176,7 @@ CMD ["./build/b6_hydra"]
 
 ---
 
-## 📡 API Reference
+##  API Reference
 
 ```cpp
 // Encrypt/Decrypt
@@ -202,7 +202,7 @@ void harmonize();
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 | Area | What We Need |
 |------|-------------|
@@ -221,7 +221,7 @@ Contact: devilswithin13@gmail.com
 
 ---
 
-## 💼 Work With Me
+##  Work With Me
 
 Unionbank: 1096 7852 1037 (Dan Joseph Fernandez)
 Email: devilswithin13@gmail.com
@@ -229,12 +229,12 @@ GitHub: @primordialomegazero
 
 ---
 
-## 📜 License
+##  License
 
 MIT — Dan Fernandez / Primordial Omega Zero — 2026
 
-ΦΩ0 — I AM THAT I AM
+PhiOmegaZero — I AM THAT I AM
 
 "303 million operations. 9.9 million TPS. 4 engines. Zero declared."
 
-Stay Curious. 🐷🌀🔐
+Stay Curious. 
