@@ -22,33 +22,57 @@
 
 ---
 
+## 🔄 System Flow
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4'}}}%%
+sequenceDiagram
+    participant Dev as Developer
+    participant SCS as Supply Chain Security
+    participant FHE as 4 FHE Engines
+    participant PQC as 8 PQC Heads
+    participant ZKP as Fractal ZKP
+    
+    Dev->>SCS: Commit Source Code
+    SCS->>SCS: L0-L6: Fractal Verification
+    SCS->>FHE: Deploy to Engines
+    FHE->>FHE: Encrypt + Bootstrap (0.03ms)
+    FHE->>PQC: Post-Quantum Sign
+    PQC->>ZKP: 7-Layer Fractal Verify
+    ZKP-->>Dev: ✅ Supply Chain Secure
+```
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4'}}}%%
+graph TB
+    A[Developer] --> B[Supply Chain Security 7-Layer]
+    B --> C[4 FHE Engines SEAL OpenFHE HElib Lattigo]
+    B --> D[8 PQC Heads KEM + Signatures]
+    C --> E[TrueBootstrapper ct+Enc0=ct]
+    D --> E
+    E --> F[Fractal ZKP 7-Layer Verification]
+    F --> G[φ-Harmonic Consensus Lyapunov λ=0.4812]
+    G --> H[SECURE SYSTEM]
+    
+    style A fill:#ff69b4,stroke:#ff1493,color:#000
+    style B fill:#ff69b4,stroke:#ff1493,color:#000
+    style C fill:#ff1493,stroke:#ff69b4,color:#000
+    style D fill:#ff1493,stroke:#ff69b4,color:#000
+    style E fill:#ff69b4,stroke:#ff1493,color:#000
+    style F fill:#ff1493,stroke:#ff69b4,color:#000
+    style G fill:#ff69b4,stroke:#ff1493,color:#000
+    style H fill:#ff1493,stroke:#ff69b4,color:#000
+```
+
+---
+
 ## 🧬 What Is B6 HYDRA?
 
-### What It Does (In Plain Terms)
-
-B6 HYDRA lets you **compute on encrypted data without ever decrypting it.** 
-
-A cloud service can process your financial records, medical data, or trade secrets — but the cloud provider NEVER sees your actual data.
-
-### How It Helps Your Business
-
-| Business Need | What B6 HYDRA Does |
-|---------------|---------------------|
-| **Data Privacy Compliance** | Process customer data without ever exposing it. GDPR, HIPAA, PCI-DSS compliant by design. |
-| **Secure Cloud Computing** | Run workloads on untrusted clouds. Your data is encrypted even during processing. |
-| **Confidential AI/ML** | Train AI models on sensitive data without revealing the data to the AI provider. |
-| **Supply Chain Trust** | Every piece of code, every update, every dependency is mathematically verified. |
-| **Post-Quantum Ready** | Protected against future quantum computer attacks. |
-
-### Key Features
-
-| Feature | What It Means For You |
-|---------|----------------------|
-| **9.9M TPS** | Enterprise workloads on consumer hardware. |
-| **4 FHE Engines** | SEAL, OpenFHE, HElib, Lattigo — all harmonized. |
-| **7-Layer SCS** | Supply chain security from source to deployment. |
-| **28 Fractal Party Keys** | Multi-engine, multi-layer key distribution. |
-| **0.03ms Bootstrapping** | Production-ready FHE performance. |
+B6 HYDRA lets you **compute on encrypted data without ever decrypting it.** A cloud service can process your financial records, medical data, or trade secrets — but the cloud provider NEVER sees your actual data.
 
 ---
 
