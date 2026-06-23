@@ -99,3 +99,30 @@ test_lunurin*
 test_hydra*
 test_linker_talk*
 linker_magic*
+
+# Old test binaries
+test_deep
+test_fullblown*
+test_pqc_debug
+test_zkp_debug
+test4*
+test_100k
+test_enterprise
+test_noise
+test_unlimited
+test_supply_chain*
+test_openfhe_alone
+test_helib_alone
+test_cockroach_*
+
+# Old videos (keep only TimeisRunning*)
+assets/BYCFHE*
+assets/BYC-GoogleFHE*
+assets/PRSeal*
+assets/BYCanomaly*
+
+# Build artifacts
+test1_final
+test2_fractal
+test3_tps
+*.o
