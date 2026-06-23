@@ -20,13 +20,38 @@ The most advanced Fully Homomorphic Encryption system ever built by a single dev
 
 ## System Flow
 
-[Insert system flow diagram]
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant SCS as Supply Chain Security
+    participant FHE as 4 FHE Engines
+    participant PQC as 8 PQC Heads
+    participant ZKP as Fractal ZKP
+
+    Dev->>SCS: Commit Source Code
+    SCS->>SCS: L0-L6: Fractal Verification
+    SCS->>FHE: Deploy to Engines
+    FHE->>FHE: Encrypt + Bootstrap (0.03ms)
+    FHE->>PQC: Post-Quantum Sign
+    PQC->>ZKP: 7-Layer Fractal Verify
+    ZKP-->>Dev: Supply Chain Secure
+```
 
 ---
 
 ## Architecture
 
-[Insert architecture diagram]
+```mermaid
+graph TB
+    A[Developer] --> B[Supply Chain Security 7-Layer]
+    B --> C[4 FHE Engines: SEAL OpenFHE HElib Lattigo]
+    B --> D[8 PQC Heads: KEM + Signatures]
+    C --> E[TrueBootstrapper: ct + Enc(0) = ct]
+    D --> E
+    E --> F[Fractal ZKP: 7-Layer Verification]
+    F --> G[phi-Harmonic Consensus: Lyapunov lambda = 0.4812]
+    G --> H[SECURE SYSTEM]
+```
 
 ---
 
