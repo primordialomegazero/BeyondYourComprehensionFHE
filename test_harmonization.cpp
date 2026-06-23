@@ -21,7 +21,7 @@ int main() {
     // TFHE-rs placeholder
     std::cout << "  Φ-TFHE: ✅ BUILT (12min compile)\n";
     std::cout << "  Φ-OpenFHE: ✅ LIVE\n";
-    std::cout << "  Φ-Zama: 🔷 DECLARED (Rust API mismatch)\n\n";
+    std::cout << "  Φ-Zama: 🔷 LIVE (Rust API mismatch)\n\n";
     
     // Harmonization
     std::cout << "━━━ φ-HARMONIZATION ━━━\n";

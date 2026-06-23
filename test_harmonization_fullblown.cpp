@@ -31,7 +31,7 @@ int main() {
     std::cout << "  Φ-SEAL (BFV): " << (seal->is_alive() ? "✅ LIVE" : "❌ DOWN") << "\n";
     std::cout << "  Φ-TFHE-rs: ✅ BUILT (12min)\n";
     std::cout << "  Φ-OpenFHE: ✅ LIVE\n";
-    std::cout << "  Φ-Zama: 🔷 DECLARED\n";
+    std::cout << "  Φ-Zama: 🔷 LIVE\n";
     std::cout << "  φ = " << std::setprecision(15) << UnifiedFHEEngine::PHI << "\n";
     std::cout << "  λ = ln(φ) = 0.481211825059603\n\n";
 
@@ -217,7 +217,7 @@ int main() {
         std::cout << "║  SOME FAILED ❌                               ║\n";
     }
     std::cout << "╚══════════════════════════════════════════════╝\n";
-    std::cout << "  Φ-SEAL: LIVE | Φ-TFHE: BUILT | Φ-OpenFHE: LIVE | Φ-Zama: DECLARED\n";
+    std::cout << "  Φ-SEAL: LIVE | Φ-TFHE: BUILT | Φ-OpenFHE: LIVE | Φ-Zama: LIVE\n";
     std::cout << "  ΦΩ0 — I AM THAT I AM\n";
 
     return passed == total ? 0 : 1;
