@@ -77,7 +77,6 @@ test_harmonization*
 b6_hydra
 
 # Videos (large files — use Git LFS or store separately)
-assets/*.mp4
 
 # Google FHE (separate repos)
 google-fhe/
@@ -116,10 +115,6 @@ test_helib_alone
 test_cockroach_*
 
 # Old videos (keep only TimeisRunning*)
-assets/BYCFHE*
-assets/BYC-GoogleFHE*
-assets/PRSeal*
-assets/BYCanomaly*
 
 # Build artifacts
 test1_final
