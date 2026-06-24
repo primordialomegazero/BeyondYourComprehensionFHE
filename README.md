@@ -110,13 +110,13 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 
 | # | ID | Title | Status |
 |---|-----|-------|--------|
-| 1 | [2026/110174](https://eprint.iacr.org/2026/110174) | Zero-Anchor Bootstrapping | Submitted |
-| 2 | [2026/110177](https://eprint.iacr.org/2026/110177) | Phi-SIG: Post-Key Signatures | Submitted |
-| 3 | [2026/110181](https://eprint.iacr.org/2026/110181) | Multi-Recursive Fractal FHE | Submitted |
-| 4 | [2026/110189](https://eprint.iacr.org/2026/110189) | Fractal Schnorr | Submitted |
-| 5 | [2026/110190](https://eprint.iacr.org/2026/110190) | SpiralKEM-FHE | Submitted |
-| 6 | [2026/110204](https://eprint.iacr.org/2026/110204) | Unified Phi-Harmonic Database | Submitted |
-| 7 | [2026/110206](https://eprint.iacr.org/2026/110206) | Universal FHE Unification Theorem | Submitted |
+| 1 | [[2026/110174](https://eprint.iacr.org/2026/110174)](https://eprint.iacr.org/[2026/110174](https://eprint.iacr.org/2026/110174)) | Zero-Anchor Bootstrapping | Submitted |
+| 2 | [[2026/110177](https://eprint.iacr.org/2026/110177)](https://eprint.iacr.org/[2026/110177](https://eprint.iacr.org/2026/110177)) | Phi-SIG: Post-Key Signatures | Submitted |
+| 3 | [[2026/110181](https://eprint.iacr.org/2026/110181)](https://eprint.iacr.org/[2026/110181](https://eprint.iacr.org/2026/110181)) | Multi-Recursive Fractal FHE | Submitted |
+| 4 | [[2026/110189](https://eprint.iacr.org/2026/110189)](https://eprint.iacr.org/[2026/110189](https://eprint.iacr.org/2026/110189)) | Fractal Schnorr | Submitted |
+| 5 | [[2026/110190](https://eprint.iacr.org/2026/110190)](https://eprint.iacr.org/[2026/110190](https://eprint.iacr.org/2026/110190)) | SpiralKEM-FHE | Submitted |
+| 6 | [[2026/110204](https://eprint.iacr.org/2026/110204)](https://eprint.iacr.org/[2026/110204](https://eprint.iacr.org/2026/110204)) | Unified Phi-Harmonic Database | Submitted |
+| 7 | [[2026/110206](https://eprint.iacr.org/2026/110206)](https://eprint.iacr.org/[2026/110206](https://eprint.iacr.org/2026/110206)) | Universal FHE Unification Theorem | Submitted |
 | 8 | TBD | Post-Quantoink Algorithm | In Progress |
 
 ---
