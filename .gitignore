@@ -126,3 +126,4 @@ test1_final
 test2_fractal
 test3_tps
 *.o
+HElib/
