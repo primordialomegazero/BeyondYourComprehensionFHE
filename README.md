@@ -22,7 +22,26 @@ The most advanced Fully Homomorphic Encryption system ever built by a single dev
 
 ---
 
+## System Flow
 
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant SCS as Supply Chain Security
+    participant FHE as 4 FHE Engines
+    participant PQC as 8 PQC Heads
+    participant ZKP as Fractal ZKP
+
+    Dev->>SCS: Commit Source Code
+    SCS->>SCS: L0-L6: Fractal Verification
+    SCS->>FHE: Deploy to Engines
+    FHE->>FHE: Encrypt + Bootstrap (0.03ms)
+    FHE->>PQC: Post-Quantum Sign
+    PQC->>ZKP: 7-Layer Fractal Verify
+    ZKP-->>Dev: Supply Chain Secure
+```
+
+---
 
 ## Architecture
 
@@ -39,71 +58,6 @@ graph TB
 ```
 
 ---
-
-## System Flow
-
-
-
-```mermaid
-
-sequenceDiagram
-
-    participant Dev as Developer
-
-    participant SCS as Supply Chain Security
-
-    participant FHE as 4 FHE Engines
-
-    participant PQC as 8 PQC Heads
-
-    participant ZKP as Fractal ZKP
-
-
-
-    Dev->>SCS: Commit Source Code
-
-    SCS->>SCS: L0-L6: Fractal Verification
-
-    SCS->>FHE: Deploy to Engines
-
-    FHE->>FHE: Encrypt + Bootstrap (0.03ms)
-
-    FHE->>PQC: Post-Quantum Sign
-
-    PQC->>ZKP: 7-Layer Fractal Verify
-
-    ZKP-->>Dev: Supply Chain Secure
-
-```
-
-
-
-## Architecture
-
-
-
-```mermaid
-
-graph TB
-
-    A[Developer] --> B[Supply Chain Security 7-Layer]
-
-    B --> C[4 FHE Engines: SEAL OpenFHE HElib Lattigo]
-
-    B --> D[8 PQC Heads: KEM + Signatures]
-
-    C --> E[TrueBootstrapper]
-
-    D --> E
-
-    E --> F[Fractal ZKP 7-Layer Verification]
-
-    F --> G[phi-Harmonic Consensus]
-
-    G --> H[SECURE SYSTEM]
-
-```
-
 
 ## What Is B6 HYDRA?
 
@@ -129,7 +83,7 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 |------|---------|--------|
 | Test 1 | Comprehensive — 80 Enc/Dec + 40 Add + 40 Mul | 240 ops, 71ms, 100% |
 | Test 2 | Fractal Systems — Keys + Cross-Verify + SCS | 84/84 verified |
-| Test 3 | TPS Benchmark — 30s Sustained | 9.9M TPS | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/blob/main/assets/TimeisRunningTest3.mp4) |
+| Test 3 | TPS Benchmark — 30s Sustained | 9.9M TPS |
 
 ---
 
