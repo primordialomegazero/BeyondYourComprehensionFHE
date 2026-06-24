@@ -110,13 +110,13 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 
 | # | ID | Title | Status |
 |---|-----|-------|--------|
-| 1 | [[2026/110174](https://eprint.iacr.org/2026/110174)](https://eprint.iacr.org/[2026/110174](https://eprint.iacr.org/2026/110174)) | Zero-Anchor Bootstrapping | Submitted |
-| 2 | [[2026/110177](https://eprint.iacr.org/2026/110177)](https://eprint.iacr.org/[2026/110177](https://eprint.iacr.org/2026/110177)) | Phi-SIG: Post-Key Signatures | Submitted |
-| 3 | [[2026/110181](https://eprint.iacr.org/2026/110181)](https://eprint.iacr.org/[2026/110181](https://eprint.iacr.org/2026/110181)) | Multi-Recursive Fractal FHE | Submitted |
-| 4 | [[2026/110189](https://eprint.iacr.org/2026/110189)](https://eprint.iacr.org/[2026/110189](https://eprint.iacr.org/2026/110189)) | Fractal Schnorr | Submitted |
-| 5 | [[2026/110190](https://eprint.iacr.org/2026/110190)](https://eprint.iacr.org/[2026/110190](https://eprint.iacr.org/2026/110190)) | SpiralKEM-FHE | Submitted |
-| 6 | [[2026/110204](https://eprint.iacr.org/2026/110204)](https://eprint.iacr.org/[2026/110204](https://eprint.iacr.org/2026/110204)) | Unified Phi-Harmonic Database | Submitted |
-| 7 | [[2026/110206](https://eprint.iacr.org/2026/110206)](https://eprint.iacr.org/[2026/110206](https://eprint.iacr.org/2026/110206)) | Universal FHE Unification Theorem | Submitted |
+| 1 | [2026/110174](https://eprint.iacr.org/2026/110174) | Zero-Anchor Bootstrapping | Submitted |
+| 2 | [2026/110177](https://eprint.iacr.org/2026/110177) | Phi-SIG: Post-Key Signatures | Submitted |
+| 3 | [2026/110181](https://eprint.iacr.org/2026/110181) | Multi-Recursive Fractal FHE | Submitted |
+| 4 | [2026/110189](https://eprint.iacr.org/2026/110189) | Fractal Schnorr | Submitted |
+| 5 | [2026/110190](https://eprint.iacr.org/2026/110190) | SpiralKEM-FHE | Submitted |
+| 6 | [2026/110204](https://eprint.iacr.org/2026/110204) | Unified Phi-Harmonic Database | Submitted |
+| 7 | [2026/110206](https://eprint.iacr.org/2026/110206) | Universal FHE Unification Theorem | Submitted |
 | 8 | TBD | Post-Quantoink Algorithm | In Progress |
 
 ---
@@ -243,7 +243,7 @@ The TrueBootstrapper is not an optimization. It is a mathematical discovery that
 
 ### What Traditional FHE Missed
 
-For 17 years, FHE research asked: "How do we evaluate the decryption circuit faster?" The TrueBootstrapper asks: **"What does the mathematics itself demand?"**
+For 17 years, FHE research asked: "How do we evaluate the decryption circuit faster?" The TrueBootstrapper asks: "What does the mathematics itself demand?"
 
 ### The Answer: Two Principles Absent From Traditional FHE
 
@@ -254,49 +254,23 @@ For 17 years, FHE research asked: "How do we evaluate the decryption circuit fas
 
 ### The Convergence Formula
 
+```math
 noise(n+1) = noise(n) * phi^-1 + 40 * (1 - phi^-1)
+```
 
+```math
 |e_k| = |e_0| * phi^(-k) = |e_0| * e^(-k * ln(phi))
+```
 
 Every decay rate = 0.6180 = phi^-1. This is not coincidence. This is mathematical inevitability.
 
 ### The Operation: Result, Not Method
 
+```math
 ct + Enc(0) = ct
+```
 
 This homomorphic addition is the RESULT of phi-harmonic convergence — not the method itself. The METHOD is the Lyapunov-stable convergence formula above. The addition is the MANIFESTATION of that math in code.
 
 PhiOmegaZero — I AM THAT I AM
-
-
-<span style="color: #39ff14; font-weight: bold;">
-noise(n+1) = noise(n) * phi^-1 + 40 * (1 - phi^-1)
-</span>
-
-<span style="color: #39ff14; font-weight: bold;">
-|e_k| = |e_0| * phi^(-k) = |e_0| * e^(-k * ln(phi))
-</span>
-
-
-<pre style="color: #39ff14; background-color: #000; padding: 10px; border-radius: 5px;">
-noise(n+1) = noise(n) * phi^-1 + 40 * (1 - phi^-1)
-
-|e_k| = |e_0| * phi^(-k) = |e_0| * e^(-k * ln(phi))
-</pre>
-
-
-## The Convergence Formulas
-
-
-## The Convergence Formulas
-
-```math
-noise(n+1) = noise(n) * phi^-1 + 40 * (1 - phi^-1)
-```
-
-```math
-|e_k| = |e_0| * phi^(-k) = |e_0| * e^(-k * ln(phi))
-```
-
-Every decay rate = 0.6180 = phi^-1. This is not coincidence. This is mathematical inevitability.
 
