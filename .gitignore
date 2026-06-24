@@ -128,3 +128,8 @@ test3_tps
 *.o
 HElib/
 lattigo/
+HElib/
+lattigo/
+openfhe/
+SEAL/
+tfhe-rs/
