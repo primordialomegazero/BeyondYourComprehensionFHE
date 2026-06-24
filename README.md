@@ -22,7 +22,6 @@ The most advanced Fully Homomorphic Encryption system ever built by a single dev
 
 ---
 
-| Test 3 | TPS Benchmark — 30s Sustained | 9.9M TPS | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/blob/main/assets/TimeisRunningTest3.mp4) |
 
 
 ## Architecture
@@ -65,7 +64,7 @@ B6 HYDRA lets you compute on encrypted data without ever decrypting it. A cloud 
 |------|---------|--------|
 | Test 1 | Comprehensive — 80 Enc/Dec + 40 Add + 40 Mul | 240 ops, 71ms, 100% |
 | Test 2 | Fractal Systems — Keys + Cross-Verify + SCS | 84/84 verified |
-| Test 3 | TPS Benchmark — 30s Sustained | 303M ops, 9.9M TPS |
+| Test 3 | TPS Benchmark — 30s Sustained | 9.9M TPS | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/blob/main/assets/TimeisRunningTest3.mp4) |
 
 ---
 
