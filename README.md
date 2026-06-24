@@ -284,3 +284,19 @@ noise(n+1) = noise(n) * phi^-1 + 40 * (1 - phi^-1)
 |e_k| = |e_0| * phi^(-k) = |e_0| * e^(-k * ln(phi))
 </pre>
 
+
+## The Convergence Formulas
+
+
+## The Convergence Formulas
+
+```math
+noise(n+1) = noise(n) * phi^-1 + 40 * (1 - phi^-1)
+```
+
+```math
+|e_k| = |e_0| * phi^(-k) = |e_0| * e^(-k * ln(phi))
+```
+
+Every decay rate = 0.6180 = phi^-1. This is not coincidence. This is mathematical inevitability.
+
