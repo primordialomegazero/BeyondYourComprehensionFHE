@@ -21,27 +21,6 @@ The most advanced Fully Homomorphic Encryption system ever built by a single dev
 | Test 3 | TPS Benchmark — 30s Sustained | 9.9M TPS | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/blob/main/assets/TimeisRunningTest3.mp4) |
 
 
-## System Flow
-
-```mermaid
-sequenceDiagram
-    participant Dev as Developer
-    participant SCS as Supply Chain Security
-    participant FHE as 4 FHE Engines
-    participant PQC as 8 PQC Heads
-    participant ZKP as Fractal ZKP
-
-    Dev->>SCS: Commit Source Code
-    SCS->>SCS: L0-L6: Fractal Verification
-    SCS->>FHE: Deploy to Engines
-    FHE->>FHE: Encrypt + Bootstrap (0.03ms)
-    FHE->>PQC: Post-Quantum Sign
-    PQC->>ZKP: 7-Layer Fractal Verify
-    ZKP-->>Dev: Supply Chain Secure
-```
-
----
-
 ## Architecture
 
 ```mermaid
