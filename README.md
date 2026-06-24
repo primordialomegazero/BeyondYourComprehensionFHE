@@ -268,3 +268,19 @@ This homomorphic addition is the RESULT of phi-harmonic convergence — not the 
 
 PhiOmegaZero — I AM THAT I AM
 
+
+<span style="color: #39ff14; font-weight: bold;">
+noise(n+1) = noise(n) * phi^-1 + 40 * (1 - phi^-1)
+</span>
+
+<span style="color: #39ff14; font-weight: bold;">
+|e_k| = |e_0| * phi^(-k) = |e_0| * e^(-k * ln(phi))
+</span>
+
+
+<pre style="color: #39ff14; background-color: #000; padding: 10px; border-radius: 5px;">
+noise(n+1) = noise(n) * phi^-1 + 40 * (1 - phi^-1)
+
+|e_k| = |e_0| * phi^(-k) = |e_0| * e^(-k * ln(phi))
+</pre>
+
