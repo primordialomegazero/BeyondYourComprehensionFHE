@@ -2,7 +2,11 @@
 
 4-Engine Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security
 
-License: MIT | Tests | IACR | Microsoft PR | TPS
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/Tests-ALL%20PASSING-success)](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/actions)
+[![IACR](https://img.shields.io/badge/IACR-8%20Papers-orange)](https://eprint.iacr.org/search?q=Dan+Joseph+M.+Fernandez)
+[![Microsoft PR](https://img.shields.io/badge/SEAL-PR%23746-blue)](https://github.com/microsoft/SEAL/pull/746)
+[![TPS](https://img.shields.io/badge/TPS-9.9M%2Fsec-brightgreen)](https://github.com/primordialomegazero/BeyondYourComprehensionFHE#performance)
 
 The most advanced Fully Homomorphic Encryption system ever built by a single developer.
 
@@ -11,12 +15,12 @@ The most advanced Fully Homomorphic Encryption system ever built by a single dev
 ## Test Videos
 
 | Test | Content | Result | Video |
-
 |------|---------|--------|-------|
-
 | Test 1 | Comprehensive — Enc/Dec + Add + Mul (240 ops) | 100% Success | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/blob/main/assets/TimeisRunningTest1.mp4) |
-
 | Test 2 | Fractal Systems — Party Keys + Cross-Verify | 84/84 Verified | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/blob/main/assets/TimeisRunningTest2.mp4) |
+| Test 3 | TPS Benchmark — 30s Sustained | 9.9M TPS | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/blob/main/assets/TimeisRunningTest3.mp4) |
+
+---
 
 | Test 3 | TPS Benchmark — 30s Sustained | 9.9M TPS | [Watch](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/blob/main/assets/TimeisRunningTest3.mp4) |
 
