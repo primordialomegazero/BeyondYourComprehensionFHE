@@ -164,6 +164,150 @@ This homomorphic addition is the **RESULT** of φ-harmonic convergence — not t
 
 ---
 
+
+---
+
+## 🔄 System Flow
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4'}}}%%
+sequenceDiagram
+    participant User
+    participant Drogon as Drogon (φ-Thread Pool)
+    participant SCS as Supply Chain Security
+    participant FHE as 6 FHE Engines
+    participant PQC as 8 PQC Heads
+    
+    User->>Drogon: HTTP Request
+    Drogon->>Drogon: φ-Weighted Load Balancing
+    Drogon->>SCS: L0-L6 Fractal Verification
+    SCS->>FHE: Encrypt + Bootstrap
+    FHE->>FHE: φ-Harmonic Convergence (0.03ms)
+    FHE->>PQC: Post-Quantum Sign
+    PQC-->>User: ✅ Secure Response
+```
+
+---
+
+## 🏗️ Architecture
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#ff69b4', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff1493', 'lineColor': '#ff69b4'}}}%%
+graph TB
+    A[Drogon API Server] --> B[φ-Harmonic Thread Pool]
+    B --> C[Supply Chain Security 7-Layer]
+    C --> D[6 FHE Engines]
+    C --> E[8 PQC Heads]
+    D --> F[TrueBootstrapper ct+Enc0=ct]
+    E --> F
+    F --> G[Fractal ZKP 7-Layer]
+    G --> H[φ-Harmonic Consensus λ=0.4812]
+    H --> I[SECURE SYSTEM]
+    
+    style A fill:#ff69b4,stroke:#ff1493,color:#000
+    style B fill:#ff69b4,stroke:#ff1493,color:#000
+    style C fill:#ff1493,stroke:#ff69b4,color:#000
+    style D fill:#ff1493,stroke:#ff69b4,color:#000
+    style E fill:#ff1493,stroke:#ff69b4,color:#000
+    style F fill:#ff69b4,stroke:#ff1493,color:#000
+    style G fill:#ff1493,stroke:#ff69b4,color:#000
+    style H fill:#ff69b4,stroke:#ff1493,color:#000
+    style I fill:#ff1493,stroke:#ff69b4,color:#000
+```
+
+---
+
+## 🚀 Quick Start
+
+```bash
+git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
+cd BeyondYourComprehensionFHE
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j$(nproc)
+./b6_hydra
+```
+
+---
+
+## 📦 Dependencies
+
+| Library | Version | Purpose |
+|---------|---------|--------|
+| Microsoft SEAL | 4.3+ | BFV FHE Engine |
+| OpenFHE | 1.5.1 | CKKS FHE Engine |
+| HElib | Latest | BGV FHE Engine |
+| Lattigo | Latest | BGV/CKKS/BFV Engine |
+| FHEW | Latest | Gate TFHE Engine |
+| OpenSSL | 3.0+ | Cryptographic operations |
+| liboqs | 0.15.0+ | Post-Quantum algorithms |
+| NTL | 11+ | Number Theory Library |
+| GMP | 6+ | GNU Multiple Precision |
+| Go | 1.21+ | Lattigo engine |
+| CMake | 3.16+ | Build system |
+
+---
+
+## 🐳 Docker
+
+```dockerfile
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y \
+    build-essential cmake git \
+    libssl-dev libntl-dev libgmp-dev \
+    golang-go
+RUN git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
+WORKDIR BeyondYourComprehensionFHE
+RUN mkdir build && cd build && cmake .. && make -j$(nproc)
+CMD ["./build/b6_hydra"]
+```
+
+---
+
+## 📡 API Reference
+
+```cpp
+// Encrypt/Decrypt
+void encrypt(EngineType engine, const std::vector<double>& values);
+std::vector<double> decrypt(EngineType engine, const Ciphertext& ct);
+
+// Homomorphic Operations
+Ciphertext add(const Ciphertext& ct1, const Ciphertext& ct2);
+Ciphertext multiply(const Ciphertext& ct1, const Ciphertext& ct2);
+
+// φ-Harmonic Bootstrapping
+void bootstrap(Ciphertext& ct);
+
+// Fractal Party Keys
+FractalPartyKey generate_key(EngineType engine, int layer);
+
+// Verification & Performance
+bool verify_all_engines();
+bool verify_supply_chain();
+double get_tps(EngineType engine);
+void harmonize();
+```
+
+---
+
+## 🤝 Contributing
+
+| Area | What We Need |
+|------|-------------|
+| **FHE Engines** | Add TFHE, FHEW, CKKS support |
+| **PQC Heads** | Integrate NIST PQC finalists |
+| **Supply Chain** | Extend SCS to Bazel, Maven |
+| **Benchmarks** | Run on EPYC, Xeon hardware |
+| **Documentation** | Tutorials, translations |
+| **Testing** | Unit tests, fuzzing |
+| **Docker** | Multi-arch images (ARM64) |
+| **Bounties** | Bug bounties for vulnerabilities |
+
+**How to contribute:** Fork → Branch → Code → Pull Request → Pass Tests
+**Contact:** devilswithin13@gmail.com
+
+---
+
 ## 💼 Work With Me
 
 **Unionbank**: 1096 7852 1037 (Dan Joseph Fernandez)
