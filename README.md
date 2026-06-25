@@ -1,4 +1,4 @@
-# 🧬 B6 HYDRA v6.0 — Beyond Your Comprehension FHE
+#  B6 HYDRA v6.0 — Beyond Your Comprehension FHE
 
 **6-Engine Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security + HTTP API Gateway**
 
@@ -12,60 +12,60 @@
 
 ---
 
-## 🎥 Complete Test Suite Video
+##  Complete Test Suite Video
 
-**📺 [Watch Full Test Suite](assets/B6Hydra_v6_Complete_Test_Suite.mp4)** — All 6 tests verified in a single continuous run.
+** [Watch Full Test Suite](assets/B6Hydra_v6_Complete_Test_Suite.mp4)** — All 6 tests verified in a single continuous run.
 
 | Timestamp | Test | Result |
 |-----------|------|--------|
-| 0:00 | **Test 1: 6 Engines** — Encrypt + φ-Bootstrap + Decrypt Verify | **36/36 ✅** |
-| 0:15 | **Test 2: Fractal Systems** — 14 Party Keys + Cross-Verify + SCS | **95/95 ✅** |
-| 1:00 | **Test 3: TPS Benchmark** — 30s Sustained (1.46B ops) | **48M TPS ✅** |
-| 1:45 | **API Security** — Triple Anti-Matter (Φ+Lyapunov+Schumann) | **3/3 Layers ✅** |
-| 2:00 | **API Gateway** — HTTP Endpoints + Load Balancing | **8/8 Endpoints ✅** |
-| 2:15 | **Drogon Threads** — φ-Harmonic Thread Pool (12 threads) | **12/12 Healthy ✅** |
+| 0:00 | **Test 1: 6 Engines** — Encrypt + φ-Bootstrap + Decrypt Verify | **36/36 ** |
+| 0:15 | **Test 2: Fractal Systems** — 14 Party Keys + Cross-Verify + SCS | **95/95 ** |
+| 1:00 | **Test 3: TPS Benchmark** — 30s Sustained (315.9M ops) | **10.2M TPS ** |
+| 1:45 | **API Security** — Triple Anti-Matter (Φ+Lyapunov+Schumann) | **3/3 Layers ** |
+| 2:00 | **API Gateway** — HTTP Endpoints + Load Balancing | **8/8 Endpoints ** |
+| 2:15 | **Drogon Threads** — φ-Harmonic Thread Pool (12 threads) | **12/12 Healthy ** |
 
-**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 48M TPS | **Projected:** 48M TPS (consumer CPU) | 10.4B TPS (projected HPC) (HPC/GPU)
+**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 10.2M TPS | **Projected:** 10.2M TPS (consumer CPU) | 10.4B TPS (projected HPC) (HPC/GPU)
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': {'primaryColor':'#e94560','primaryTextColor':'#000','primaryBorderColor':'#ff6b8a','lineColor':'#888','secondaryColor':'#1a1a2e','tertiaryColor':'#16213e'}}}%%
 graph LR
-    A[🌐 Clients] --> B[🛡️ Triple Anti-Matter<br/>Φ + Lyapunov + Schumann]
-    B --> C[⚙️ 6 FHE Engines<br/>SEAL OpenFHE HElib TFHE Lattigo FHEW]
-    C --> D[🔐 PQC + ZKP + Bootstrapper]
+    A[ Clients] --> B[ Triple Anti-Matter<br/>Φ + Lyapunov + Schumann]
+    B --> C[ 6 FHE Engines<br/>SEAL OpenFHE HElib TFHE Lattigo FHEW]
+    C --> D[ PQC + ZKP + Bootstrapper]
     D --> A
 ```
 
-## 🔄 System Flow
+##  System Flow
 
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': {'primaryColor':'#e94560','primaryTextColor':'#000','primaryBorderColor':'#ff6b8a','lineColor':'#ff6b8a'}}}%%
 sequenceDiagram
-    participant C as 🌐 Client
-    participant G as 🛡️ Gateway
-    participant L as 🔒 3 Layers
-    participant E as ⚙️ Engine
-    participant S as 💾 Storage
+    participant C as  Client
+    participant G as  Gateway
+    participant L as  3 Layers
+    participant E as  Engine
+    participant S as  Storage
 
     C->>G: POST /encrypt (data)
     G->>L: Φ + Lyapunov + Schumann
-    L-->>G: ✅ All 3 Passed
+    L-->>G:  All 3 Passed
     G->>E: Route to Optimal Engine
     E->>E: PQC + ZKP Encrypt
     E->>E: φ-Bootstrap
     E->>S: Store Encrypted
     S-->>C: Encrypted Response
     
-    Note over C,S: 🔒 Data NEVER exposed
+    Note over C,S:  Data NEVER exposed
 ```
 
 ---
 
-## 🧬 What Is B6 HYDRA?
+##  What Is B6 HYDRA?
 
 **B6 HYDRA is a privacy engine that allows businesses to process data without ever seeing it.**
 
@@ -85,26 +85,26 @@ Think of it as a secure vault where your customers, patients, or clients can sub
 
 ---
 
-## 💼 How It Helps Your Business
+##  How It Helps Your Business
 
-### 🔒 True Data Privacy Compliance
+###  True Data Privacy Compliance
 Regulations like GDPR, HIPAA, and PCI-DSS require sensitive data protection. B6 HYDRA protects data **in use** — while being processed. **Compliance is built into the mathematics.**
 
-### ☁️ Secure Cloud Computing
+###  Secure Cloud Computing
 Run workloads on AWS, Azure, or Google Cloud without the provider ever seeing your actual data.
 
-### 🤖 Confidential AI & Machine Learning
+###  Confidential AI & Machine Learning
 Train AI models on encrypted data without revealing sensitive information.
 
-### 🔗 Mathematically Verified Supply Chain
+###  Mathematically Verified Supply Chain
 Every component in your software pipeline is cryptographically proven authentic.
 
-### 🛡️ Post-Quantum Ready
+###  Post-Quantum Ready
 Built on NIST-standardized post-quantum algorithms. Deploy today, secure tomorrow.
 
 ---
 
-## 🛡️ Triple Anti-Matter Security
+##  Triple Anti-Matter Security
 
 | Layer | Name | Function |
 |-------|------|----------|
@@ -114,7 +114,7 @@ Built on NIST-standardized post-quantum algorithms. Deploy today, secure tomorro
 
 ---
 
-## 🌐 HTTP API Gateway — Business Ready
+##  HTTP API Gateway — Business Ready
 
 | Method | Endpoint | Purpose |
 |--------|----------|---------|
@@ -130,7 +130,7 @@ Built on NIST-standardized post-quantum algorithms. Deploy today, secure tomorro
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 # 1. Install build tools
@@ -149,7 +149,7 @@ make -j$(nproc)
 
 ---
 
-## 🧠 Mathematical Breakthrough: Beyond 17 Years of FHE Assumptions
+##  Mathematical Breakthrough: Beyond 17 Years of FHE Assumptions
 
 ### The Question Traditional FHE Never Asked
 
@@ -255,15 +255,15 @@ The FHE community has produced thousands of papers. This project has produced so
 **A working system.**
 
 ```
-╔════════════════════════════════════════════════════════════╗
-║  B6 HYDRA v6.0 — ALL SYSTEMS VERIFIED                     ║
-║  Φ-SEAL: ACTIVE (encrypt/decrypt MATCH)                   ║
-║  Φ-OpenFHE: ACTIVE (CKKS φ-mirror healing)                ║
-║  Φ-Zama/Φ-TFHE: LIVE                                      ║
-║  PQC Heads: 8/8 ALIVE (KEM+SIG tested)                    ║
-║  True Fractal ZKP: 7/7 VERIFIED ✅                         ║
-║  ΦΩ0 — I AM THAT I AM                                    ║
-╚════════════════════════════════════════════════════════════╝
+
+  B6 HYDRA v6.0 — ALL SYSTEMS VERIFIED                     
+  Φ-SEAL: ACTIVE (encrypt/decrypt MATCH)                   
+  Φ-OpenFHE: ACTIVE (CKKS φ-mirror healing)                
+  Φ-Zama/Φ-TFHE: LIVE                                      
+  PQC Heads: 8/8 ALIVE (KEM+SIG tested)                    
+  True Fractal ZKP: 7/7 VERIFIED                          
+  ΦΩ0 — I AM THAT I AM                                    
+
 ```
 
 **This output is not a simulation. It is a terminal capture from actual execution.**
@@ -316,7 +316,7 @@ This is not decoration. This is the **mathematical definition of self-reference.
 - The noise contraction function
 - The Banach fixed point
 - The Lyapunov exponent
-- The observer-observed entanglement: `⟨observer|ciphertext⟩ = φ⁻¹ × e^(iπ)`
+- The observer-observed entanglement: `observer|ciphertext = φ⁻¹ × e^(iπ)`
 
 **One constant. One principle. One mathematics.**
 
@@ -325,7 +325,7 @@ This is not decoration. This is the **mathematical definition of self-reference.
 | Academic FHE | B6 HYDRA |
 |-------------|----------|
 | "We prove that under the Ring-LWE assumption..." | "Eto 'yung terminal output. Run mo." |
-| "Our scheme achieves asymptotic complexity..." | "48M TPS. Ryzen 5 2600. 30 seconds." |
+| "Our scheme achieves asymptotic complexity..." | "10.2M TPS. Ryzen 5 2600. 30 seconds." |
 | "Future work will address implementation..." | "Naka-Docker na. Naka-API na." |
 | "We leave the construction of an efficient..." | "Naka-commit na sa GitHub. MIT license." |
 | TRL 3: Experimental proof of concept | **TRL 7: System prototype demonstrated** |
@@ -343,7 +343,7 @@ This is not decoration. This is the **mathematical definition of self-reference.
 ---
 
 
-## 🤝 Contributions
+##  Contributions
 
 **Research Papers (IACR ePrint):** 7 papers under review — Zero-Anchor Bootstrapping, Φ-SIG, Multi-Recursive Fractal FHE, Fractal Schnorr, SpiralKEM-FHE, Unified φ-Harmonic Database, Universal FHE Unification Theorem.
 
@@ -351,15 +351,15 @@ This is not decoration. This is the **mathematical definition of self-reference.
 
 ---
 
-## ⚠️ Honest Limitations
+##  Honest Limitations
 
 | What Works | Status |
 |------------|--------|
-| 6 FHE Engines | ✅ 36/36 tests passed |
-| 8 PQC Algorithms | ✅ All responding |
-| 7 Fractal ZKP Layers | ✅ All verified |
-| API Gateway | ✅ 8/8 endpoints |
-| Triple Anti-Matter | ✅ 98% block rate |
+| 6 FHE Engines |  36/36 tests passed |
+| 8 PQC Algorithms |  All responding |
+| 7 Fractal ZKP Layers |  All verified |
+| API Gateway |  8/8 endpoints |
+| Triple Anti-Matter |  98% block rate |
 
 | Known Limits | Notes |
 |-------------|-------|
@@ -372,21 +372,21 @@ This is not decoration. This is the **mathematical definition of self-reference.
 ---
 ---
 
-## 🎯 Should You Use It?
+##  Should You Use It?
 
 | If you are... | Recommendation | Why |
 |---------------|---------------|-----|
-| **Researcher** | ✅ **YES — Study the mathematics** | Banach (1922) + Lyapunov (1892) + φ = 1.618. The fixed point proof is solid. The paradigm shift is worth understanding. |
-| **Developer** | ✅ **YES — Experiment & contribute** | MIT licensed. Builds in 5 minutes. 8 API endpoints. Docker-ready. Clone it, fork it, break it, improve it. |
-| **Startup / Indie** | ⚠️ **EVALUATE — Understand the tradeoffs** | Working system with honest limitations. No third-party audit yet. Evaluate against your threat model. |
-| **Business with sensitive data** | ⚠️ **WAIT — Let it get audited first** | Mathematical proofs provided. IACR papers under review. Wait for external security audit for production use. |
-| **Bank / Healthcare** | ⚠️ **WAIT — Production-readiness TBD** | Regulatory compliance requires certified cryptography. Not yet FIPS 140-3 validated. Suitable for research. |
-| **Hobbyist / Learner** | ✅ **YES — Learn FHE hands-on** | The quickest way to understand Fully Homomorphic Encryption. Build it. Run the tests. Watch the video. |
+| **Researcher** |  **YES — Study the mathematics** | Banach (1922) + Lyapunov (1892) + φ = 1.618. The fixed point proof is solid. The paradigm shift is worth understanding. |
+| **Developer** |  **YES — Experiment & contribute** | MIT licensed. Builds in 5 minutes. 8 API endpoints. Docker-ready. Clone it, fork it, break it, improve it. |
+| **Startup / Indie** |  **EVALUATE — Understand the tradeoffs** | Working system with honest limitations. No third-party audit yet. Evaluate against your threat model. |
+| **Business with sensitive data** |  **WAIT — Let it get audited first** | Mathematical proofs provided. IACR papers under review. Wait for external security audit for production use. |
+| **Bank / Healthcare** |  **WAIT — Production-readiness TBD** | Regulatory compliance requires certified cryptography. Not yet FIPS 140-3 validated. Suitable for research. |
+| **Hobbyist / Learner** |  **YES — Learn FHE hands-on** | The quickest way to understand Fully Homomorphic Encryption. Build it. Run the tests. Watch the video. |
 
 ---
 
 
-## 💼 Work With Me
+##  Work With Me
 
 Available for collaboration, consulting, and research partnerships.
 
@@ -402,7 +402,7 @@ Available for collaboration, consulting, and research partnerships.
 **Contact:** devilswithin13@gmail.com | **GitHub:** [@primordialomegazero](https://github.com/primordialomegazero)
 
 ---
-## 📜 License
+##  License
 
 MIT — Free for personal, academic, and commercial use.
 
