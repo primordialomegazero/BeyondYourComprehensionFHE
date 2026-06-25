@@ -72,7 +72,7 @@ You now have a live FHE computation server on port 8080. See the [API Reference]
 
 ## 🤝 Contributions
 
-B6 HYDRA is the work of a single developer — **Dan Joseph M. Fernandez** — built from first principles over two years of independent research. Every line of code, every mathematical proof, every test case was written by one person with a call center day job and an unstoppable curiosity.
+B6 HYDRA is an independent research project built from first principles. Every line of code, every mathematical proof, and every test case is original work.
 
 ### Research Papers (IACR ePrint)
 
@@ -86,34 +86,19 @@ B6 HYDRA is the work of a single developer — **Dan Joseph M. Fernandez** — b
 | 6 | 2026/110204 | Unified φ-Harmonic Database | Under Review |
 | 7 | 2026/110206 | Universal FHE Unification Theorem | Under Review |
 
-### Related Repositories
-
-| Repository | Description |
-|------------|-------------|
-| [BeyondYourComprehensionFHE](https://github.com/primordialomegazero/BeyondYourComprehensionFHE) | Main FHE + PQC + ZKP system |
-| [GoldenRatioFHE](https://github.com/primordialomegazero/GoldenratioFHE) | φ-Polynomial FHE Framework |
-| [CerberusOpen](https://github.com/primordialomegazero/CerberusOpen) | Post-Key Encryption (3-headed) |
-| [Φ-SIG](https://github.com/primordialomegazero/phi-sig) | Post-Key Signatures |
-| [SpiralDB](https://github.com/primordialomegazero/SpiralDB) | Distributed FHE-Native Database |
-| [COARE-Autonomous-Suite](https://github.com/primordialomegazero/COARE-Autonomous-Suite) | DOST-ASTI HPC Tools |
-| [SpiralSSL](https://github.com/primordialomegazero/SpiralSSL) | PQC TLS Replacement |
-| [Spiralite](https://github.com/primordialomegazero/Spiralite) | Offline Mesh Database |
-| [HydraJWT](https://github.com/primordialomegazero/HydraJWT) | Multi-Head PQ-JWT |
-| [Post-Key-PQC-](https://github.com/primordialomegazero/Post-Key-PQC-) | Keyless NIST PQC |
-
 ### How to Contribute
 
-1. **Fork** any repository
-2. **Build** it following the Quick Start guide
-3. **Break it** — find edge cases, run benchmarks, test on different hardware
-4. **Report** — open an Issue with your findings
-5. **Submit** — PRs are welcome, especially for engine integrations, build fixes, and documentation
+This project follows a "show me the code" philosophy. Formal credentials are not required — working code is the only currency.
 
-All contributions are reviewed within 48 hours. The project follows a "show me the code" philosophy — formal credentials are not required.
+1. **Fork** the repository
+2. **Build** it following the Quick Start guide above
+3. **Test** — run benchmarks, find edge cases, experiment on different hardware
+4. **Report** — open an Issue with clear, reproducible findings
+5. **Submit** — PRs are welcome for engine integrations, build fixes, documentation improvements, and security audits
 
----
+All contributions are reviewed within 48 hours.
 
-## ⚠️ Honest Limitations
+For access to additional repositories and experimental work, visit the [GitHub profile](https://github.com/primordialomegazero).
 
 B6 HYDRA is production-grade research software. Here is exactly what it can and cannot do, without marketing spin.
 
