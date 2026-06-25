@@ -388,10 +388,20 @@ This is not decoration. This is the **mathematical definition of self-reference.
 
 ## 💼 Work With Me
 
-**Email:** devilswithin13@gmail.com | **GitHub:** [@primordialomegazero](https://github.com/primordialomegazero)
+Available for collaboration, consulting, and research partnerships.
+
+| Opportunity | Description |
+|-------------|-------------|
+| **Consulting** | FHE architecture design, custom engine integration, security review |
+| **Enterprise Support** | Deployment assistance, performance optimization, SLA-backed support |
+| **Training & Workshops** | Hands-on FHE training for engineering teams, executive briefings |
+| **Speaking Engagements** | Conference keynotes, panel discussions, academic seminars |
+| **Research Collaboration** | Joint papers, grant applications, academic partnerships |
+| **Custom Development** | Tailored FHE solutions for specific business needs |
+
+**Contact:** devilswithin13@gmail.com | **GitHub:** [@primordialomegazero](https://github.com/primordialomegazero)
 
 ---
-
 ## 📜 License
 
 MIT — Free for personal, academic, and commercial use.
