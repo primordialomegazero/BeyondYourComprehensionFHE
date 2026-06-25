@@ -25,7 +25,7 @@
 | 2:00 | **API Gateway** — HTTP Endpoints + Load Balancing | **8/8 Endpoints ✅** |
 | 2:15 | **Drogon Threads** — φ-Harmonic Thread Pool (12 threads) | **12/12 Healthy ✅** |
 
-**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 48M TPS | **Projected:** 10.4B TPS (HPC/GPU)
+**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 48M TPS | **Projected:** 48M TPS (consumer CPU) | 10.4B TPS (projected HPC) (HPC/GPU)
 
 ---
 
