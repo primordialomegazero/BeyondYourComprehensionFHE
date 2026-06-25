@@ -2,7 +2,11 @@
 
 **6-Engine Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security + HTTP API Gateway**
 
-*License: MIT | Tests | IACR | TPS*
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/Tests-36%2F36-brightgreen)]()
+[![IACR](https://img.shields.io/badge/IACR-7%20Papers-blue)]()
+[![TPS](https://img.shields.io/badge/TPS-48M%2Fs-orange)]()
+[![Engines](https://img.shields.io/badge/Engines-6-purple)]()
 
 *The most advanced Fully Homomorphic Encryption system ever built by a single developer.*
 
@@ -28,97 +32,66 @@
 ## 🏗️ Architecture
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#e94560', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff6b8a', 'lineColor': '#ff6b8a', 'secondaryColor': '#16213e', 'tertiaryColor': '#0f3460'}}}%%
 graph TB
-    subgraph CLIENTS["🌐 CLIENTS"]
+    subgraph CLIENTS["CLIENTS"]
         WEB["Web App"]
         MOBILE["Mobile"]
-        API_CLIENT["API Client"]
-        AI_MODEL["AI/ML Model"]
+        API["API Client"]
+        AI["AI/ML Model"]
     end
 
-    subgraph GATEWAY["🛡️ API GATEWAY — Triple Anti-Matter"]
+    subgraph GATEWAY["TRIPLE ANTI-MATTER GATEWAY"]
         PHI["Φ-Harmonic<br/>Rate Limiter"]
         LYAP["Lyapunov<br/>Anomaly Detector"]
         SCHU["Schumann<br/>Entropy Verifier"]
-        ROUTER["Load Balancer<br/>φ-Weighted Routing"]
+        ROUTER["Load Balancer<br/>φ-Weighted"]
     end
 
-    subgraph ENGINES["⚙️ 6 FHE ENGINES"]
-        SEAL["Φ-SEAL<br/>BFV Scheme<br/>3.4M TPS"]
-        OPENFHE["Φ-OpenFHE<br/>CKKS Scheme<br/>3.3M TPS"]
-        HELIB["Φ-HElib<br/>BGV Scheme<br/>3.2M TPS"]
-        TFHE["Φ-TFHE<br/>Gate Bootstrap<br/>3.3M TPS"]
-        LATTIGO["Φ-Lattigo<br/>Multi-Scheme<br/>3.2M TPS"]
-        FHEW["Φ-FHEW<br/>Lightweight<br/>3.3M TPS"]
+    subgraph ENGINES["6 FHE ENGINES"]
+        SEAL["Φ-SEAL<br/>BFV 3.4M TPS"]
+        OPENFHE["Φ-OpenFHE<br/>CKKS 3.3M TPS"]
+        HELIB["Φ-HElib<br/>BGV 3.2M TPS"]
+        TFHE["Φ-TFHE<br/>Gate 3.3M TPS"]
+        LATTIGO["Φ-Lattigo<br/>Multi 3.2M TPS"]
+        FHEW["Φ-FHEW<br/>Light 3.3M TPS"]
     end
 
-    subgraph CRYPTO["🔐 CRYPTOGRAPHIC CORE"]
-        PQC["8 PQC Algorithms<br/>NIST Levels 1-5"]
-        ZKP["7 Fractal ZKP Layers<br/>Schnorr Σ-Protocol"]
-        BOOT["TrueBootstrapper<br/>φ-Harmonic Convergence"]
-    end
-
-    subgraph STORAGE["💾 STORAGE & OUTPUT"]
-        FHE_DB["Encrypted Results"]
-        METRICS["φ-Metrics"]
-        LOGS["Audit Logs"]
+    subgraph CRYPTO["CRYPTO CORE"]
+        PQC["8 PQC NIST 1-5"]
+        ZKP["7 ZKP Layers"]
+        BOOT["TrueBootstrapper<br/>φ-Convergence"]
     end
 
     CLIENTS --> GATEWAY
     GATEWAY --> ROUTER
     ROUTER --> ENGINES
     ENGINES --> CRYPTO
-    CRYPTO --> STORAGE
-    STORAGE --> CLIENTS
-
-    style GATEWAY fill:#1a1a2e,stroke:#e94560,color:#fff
-    style ENGINES fill:#16213e,stroke:#0f3460,color:#fff
-    style CRYPTO fill:#0f3460,stroke:#533483,color:#fff
-    style CLIENTS fill:#533483,stroke:#e94560,color:#fff
-    style STORAGE fill:#1a1a2e,stroke:#0f3460,color:#fff
+    CRYPTO --> CLIENTS
 ```
 
 ## 🔄 System Flow
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#e94560', 'primaryTextColor': '#000', 'primaryBorderColor': '#ff6b8a', 'lineColor': '#ff6b8a'}}}%%
 sequenceDiagram
-    participant Client as 🌐 Client
-    participant Gateway as 🛡️ Gateway
-    participant Phi as Φ-Layer
-    participant Lyap as Lyapunov
-    participant Schumann as Schumann
-    participant Router as Load Balancer
-    participant Engine as ⚙️ FHE Engine
-    participant Crypto as 🔐 PQC + ZKP
-    participant Storage as 💾 Storage
+    participant C as 🌐 Client
+    participant G as 🛡️ Gateway
+    participant L as 🔒 3 Layers
+    participant E as ⚙️ Engine
+    participant S as 💾 Storage
 
-    Client->>Gateway: POST /encrypt (sensitive data)
+    C->>G: POST /encrypt (data)
+    G->>L: Φ + Lyapunov + Schumann
+    L-->>G: ✅ All 3 Passed
+    G->>E: Route to Optimal Engine
+    E->>E: PQC + ZKP Encrypt
+    E->>E: φ-Bootstrap (noise→40)
+    E->>S: Store Encrypted
+    S-->>C: Encrypted Response
     
-    Gateway->>Phi: Layer 1: Φ-Harmonic Check
-    Phi-->>Gateway: ✅ Pattern Valid
-    
-    Gateway->>Lyap: Layer 2: Anomaly Detection
-    Lyap-->>Gateway: ✅ Traffic Stable
-    
-    Gateway->>Schumann: Layer 3: Entropy Verification
-    Schumann-->>Gateway: ✅ Earth Frequency (7.83 Hz)
-    
-    Gateway->>Router: All 3 Layers Passed
-    
-    Router->>Engine: Route to Optimal Engine (φ-Weighted)
-    
-    Engine->>Crypto: Encrypt with PQC + ZKP
-    
-    Crypto-->>Engine: Encrypted Ciphertext
-    
-    Engine->>Storage: Store Encrypted Result
-    
-    Storage-->>Client: Return Encrypted Response
-    
-    Note over Client,Storage: 🔒 Data NEVER exposed during entire flow
+    Note over C,S: 🔒 Data NEVER exposed
 ```
-
----
 
 ## 🧬 What Is B6 HYDRA?
 
