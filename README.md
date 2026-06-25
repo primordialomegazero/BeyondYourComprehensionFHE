@@ -14,7 +14,7 @@
 
 ##  Complete Test Suite Video
 
-** [Watch Full Test Suite](assets/B6Hydra_v6_Complete_Test_Suite.mp4)** — All 6 tests verified in a single continuous run.
+** [Watch Full Test Suite](assets/B6Hydra_v6_Full_Test_Suite.mp4)** — All 6 tests verified in a single continuous run.
 
 | Timestamp | Test | Result |
 |-----------|------|--------|
