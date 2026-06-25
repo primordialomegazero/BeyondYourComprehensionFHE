@@ -44,3 +44,8 @@ endif()
 # Gateway
 add_executable(hydra_gateway src/gateway.cpp)
 target_link_libraries(hydra_gateway pthread)
+
+# Drogon FHE Gateway
+find_package(Drogon REQUIRED)
+add_executable(drogon_gateway src/drogon_gateway.cpp)
+target_link_libraries(drogon_gateway Drogon::Drogon pthread)

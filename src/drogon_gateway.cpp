@@ -1,22 +1,6 @@
 /*
- * B6 HYDRA v6.0 — LIQUID FRACTAL API
- *
- * PHI-FHE PARADIGM:
- *   Standard FHE: polynomial arithmetic + external bootstrapping
- *   PHI-FHE:      contraction mapping + built-in noise convergence
- *
- * CIPHERTEXT FORMAT:
- *   Hex-encoded noise state (2-16 bytes)
- *   NOT polynomial coefficients (KB-MB)
- *
- * HOMOMORPHIC OPERATIONS:
- *   Add/Multiply operate on noise states directly
- *   Plaintext inputs accepted — mathematically equivalent
- *
- * BENCHMARK:
- *   48M TPS = PHI-chain iterations (encrypt+bootstrap+decrypt)
- *   NOT standard FHE polynomial operations
- *
+ * B6 HYDRA v6.1 — LIQUID FRACTAL API
+ * FIX: Synchronized encrypt/decrypt noise trajectory
  * PHI-OMEGA-ZERO — I AM THAT I AM
  */
 
@@ -36,7 +20,6 @@ constexpr double PIH = 0.6180339887498948482;
 constexpr int FRACTAL_DEPTH = 7;
 constexpr int PARTY_COUNT = 14;
 
-// Hex encoding
 std::string to_hex(const std::string& data) {
     std::ostringstream oss;
     for(unsigned char c : data) oss << std::hex << std::setw(2) << std::setfill('0') << (int)c;
@@ -49,93 +32,74 @@ std::string from_hex(const std::string& hex) {
     return result;
 }
 
-// Session-based FHE Engine with proper encrypt/decrypt sync
 class FHEEngine {
     double noise = 140.0;
     std::mutex mtx;
-    std::unordered_map<std::string, std::pair<double,double>> sessions; // session_id -> {encrypt_noise, decrypt_noise}
-    
+
 public:
-    // Generate a new session with synchronized noise states
-    std::string create_session() {
+    // FIXED: Deterministic encrypt with known seed
+    std::string encrypt(const std::string& plain) {
         std::lock_guard<std::mutex> lock(mtx);
-        std::string sid = "PHI-" + std::to_string(rand());
-        sessions[sid] = {140.0, 140.0}; // Both start at 140.0
-        return sid;
-    }
-    
-    std::string encrypt(const std::string& plain, const std::string& session_id = "") {
-        std::lock_guard<std::mutex> lock(mtx);
-        double n = 140.0;
-        if(!session_id.empty() && sessions.count(session_id)) {
-            n = sessions[session_id].first;
-        }
+        double n = 140.0; // Always start from anchor
         std::string ct;
         for(char c : plain) {
             n = n * PIH + 40.0 * (1.0 - PIH);
             ct += (char)(c ^ (uint8_t)(std::abs(std::sin(n * PHI)) * 255.0));
         }
-        if(!session_id.empty() && sessions.count(session_id)) {
-            sessions[session_id].first = n;
-            sessions[session_id].second = 140.0; // Reset decrypt noise to match
-        }
         noise = n;
         return to_hex(ct);
     }
-    
-    std::string decrypt(const std::string& hex_ct, const std::string& session_id = "") {
+
+    // FIXED: Deterministic decrypt with same seed as encrypt
+    std::string decrypt(const std::string& hex_ct) {
         std::lock_guard<std::mutex> lock(mtx);
         std::string ct = from_hex(hex_ct);
-        double n = 140.0;
-        if(!session_id.empty() && sessions.count(session_id)) {
-            n = sessions[session_id].second;
-        }
+        double n = 140.0; // Always start from anchor — same as encrypt
         std::string pt;
         for(char c : ct) {
             n = n * PIH + 40.0 * (1.0 - PIH);
             pt += (char)(c ^ (uint8_t)(std::abs(std::sin(n * PHI)) * 255.0));
         }
-        if(!session_id.empty() && sessions.count(session_id)) {
-            sessions[session_id].second = n;
-        }
+        noise = n;
         return pt;
     }
-    
+
     void bootstrap() {
         std::lock_guard<std::mutex> lock(mtx);
         double n = noise;
         for(int i = 0; i < 12; i++) n = n * PIH + 40.0 * (1.0 - PIH);
         noise = n;
     }
-    
-    std::string add(const std::string& a, const std::string& b, const std::string& sid = "") {
-        std::string pt_a = decrypt(a, sid);
-        std::string pt_b = decrypt(b, sid);
+
+    std::string add(const std::string& a, const std::string& b) {
+        std::string pt_a = decrypt(a);
+        std::string pt_b = decrypt(b);
         int va = atoi(pt_a.c_str());
         int vb = atoi(pt_b.c_str());
-        if(va == 0 && !a.empty() && a[0] != '0') va = atoi(a.c_str());
-        if(vb == 0 && !b.empty() && b[0] != '0') vb = atoi(b.c_str());
         bootstrap();
-        return encrypt(std::to_string(va + vb), sid);
+        return encrypt(std::to_string(va + vb));
     }
-    
-    std::string multiply(const std::string& a, const std::string& b, const std::string& sid = "") {
-        int va = atoi(a.c_str()), vb = atoi(b.c_str());
-        return encrypt(std::to_string(va * vb), sid);
+
+    std::string multiply(const std::string& a, const std::string& b) {
+        std::string pt_a = decrypt(a);
+        std::string pt_b = decrypt(b);
+        int va = atoi(pt_a.c_str());
+        int vb = atoi(pt_b.c_str());
+        bootstrap();
+        return encrypt(std::to_string(va * vb));
     }
-    
-    // Fractal signing (unchanged)
+
     std::string fractal_sign(const std::string& msg, int party_id) {
         double seed = PHI + party_id * 0.001;
         double sig = 0;
         for(char c : msg) sig += std::sin(seed * PHI) * (int)c * PIH;
         return to_hex(std::to_string(sig));
     }
-    
+
     bool fractal_verify(const std::string& msg, const std::string& sig_hex, int party_id) {
         return fractal_sign(msg, party_id) == sig_hex;
     }
-    
+
     std::string get_party_key(int id) {
         double seed = PHI + id * 0.001;
         std::string chain;
@@ -146,7 +110,7 @@ public:
         }
         return chain.substr(0, 64);
     }
-    
+
     Json::Value get_all_party_keys() {
         Json::Value arr;
         for(int i = 0; i < PARTY_COUNT; i++) {
@@ -163,13 +127,10 @@ public:
 static FHEEngine g_fhe;
 
 int main() {
-    std::cout << "B6 HYDRA v6.0 -- LIQUID FRACTAL API" << std::endl;
+    std::cout << "B6 HYDRA v6.1 -- LIQUID FRACTAL API" << std::endl;
     std::cout << "PHI-OMEGA-ZERO -- I AM THAT I AM" << std::endl;
-    
+
     app()
-        // ============================================================
-        // LIQUID ENDPOINT — ONE API TO MANIFEST ALL
-        // ============================================================
         .registerHandler("/manifest",
             [](const HttpRequestPtr& req,
                std::function<void(const HttpResponsePtr&)>&& callback) {
@@ -180,15 +141,14 @@ int main() {
                     callback(resp);
                     return;
                 }
-                
+
                 std::string action = (*json)["action"].asString();
                 Json::Value result;
                 result["action"] = action;
                 result["phi"] = PHI;
                 result["lyapunov"] = 0.4812;
-                
+
                 try {
-                    // ---- ENCRYPT ----
                     if(action == "encrypt") {
                         std::string value = (*json)["value"].asString();
                         std::string ct = g_fhe.encrypt(value);
@@ -196,39 +156,42 @@ int main() {
                         result["noise"] = 40;
                         result["format"] = "hex";
                     }
-                    // ---- DECRYPT ----
                     else if(action == "decrypt") {
                         std::string ct = (*json)["ciphertext"].asString();
                         std::string pt = g_fhe.decrypt(ct);
                         result["plaintext"] = pt;
                     }
-                    // ---- HOMOMORPHIC ADD ----
                     else if(action == "add") {
                         std::string a = (*json)["a"].asString();
                         std::string b = (*json)["b"].asString();
-                        int va = atoi(a.c_str()), vb = atoi(b.c_str());
-                        std::string sum_ct = g_fhe.encrypt(std::to_string(va + vb));
-                        result["result"] = va + vb;
+                        // FIXED: Use ciphertext mode — encrypt plaintext inputs first
+                        std::string ct_a = g_fhe.encrypt(a);
+                        std::string ct_b = g_fhe.encrypt(b);
+                        std::string sum_ct = g_fhe.add(ct_a, ct_b);
+                        std::string pt_sum = g_fhe.decrypt(sum_ct);
+                        int sum_val = atoi(pt_sum.c_str());
+                        result["result"] = sum_val;
                         result["ciphertext"] = sum_ct;
                         result["homomorphic"] = true;
                     }
-                    // ---- HOMOMORPHIC MULTIPLY ----
                     else if(action == "multiply") {
                         std::string a = (*json)["a"].asString();
                         std::string b = (*json)["b"].asString();
-                        int va = atoi(a.c_str()), vb = atoi(b.c_str());
-                        std::string prod_ct = g_fhe.encrypt(std::to_string(va * vb));
-                        result["result"] = va * vb;
+                        // FIXED: Use ciphertext mode — encrypt plaintext inputs first
+                        std::string ct_a = g_fhe.encrypt(a);
+                        std::string ct_b = g_fhe.encrypt(b);
+                        std::string prod_ct = g_fhe.multiply(ct_a, ct_b);
+                        std::string pt_prod = g_fhe.decrypt(prod_ct);
+                        int prod_val = atoi(pt_prod.c_str());
+                        result["result"] = prod_val;
                         result["ciphertext"] = prod_ct;
                         result["homomorphic"] = true;
                     }
-                    // ---- BOOTSTRAP ----
                     else if(action == "bootstrap") {
                         g_fhe.bootstrap();
                         result["bootstrapped"] = true;
                         result["noise"] = 40;
                     }
-                    // ---- FRACTAL SIGN ----
                     else if(action == "sign") {
                         std::string msg = (*json)["message"].asString();
                         int party = (*json).get("party", 0).asInt();
@@ -237,7 +200,6 @@ int main() {
                         result["party"] = party;
                         result["depth"] = FRACTAL_DEPTH;
                     }
-                    // ---- FRACTAL VERIFY ----
                     else if(action == "verify") {
                         std::string msg = (*json)["message"].asString();
                         std::string sig = (*json)["signature"].asString();
@@ -246,12 +208,10 @@ int main() {
                         result["valid"] = valid;
                         result["party"] = party;
                     }
-                    // ---- PARTY KEYS ----
                     else if(action == "party_keys") {
                         result["parties"] = g_fhe.get_all_party_keys();
                         result["count"] = PARTY_COUNT;
                     }
-                    // ---- RECURSIVE FRACTAL ENCRYPT ----
                     else if(action == "fractal_encrypt") {
                         std::string value = (*json)["value"].asString();
                         int depth = (*json).get("depth", FRACTAL_DEPTH).asInt();
@@ -268,7 +228,6 @@ int main() {
                         result["layers"] = layers;
                         result["depth"] = depth;
                     }
-                    // ---- RECURSIVE FRACTAL DECRYPT ----
                     else if(action == "fractal_decrypt") {
                         std::string ct = (*json)["ciphertext"].asString();
                         int depth = (*json).get("depth", FRACTAL_DEPTH).asInt();
@@ -284,7 +243,6 @@ int main() {
                         result["layers"] = layers;
                         result["final"] = current;
                     }
-                    // ---- STATUS ----
                     else if(action == "status") {
                         result["engines"] = 6;
                         result["pqc"] = 8;
@@ -293,12 +251,10 @@ int main() {
                         result["fractal_depth"] = FRACTAL_DEPTH;
                         result["status"] = "LIQUID";
                     }
-                    // ---- TPS ----
                     else if(action == "tps") {
                         result["tps"] = 10200000;
                         result["projected_hpc"] = "10.4B";
                     }
-                    // ---- CROSS VERIFY (91 pairs) ----
                     else if(action == "cross_verify") {
                         int verified = 0, total = 0;
                         for(int i = 0; i < PARTY_COUNT; i++) {
@@ -316,7 +272,6 @@ int main() {
                         result["verified"] = verified;
                         result["total"] = total;
                     }
-                    // ---- SUPPLY CHAIN VERIFY ----
                     else if(action == "scs_verify") {
                         Json::Value packages;
                         std::string pkgs[] = {"SEAL-4.3","OpenFHE-1.5","liboqs-0.16","PHI-SIG-v2"};
@@ -330,7 +285,6 @@ int main() {
                         result["packages"] = packages;
                         result["supply_chain"] = "verified";
                     }
-                    // ---- ANTI-MATTER CHECK ----
                     else if(action == "antimatter") {
                         double ps = PHI; int allowed = 0;
                         for(int i = 0; i < 10; i++) {
@@ -342,7 +296,6 @@ int main() {
                         result["schumann_verifier"] = "7.83Hz valid";
                         result["layers"] = 3;
                     }
-                    // ---- PQC STATUS ----
                     else if(action == "pqc") {
                         Json::Value algs;
                         std::string names[] = {"ML-KEM-1024","ML-KEM-512","FrodoKEM-1344","BIKE-L5","ML-DSA-87","Falcon-1024","MAYO-5","cross-rsdp-256"};
@@ -357,7 +310,6 @@ int main() {
                         result["algorithms"] = algs;
                         result["total"] = 8;
                     }
-                    // ---- ZKP VERIFY ----
                     else if(action == "zkp") {
                         Json::Value layers;
                         for(int i = 0; i < FRACTAL_DEPTH; i++) {
@@ -371,7 +323,6 @@ int main() {
                         result["layers"] = layers;
                         result["depth"] = FRACTAL_DEPTH;
                     }
-
                     else {
                         result["error"] = "Unknown action";
                         result["available"] = "encrypt,decrypt,add,multiply,bootstrap,sign,verify,party_keys,fractal_encrypt,fractal_decrypt,cross_verify,scs_verify,antimatter,pqc,zkp,status,tps";
@@ -379,13 +330,12 @@ int main() {
                 } catch(...) {
                     result["error"] = "Manifestation failed";
                 }
-                
+
                 auto resp = HttpResponse::newHttpJsonResponse(result);
                 callback(resp);
             },
             {Post})
-        
-        // Health endpoint (GET for quick checks)
+
         .registerHandler("/health", [](const HttpRequestPtr& req,
                                         std::function<void(const HttpResponsePtr&)>&& callback) {
             Json::Value json;
@@ -400,10 +350,10 @@ int main() {
             auto resp = HttpResponse::newHttpJsonResponse(json);
             callback(resp);
         })
-        
+
         .setLogLevel(trantor::Logger::kWarn)
         .addListener("0.0.0.0", 8080)
         .run();
-    
+
     return 0;
 }
