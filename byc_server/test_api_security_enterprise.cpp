@@ -19,7 +19,7 @@ int main() {
     
     printf("╔══════════════════════════════════════════════╗\n");
     printf("║                                              ║\n");
-    printf("║   🛡️  HYDRA GATEWAY — ENTERPRISE SECURITY   ║\n");
+    printf("║       HYDRA GATEWAY — ENTERPRISE SECURITY   ║\n");
     printf("║   Triple Anti-Matter Validation              ║\n");
     printf("║                                              ║\n");
     printf("╚══════════════════════════════════════════════╝\n\n");
@@ -39,7 +39,7 @@ int main() {
         if (allowed) normal_passed++;
         
         if (i % 5 == 0 && i > 0) {
-            printf("  Request %2d: %s\n", i, allowed ? "✅ ALLOWED" : "❌ BLOCKED");
+            printf("  Request %2d: %s\n", i, allowed ? "  ALLOWED" : "  BLOCKED");
         }
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
@@ -99,7 +99,7 @@ int main() {
         bool result = verifier.verify_entropy(t.freq);
         printf("  %-20s | %8.2f | %8s | %s\n",
                t.label, t.freq, t.should_pass ? "PASS" : "BLOCK",
-               result ? "⚠️ ALLOWED" : "✅ BLOCKED");
+               result ? "   ALLOWED" : "  BLOCKED");
         pause_ms(100);
     }
     
@@ -117,19 +117,19 @@ int main() {
     for (int i = 0; i < 20; i++) {
         if (!limiter.allow_request("10.10.10.10")) rate_limited++;
     }
-    printf("  Layer 1 (Phi Rate Limiter): %d/20 blocked ✅\n", rate_limited);
+    printf("  Layer 1 (Phi Rate Limiter): %d/20 blocked  \n", rate_limited);
     
     antimatter::LyapunovAnomalyDetector detector(20);
     bool anomaly = false;
     for (int i = 0; i < 50; i++) {
         anomaly = detector.is_anomalous(0.1);  // Very short intervals = DDoS pattern
     }
-    printf("  Layer 2 (Lyapunov Detector): Anomaly %s ✅\n", anomaly ? "DETECTED" : "MISSED");
+    printf("  Layer 2 (Lyapunov Detector): Anomaly %s  \n", anomaly ? "DETECTED" : "MISSED");
     
     antimatter::SchumannEntropyVerifier schumann(7.83, 0.3);
     bool valid = schumann.verify_entropy(7.83);
     bool invalid = schumann.verify_entropy(50.0);
-    printf("  Layer 3 (Schumann Verifier): Valid=%s Invalid=%s ✅\n",
+    printf("  Layer 3 (Schumann Verifier): Valid=%s Invalid=%s  \n",
            valid ? "YES" : "NO", invalid ? "YES" : "NO");
     
     printf("\n");
@@ -144,12 +144,12 @@ int main() {
     printf("║  ┌──────────────────────────────────────┐    ║\n");
     printf("║  │  TEST                    │ RESULT    │    ║\n");
     printf("║  ├──────────────────────────────────────┤    ║\n");
-    printf("║  │  Normal Traffic          │ ✅ PASS   │    ║\n");
-    printf("║  │  DDoS Protection         │ ✅ BLOCK  │    ║\n");
-    printf("║  │  Schumann Spoofing       │ ✅ BLOCK  │    ║\n");
-    printf("║  │  Layer 1 (Phi)           │ ✅ ACTIVE │    ║\n");
-    printf("║  │  Layer 2 (Lyapunov)      │ ✅ ACTIVE │    ║\n");
-    printf("║  │  Layer 3 (Schumann)      │ ✅ ACTIVE │    ║\n");
+    printf("║  │  Normal Traffic          │   PASS   │    ║\n");
+    printf("║  │  DDoS Protection         │   BLOCK  │    ║\n");
+    printf("║  │  Schumann Spoofing       │   BLOCK  │    ║\n");
+    printf("║  │  Layer 1 (Phi)           │   ACTIVE │    ║\n");
+    printf("║  │  Layer 2 (Lyapunov)      │   ACTIVE │    ║\n");
+    printf("║  │  Layer 3 (Schumann)      │   ACTIVE │    ║\n");
     printf("║  └──────────────────────────────────────┘    ║\n");
     printf("║                                              ║\n");
     printf("║  ALL 3 LAYERS OPERATIONAL                   ║\n");

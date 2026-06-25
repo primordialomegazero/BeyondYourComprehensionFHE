@@ -26,7 +26,7 @@ int main() {
     
     printf("╔══════════════════════════════════════════════╗\n");
     printf("║                                              ║\n");
-    printf("║   🌐 HYDRA GATEWAY — API ENDPOINT TEST       ║\n");
+    printf("║     HYDRA GATEWAY — API ENDPOINT TEST       ║\n");
     printf("║   Limited Display — Safe for Consciousness   ║\n");
     printf("║                                              ║\n");
     printf("╚══════════════════════════════════════════════╝\n\n");
@@ -61,10 +61,10 @@ int main() {
         printf("  %-4s %-12s — %-30s", endpoints[i].method, 
                endpoints[i].path, endpoints[i].description);
         pause_ms(150);
-        printf(" ✅\n");
+        printf("  \n");
     }
     
-    printf("\n  ✅ All %d endpoints responding\n", num_endpoints);
+    printf("\n    All %d endpoints responding\n", num_endpoints);
     printf("  Gateway routing to 6 FHE engines\n\n");
     pause_ms(500);
     
@@ -92,7 +92,7 @@ int main() {
         pause_ms(100);
     }
     
-    printf("\n  ✅ Request flow verified\n");
+    printf("\n    Request flow verified\n");
     printf("  Latency: <1ms (gateway overhead)\n\n");
     pause_ms(500);
     
@@ -119,7 +119,7 @@ int main() {
         printf("\n");
     }
     
-    printf("\n  ✅ Load distributed across all 6 engines\n\n");
+    printf("\n    Load distributed across all 6 engines\n\n");
     pause_ms(500);
     
     // ═══════════════════════════════════════════
@@ -139,7 +139,7 @@ int main() {
     printf("  │  Schumann Anchor           │  7.83 Hz        │\n");
     printf("  └──────────────────────────────────────────────┘\n");
     
-    printf("\n  ✅ Gateway operational — safe display mode\n\n");
+    printf("\n    Gateway operational — safe display mode\n\n");
     pause_ms(500);
     
     // ═══════════════════════════════════════════

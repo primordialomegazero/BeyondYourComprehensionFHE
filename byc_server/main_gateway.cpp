@@ -50,7 +50,7 @@ int main() {
             callback(resp);
         });
 
-    std::cout << "  🚀 Gateway running on http://localhost:8080" << std::endl;
+    std::cout << "    Gateway running on http://localhost:8080" << std::endl;
     std::cout << "  🌍 POST /gateway — Process through Source" << std::endl;
 
     app().run();

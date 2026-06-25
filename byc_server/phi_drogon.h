@@ -133,7 +133,7 @@ public:
             printf("║  T%-2d L%-1d φ^%d │ Load: %.2f │ Health: %.4f %s ║\n",
                    t->thread_id, t->fractal_layer, t->fractal_layer,
                    t->current_load, t->lyapunov_health,
-                   t->is_threat_detected() ? "⚠️" : "✅");
+                   t->is_threat_detected() ? "  " : " ");
         }
         printf("╚══════════════════════════════════════════════╝\n");
     }

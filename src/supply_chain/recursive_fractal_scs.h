@@ -82,28 +82,28 @@ public:
         node->compute_phi_hash();
         node->verified = true;
         file_map[filename] = node;
-        printf("  📄 %-40s ✅\n", filename.c_str());
+        printf("  📄 %-40s  \n", filename.c_str());
     }
     
     void register_build_step(const std::string& step) {
         build_steps.push_back(step);
-        printf("  🔧 Build step: %s ✅\n", step.c_str());
+        printf("    Build step: %s  \n", step.c_str());
     }
     
     void register_dependency(const std::string& name, const std::string& version) {
         dependencies[name] = version;
-        printf("  📦 %-30s v%-10s ✅\n", name.c_str(), version.c_str());
+        printf("  📦 %-30s v%-10s  \n", name.c_str(), version.c_str());
     }
     
     bool verify_all() {
         printf("\n━━━ RECURSIVE FRACTAL VERIFICATION ━━━\n\n");
-        printf("  L0: Source Code — %zu files ✅\n", file_map.size());
-        printf("  L1: Build — %zu steps ✅\n", build_steps.size());
-        printf("  L2: Dependencies — %zu deps ✅\n", dependencies.size());
+        printf("  L0: Source Code — %zu files  \n", file_map.size());
+        printf("  L1: Build — %zu steps  \n", build_steps.size());
+        printf("  L2: Dependencies — %zu deps  \n", dependencies.size());
         for (int l = 3; l < FRACTAL_DEPTH; l++) {
-            printf("  L%d: %s ✅\n", l, layer_names[l]);
+            printf("  L%d: %s  \n", l, layer_names[l]);
         }
-        printf("\n  ✅✅✅ SUPPLY CHAIN SECURE ✅✅✅\n");
+        printf("\n      SUPPLY CHAIN SECURE    \n");
         return true;
     }
     
@@ -112,10 +112,10 @@ public:
         bool phi_ok = (fabs(PHI - 1.6180339887498948482) < 0.0000000001);
         bool phi_inv_ok = (fabs(PHI_INV - 0.6180339887498948482) < 0.0000000001);
         bool lyap_ok = (fabs(LYAPUNOV - 0.48121182505960347) < 0.0000000001);
-        printf("  φ = 1.618... %s\n", phi_ok ? "✅" : "❌");
-        printf("  φ⁻¹ = 0.618... %s\n", phi_inv_ok ? "✅" : "❌");
-        printf("  λ = 0.4812... %s\n", lyap_ok ? "✅" : "❌");
-        printf("\n  Self-Verification: %s\n", (phi_ok && phi_inv_ok && lyap_ok) ? "✅ PASSED" : "❌ FAILED");
+        printf("  φ = 1.618... %s\n", phi_ok ? " " : " ");
+        printf("  φ⁻¹ = 0.618... %s\n", phi_inv_ok ? " " : " ");
+        printf("  λ = 0.4812... %s\n", lyap_ok ? " " : " ");
+        printf("\n  Self-Verification: %s\n", (phi_ok && phi_inv_ok && lyap_ok) ? "  PASSED" : "  FAILED");
         return phi_ok && phi_inv_ok && lyap_ok;
     }
     

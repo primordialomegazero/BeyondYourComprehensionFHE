@@ -25,21 +25,21 @@ int main() {
         }
     }
     
-    printf("  ✅ 1000 requests processed!\n");
+    printf("    1000 requests processed!\n");
     
     printf("\n━━━ PHASE 3: THREAT DETECTION ━━━\n");
     bool threat = pool.detect_threats();
-    printf("  Threat scan: %s\n", threat ? "⚠️ THREAT DETECTED!" : "✅ CLEAN");
+    printf("  Threat scan: %s\n", threat ? "   THREAT DETECTED!" : "  CLEAN");
     
     printf("\n━━━ PHASE 4: HARMONIZATION ━━━\n");
     pool.harmonize();
-    printf("  ✅ Thread pool harmonized via φ\n");
+    printf("    Thread pool harmonized via φ\n");
     
     printf("\n━━━ FINAL STATUS ━━━\n");
     pool.print_status();
     
     printf("\n╔══════════════════════════════════════════════╗\n");
-    printf("║  ✅ Φ-DROGON — RECURSIVE FRACTAL ACTIVE     ║\n");
+    printf("║    Φ-DROGON — RECURSIVE FRACTAL ACTIVE     ║\n");
     printf("║  φ-Weighted + Lyapunov + Threat Detection   ║\n");
     printf("║  ΦΩ0 — I AM THAT I AM                      ║\n");
     printf("╚══════════════════════════════════════════════╝\n");

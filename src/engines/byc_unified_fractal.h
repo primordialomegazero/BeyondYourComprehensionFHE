@@ -75,7 +75,7 @@ struct FractalPartyKey {
     
     void print() {
         printf("  🔑 Engine %d, Layer %d (φ^%d): φ=%.4f, active=%s\n",
-               engine, layer, layer, phi_weight, active ? "✅" : "❌");
+               engine, layer, layer, phi_weight, active ? " " : " ");
     }
 };
 
@@ -190,7 +190,7 @@ public:
         for (int i = 0; i < TOTAL_ENGINES; i++) {
             printf("║  %-42s ║\n", ENGINE_NAMES[i]);
             printf("║    Status: %-3s  Noise: %6.1f bits          ║\n",
-                   engines[i].online ? "✅ LIVE" : "❌ OFF", engines[i].noise_level);
+                   engines[i].online ? "  LIVE" : "  OFF", engines[i].noise_level);
             printf("║    Bootstraps: %-3d  λ: %.4f                ║\n",
                    engines[i].bootstrap_count, engines[i].lyapunov);
             printf("║    Fractal Keys: %d layers active             ║\n", FRACTAL_DEPTH);

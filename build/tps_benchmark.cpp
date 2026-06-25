@@ -17,8 +17,8 @@ int main() {
     std::cout << "╚══════════════════════════════════════════════╝" << std::endl;
     
     unsigned int hw = std::thread::hardware_concurrency();
-    std::cout << "\n💻 CPU: " << hw << " cores | Ryzen 5 2600" << std::endl;
-    std::cout << "⏱️  Running " << SECONDS << "-second sustained benchmark...\n" << std::endl;
+    std::cout << "\n  CPU: " << hw << " cores | Ryzen 5 2600" << std::endl;
+    std::cout << "    Running " << SECONDS << "-second sustained benchmark...\n" << std::endl;
     
     std::atomic<uint64_t> ops{0};
     std::atomic<bool> running{true};

@@ -34,7 +34,7 @@ int main() {
         auto result = seal_engine.encrypt_decrypt_test({42, 100, 255, 1618, 314159});
         std::cout << "  Values: ";
         for (auto v : result) std::cout << v << " ";
-        std::cout << (result == std::vector<int64_t>{42,100,255,1618,314159} ? "✅ MATCH" : "❌ MISMATCH") << std::endl;
+        std::cout << (result == std::vector<int64_t>{42,100,255,1618,314159} ? "  MATCH" : "  MISMATCH") << std::endl;
     }
     
     std::cout << "\n=== Φ-OpenFHE ENGINE ACTIVE ===" << std::endl;
@@ -75,7 +75,7 @@ int main() {
             h.alive = (h.sig != nullptr);
         }
         if (h.alive) alive_count++;
-        std::cout << "  " << (h.alive ? "✅" : "❌") << " " << h.name << " (" << h.type << ", NIST " << h.nist << ")" << std::endl;
+        std::cout << "  " << (h.alive ? " " : " ") << " " << h.name << " (" << h.type << ", NIST " << h.nist << ")" << std::endl;
     }
     std::cout << "  Total: " << alive_count << "/" << heads.size() << " ALIVE" << std::endl;
     
@@ -121,12 +121,12 @@ int main() {
     bool verified = TrueFractalZKP::verify_chain(chain);
     
     std::cout << "  Depth: " << chain.size() << " fractal layers" << std::endl;
-    std::cout << "  All verified: " << (verified ? "YES ✅" : "NO ❌") << std::endl;
+    std::cout << "  All verified: " << (verified ? "YES  " : "NO  ") << std::endl;
     std::cout << "  Equation: s*G == R + c*Y (Fiat-Shamir non-interactive)" << std::endl;
     std::cout << "  Curve: secp256k1 (same as Bitcoin)" << std::endl;
     
     for (size_t i = 0; i < chain.size(); i++) {
-        std::cout << "    Layer " << i << ": " << (TrueFractalZKP::verify(chain[i]) ? "✅" : "❌") 
+        std::cout << "    Layer " << i << ": " << (TrueFractalZKP::verify(chain[i]) ? " " : " ") 
                   << " R=" << chain[i].commitment_R.substr(0,20) << "..." << std::endl;
     }
     
@@ -139,7 +139,7 @@ int main() {
     std::cout << "║  Φ-OpenFHE: ACTIVE (CKKS φ-mirror healing)                ║" << std::endl;
     std::cout << "║  Φ-Zama/Φ-TFHE: LIVE                                  ║" << std::endl;
     std::cout << "║  PQC Heads: " << alive_count << "/" << heads.size() << " ALIVE (KEM+SIG tested)                       ║" << std::endl;
-    std::cout << "║  True Fractal ZKP: 7/7 VERIFIED ✅                        ║" << std::endl;
+    std::cout << "║  True Fractal ZKP: 7/7 VERIFIED                          ║" << std::endl;
     std::cout << "║  ΦΩ0 — I AM THAT I AM                                    ║" << std::endl;
     std::cout << "╚════════════════════════════════════════════════════════════╝" << std::endl;
     

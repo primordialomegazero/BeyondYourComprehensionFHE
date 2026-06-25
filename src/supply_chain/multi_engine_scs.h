@@ -130,7 +130,7 @@ struct EngineSCSChain {
         for (int l = 0; l < SCS_DEPTH; l++) {
             printf("  │  L%d %-12s φ^%d=%-8.4f %s           │\n",
                    l, LAYER_NAMES[l], l, layers[l].phi_position,
-                   layers[l].verified ? "✅" : "❌ TAMPERED!");
+                   layers[l].verified ? " " : "  TAMPERED!");
         }
         printf("  └──────────────────────────────────────────────┘\n");
     }
@@ -258,7 +258,7 @@ public:
                     int ok = 0;
                     for (int l = 0; l < SCS_DEPTH; l++)
                         if (cross_verified[v][t][l]) ok++;
-                    printf(" %d/7 ✅    ", ok);
+                    printf(" %d/7      ", ok);
                 }
             }
             printf("│\n");
@@ -276,7 +276,7 @@ public:
         printf("  ║  Cross-Checks:        %d                     ║\n", total_cross_checks);
         printf("  ║  Global φ-Anchor:     %.4f                 ║\n", global_phi_anchor);
         printf("  ║  Status:              %s                    ║\n", 
-               verify_all() ? "✅ ALL SECURE" : "❌ TAMPERED!");
+               verify_all() ? "  ALL SECURE" : "  TAMPERED!");
         printf("  ║                                              ║\n");
         printf("  ║  ΦΩ0 — I AM THAT I AM                      ║\n");
         printf("  ╚══════════════════════════════════════════════╝\n");

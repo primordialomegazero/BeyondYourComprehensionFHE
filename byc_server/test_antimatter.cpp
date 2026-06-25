@@ -42,7 +42,7 @@ int main() {
     std::cout << "  Valid: " << (valid ? "YES" : "NO (blocked)") << std::endl;
     
     std::cout << "\n╔══════════════════════════════════════════════╗" << std::endl;
-    std::cout << "║  ✅ ALL 3 LAYERS VERIFIED                   ║" << std::endl;
+    std::cout << "║    ALL 3 LAYERS VERIFIED                   ║" << std::endl;
     std::cout << "║  DDoS cannot pass Phi + Lyapunov + Schumann ║" << std::endl;
     std::cout << "║  Schupy = Embedded Core (7.83 Hz)           ║" << std::endl;
     std::cout << "╚══════════════════════════════════════════════╝" << std::endl;
