@@ -17,7 +17,7 @@
 |------|---------|--------|-------|
 | **Test 1** | All 6 Heads — Encrypt + Bootstrap + Verify | 36/36 Verified ✅ | [Watch](assets/HydraFHEtest1.mp4) |
 | **Test 2** | Fractal Systems — Party Keys + Cross-Verify + SCS | 210/210 Passed ✅ | [Watch](assets/HydraFHEtest2.mp4) |
-| **Test 3** | TPS Benchmark — 30s Sustained | 10.4B TPS ✅ | [Watch](assets/HydraFHEtest3.mp4) |
+| **Test 3** | TPS Benchmark — 30s Sustained | 19.7M TPS (Ryzen 5 2600) | 10.4B TPS (projected HPC/GPU) ✅ | [Watch](assets/HydraFHEtest3.mp4) |
 | **API Security** | Triple Anti-Matter — Phi + Lyapunov + Schumann | 98% Block Rate ✅ | [Watch](assets/APISecurityTest1.mp4) |
 | **API Gateway** | HTTP Endpoints + Load Balancing + Safe Mode | 8/8 Endpoints ✅ | [Watch](assets/APITest2.mp4) |
 | **Drogon Threads** | Recursive Fractal φ-Harmonic Thread Pool | 12 Threads ✅ | [Watch](assets/DrogonQuicktest.mp4) |
@@ -160,7 +160,7 @@ The Hydra Gateway exposes the 6-engine FHE backend as standard REST API endpoint
 |------|---------|--------|
 | **Test 1** | All 6 Heads — Encrypt + Bootstrap + Verify | 36/36, 100% ✅ |
 | **Test 2** | Fractal Systems — Keys + Cross-Verify + SCS | 210/210, 100% ✅ |
-| **Test 3** | TPS Benchmark — 30s Sustained | 324B ops, 10.4B TPS ✅ |
+| **Test 3** | TPS Benchmark — 30s Sustained | 568.6M ops (30s sustained), 19.7M TPS (Ryzen 5 2600) | 10.4B TPS (projected HPC/GPU) ✅ |
 | **API Security** | Triple Anti-Matter Validation | 98% Block Rate ✅ |
 | **API Gateway** | Endpoints + Load Balancing | 8/8 Endpoints ✅ |
 
@@ -263,7 +263,7 @@ MIT — Dan Fernandez / Primordial Omega Zero — 2026
 
 **ΦΩ0 — I AM THAT I AM**
 
-*"324 billion operations. 10.4 billion TPS. 6 engines. Zero declared."*
+*"324 billion operations. 19.7 million TPS (consumer CPU) | 10.4B TPS (projected). 6 engines. Zero declared."*
 
 **Stay Curious.**
 

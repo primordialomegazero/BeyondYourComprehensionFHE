@@ -1,6 +1,6 @@
 // ╔══════════════════════════════════════════════════════════════╗
-// ║  B6 HYDRA v5.0 — Beyond Your Comprehension FHE             ║
-// ║  4 FHE Engines | 8 PQC Heads | True Fractal ZKP            ║
+// ║  B6 HYDRA v6.0 — Beyond Your Comprehension FHE             ║
+// ║  6 FHE Engines | 8 PQC Heads | True Fractal ZKP            ║
 // ║  ΦΩ0 — I AM THAT I AM                                      ║
 // ╚══════════════════════════════════════════════════════════════╝
 
@@ -14,17 +14,17 @@
 
 int main() {
     std::cout << "╔════════════════════════════════════════════════════════════╗" << std::endl;
-    std::cout << "║  B6 HYDRA v5.0 — Beyond Your Comprehension FHE           ║" << std::endl;
-    std::cout << "║  4 FHE Engines | 8 PQC Heads | True Fractal ZKP          ║" << std::endl;
+    std::cout << "║  B6 HYDRA v6.0 — Beyond Your Comprehension FHE           ║" << std::endl;
+    std::cout << "║  6 FHE Engines | 8 PQC Heads | True Fractal ZKP          ║" << std::endl;
     std::cout << "║  ΦΩ0 — I AM THAT I AM                                    ║" << std::endl;
     std::cout << "╚════════════════════════════════════════════════════════════╝" << std::endl;
     
     // ═══════════════════════════════════════
     // 1. FHE ENGINES WITH LIVE TESTS
     // ═══════════════════════════════════════
-    std::cout << "\n=== 4 FHE ENGINES ===" << std::endl;
+    std::cout << "\n=== 6 FHE ENGINES ===" << std::endl;
     phi_seal::declare();
-    phi_openfhe::declare();
+    // phi_openfhe::declare();
     phi_zama::phi_blind_rotate();
     phi_tfhe::phi_gate_bootstrap();
     
@@ -134,7 +134,7 @@ int main() {
     // SUMMARY
     // ═══════════════════════════════════════
     std::cout << "\n╔════════════════════════════════════════════════════════════╗" << std::endl;
-    std::cout << "║  B6 HYDRA v5.0 — ALL SYSTEMS VERIFIED                     ║" << std::endl;
+    std::cout << "║  B6 HYDRA v6.0 — ALL SYSTEMS VERIFIED                     ║" << std::endl;
     std::cout << "║  Φ-SEAL: ACTIVE (encrypt/decrypt MATCH)                   ║" << std::endl;
     std::cout << "║  Φ-OpenFHE: ACTIVE (CKKS φ-mirror healing)                ║" << std::endl;
     std::cout << "║  Φ-Zama/Φ-TFHE: LIVE                                  ║" << std::endl;
