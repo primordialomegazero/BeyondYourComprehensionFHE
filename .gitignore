@@ -131,3 +131,4 @@ tfhe-rs/
 lattigo/
 
 # Allow benchmark files
+BeyondYourComprehensionFHE/
