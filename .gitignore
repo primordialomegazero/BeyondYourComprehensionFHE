@@ -129,3 +129,5 @@ openfhe/
 SEAL/
 tfhe-rs/
 lattigo/
+
+# Allow benchmark files
