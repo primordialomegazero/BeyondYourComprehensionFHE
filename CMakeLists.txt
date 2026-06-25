@@ -40,3 +40,7 @@ target_link_libraries(b6_hydra
 if(SEAL_FOUND)
     target_link_libraries(b6_hydra SEAL::seal)
 endif()
+
+# Gateway
+add_executable(hydra_gateway src/gateway.cpp)
+target_link_libraries(hydra_gateway pthread)
