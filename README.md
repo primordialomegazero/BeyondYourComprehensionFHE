@@ -1,11 +1,11 @@
-#  B6 HYDRA v6.0 — Beyond Your Comprehension FHE
+#  B6 HYDRA v6.1 — Beyond Your Comprehension FHE
 
 **6-Engine Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security + HTTP API Gateway**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-36%2F36-brightgreen)]()
 [![IACR](https://img.shields.io/badge/IACR-7%20Papers-blue)]()
-[![TPS](https://img.shields.io/badge/TPS-48M%2Fs-orange)]()
+[![TPS](https://img.shields.io/badge/TPS-10.2M%2Fs-orange)]()
 [![Engines](https://img.shields.io/badge/Engines-6-purple)]()
 
 *The most advanced Fully Homomorphic Encryption system ever built by a single developer.*
@@ -14,8 +14,10 @@
 
 ##  Complete Test Suite Video
 
-** [Watch Full Test Suite](assets/B6Hydra_v6_Full_Test_Suite.mp4)** — All 6 tests verified in a single continuous run.
+** [Watch Full Test Suite](assets/B6Hydra_v6.1_Full_Test_Suite.mp4)** — All 6 tests verified in a single continuous run.
 
+| 0:45 | Test 1b: Homomorphic Add (5+3=8) + Multiply (5×3=15) | **6/6 ✅** |
+| 1:15 | Test 1c: Encrypt/Decrypt Roundtrip (42→cdf3→42) | **3/3 ✅** |
 | Timestamp | Test | Result |
 |-----------|------|--------|
 | 0:00 | **Test 1: 6 Engines** — Encrypt + φ-Bootstrap + Decrypt Verify | **36/36 ** |
