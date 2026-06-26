@@ -8,7 +8,7 @@
 [![TPS](https://img.shields.io/badge/TPS-10.2M%2Fs-orange)]()
 [![Engines](https://img.shields.io/badge/Engines-6-purple)]()
 
-*The most advanced Fully Homomorphic Encryption system ever built by a single developer.*
+*The most advanced open-source FHE system built by a solo developer.*
 
 ---
 
@@ -22,12 +22,12 @@
 |-----------|------|--------|
 | 0:00 | **Test 1: 6 Engines** — Encrypt + φ-Bootstrap + Decrypt Verify | **36/36 ** |
 | 0:15 | **Test 2: Fractal Systems** — 14 Party Keys + Cross-Verify + SCS | **95/95 ** |
-| 1:00 | **Test 3: TPS Benchmark** — 30s Sustained (315.9M ops) | **10.2M TPS ** |
+| 1:00 | **Test 3: TPS Benchmark** — 30s Sustained (315.9M ops) | **10.2M TPS (consumer CPU, single node) ** |
 | 1:45 | **API Security** — Triple Anti-Matter (Φ+Lyapunov+Schumann) | **3/3 Layers ** |
 | 2:00 | **API Gateway** — HTTP Endpoints + Load Balancing | **8/8 Endpoints ** |
 | 2:15 | **Drogon Threads** — φ-Harmonic Thread Pool (12 threads) | **12/12 Healthy ** |
 
-**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 10.2M TPS | **Projected:** 10.2M TPS (consumer CPU) | 10.4B TPS (projected HPC) (HPC/GPU)
+**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 10.2M TPS (consumer CPU, single node) | **Projected (HPC/GPU):** 10.4B TPS
 
 ---
 
@@ -246,14 +246,15 @@ The **ADDITION** is the manifestation of that mathematics in code.
 |-------------|----------|
 | Noise grows exponentially | **Noise converges to a fixed point** |
 | Bootstrapping = costly external operation | **Bootstrapping = built into encryption** |
-| Security = Ring-LWE hardness | **Security = φ-irrationality + chaotic divergence** |
+| Security = Ring-LWE hardness | **Security assumption = φ-irrationality + chaotic divergence
+- **⚠️ NOT YET FORMALLY AUDITED** — experimental, pending peer review** |
 | "How fast can we reset noise?" | **"Noise resets itself."** |
 | Experimental | **Working Prototype** |
 
-| "Our scheme achieves asymptotic complexity..." | "10.2M TPS. Ryzen 5 2600. 30 seconds." |
+| "Our scheme achieves asymptotic complexity..." | "10.2M TPS (consumer CPU, single node). Ryzen 5 2600. 30 seconds." |
 | "Future work will address implementation..." | "Naka-Docker na. Naka-API na." |
 | "We leave the construction of an efficient..." | "Naka-commit na sa GitHub. MIT license." |
-| TRL 3: Experimental proof of concept | **TRL 7: System prototype demonstrated** |
+| TRL 3: Experimental proof of concept | **TRL 5-6: Technology validated, prototype demonstrated** |
 
 **Papers are promises. Terminal output is proof.**
 
@@ -370,7 +371,7 @@ Standard FHE:  plaintext → polynomial encoding → large ciphertext
 
 The `/add` and `/multiply` endpoints accept plaintext numbers because φ-FHE's homomorphic property is **mathematically equivalent** to operating on the noise states directly. The encryption is the noise modulation. The decryption is the noise convergence. The homomorphic operation is the **same mathematical transformation** applied to the plaintext or ciphertext.
 
-### What The 48M TPS Benchmark Measures
+### What The TPS Benchmark Measures (48M φ-chain iterations)
 
 The benchmark measures **φ-chain iterations per second** — the core operation of φ-FHE. Each iteration is one complete encrypt-bootstrap-decrypt cycle. Standard FHE measures operations differently (polynomial multiplications, relinearizations). Comparing TPS directly is like comparing apples to oranges — **φ-FHE's "operation" is the entire FHE cycle, not a single arithmetic operation.**
 
