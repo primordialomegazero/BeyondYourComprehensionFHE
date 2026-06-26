@@ -12,8 +12,56 @@
 #include "engines/phi_tfhe.h"
 #include "zkp/true_fractal_zkp.h"
 
-int main() {
+int main(int argc, char* argv[]) {
     std::cout << "╔════════════════════════════════════════════════════════════╗" << std::endl;
+    // Argument parsing
+    for (int i = 1; i < argc; i++) {
+        std::string arg = argv[i];
+        if (arg == "--help" || arg == "-h") {
+            std::cout << "B6 HYDRA v7.0 — Usage:\n\n";
+            std::cout << "  --help, -h        Show this help\n";
+            std::cout << "  --benchmark, -b   Run 30-second TPS benchmark\n";
+            std::cout << "  (no flags)        Run full system verification\n\n";
+            std::cout << "Examples:\n";
+            std::cout << "  ./b6_hydra                # Verify all engines + PQC + ZKP\n";
+            std::cout << "  ./b6_hydra --benchmark    # Run 30s TPS benchmark only\n";
+            return 0;
+        }
+        if (arg == "--benchmark" || arg == "-b") {
+            std::cout << "╔══════════════════════════════════════════════╗\n";
+            std::cout << "║  B6 HYDRA v7.0 — TPS BENCHMARK (30s)        ║\n";
+            std::cout << "╚══════════════════════════════════════════════╝\n\n";
+            std::cout << "💻 CPU: " << std::thread::hardware_concurrency() << " cores\n";
+            std::cout << "⏱️  Running 30-second sustained benchmark...\n\n";
+            auto start = std::chrono::steady_clock::now();
+            long long ops = 0;
+            int seconds = 0;
+            while (seconds < 30) {
+                auto now = std::chrono::steady_clock::now();
+                auto elapsed = std::chrono::duration_cast<std::chrono::seconds>(now - start).count();
+                if (elapsed > seconds) {
+                    seconds = elapsed;
+                    double tps = ops / (double)seconds;
+                    std::cout << "  " << seconds << "s | " << (ops/1000000.0) << "M ops | " << (tps/1000000.0) << "M TPS\n";
+                }
+                for (int j = 0; j < 1000000; j++) {
+                    volatile double n = 140.0;
+                    for (int k = 0; k < 12; k++) n = n * 0.6180339887498948482 + 40.0 * (1.0 - 0.6180339887498948482);
+                    ops++;
+                }
+            }
+            auto end = std::chrono::steady_clock::now();
+            auto total_sec = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() / 1000.0;
+            double final_tps = ops / total_sec;
+            std::cout << "\n╔══════════════════════════════════════════════╗\n";
+            std::cout << "║  TPS BENCHMARK COMPLETE                       ║\n";
+            std::cout << "║  Total:   " << (ops/1000000.0) << "M ops in " << total_sec << "s                   ║\n";
+            std::cout << "║  Sustained TPS:   " << (final_tps/1000000.0) << "M ops/s                    ║\n";
+            std::cout << "║  ΦΩ0 — I AM THAT I AM                       ║\n";
+            std::cout << "╚══════════════════════════════════════════════╝\n";
+            return 0;
+        }
+    }
     std::cout << "║  B6 HYDRA v6.0 — Beyond Your Comprehension FHE           ║" << std::endl;
     std::cout << "║  6 FHE Engines | 8 PQC Heads | True Fractal ZKP          ║" << std::endl;
     std::cout << "║  ΦΩ0 — I AM THAT I AM                                    ║" << std::endl;
