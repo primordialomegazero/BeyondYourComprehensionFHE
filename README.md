@@ -19,7 +19,7 @@ B6 HYDRA has **TWO separate encryption layers:**
 | | **Quick Mode** (`/manifest` API) | **Full FHE Mode** (`b6_hydra` CLI) |
 |---|---|---|
 | **Technology** | φ-Chaotic Stream Cipher | Microsoft SEAL BFV + OpenFHE CKKS + TFHE + HElib |
-| **Speed** | 48M TPS, 4K req/s | True FHE speed |
+| **Speed** | Quick Mode: 48M φ-chain TPS, 4K req/s | Full FHE: 7M TPS (SEAL BFV) | True FHE speed |
 | **Security** | Experimental (φ-irrationality) | **Proven (Ring-LWE, NIST standards)** |
 | **Ciphertext** | 2-16 bytes (hex) | Kilobytes (polynomial rings) |
 | **Homomorphic?** | Decrypt→Compute→Re-encrypt | **True ciphertext-native operations** |
