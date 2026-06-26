@@ -132,37 +132,43 @@ Built on NIST-standardized post-quantum algorithms. Deploy today, secure tomorro
 
 ##  HTTP API Gateway — Business Ready
 
-### Complete API Reference (All 17 Endpoints)
+### Complete API Reference — Single Endpoint Architecture
 
-**Base URL:** `http://localhost:8080`
-**Architecture:** Lock-Free Multi-Metaprogramming | Zero Mutex
+** Lahat ng 17 actions ay dumadaan sa IISANG endpoint:** `/manifest`
 
-| Action | Description | Sample Body |
-|--------|-------------|-------------|
-| `encrypt` | Encrypt any value | `{"action":"encrypt","value":"42"}` |
-| `decrypt` | Decrypt ciphertext | `{"action":"decrypt","ciphertext":"cc"}` |
-| `add` | Homomorphic addition | `{"action":"add","a":"5","b":"3"}` → `"result":"8"` |
-| `multiply` | Homomorphic multiplication | `{"action":"multiply","a":"5","b":"3"}` → `"result":"15"` |
-| `bootstrap` | Noise refresh | `{"action":"bootstrap"}` |
-| `sign` | Fractal sign message | `{"action":"sign","message":"test","party":0}` |
-| `verify` | Verify signature | `{"action":"verify","message":"test","signature":"...","party":0}` |
-| `party_keys` | Get all 14 party keys | `{"action":"party_keys"}` |
-| `cross_verify` | Cross-verify 91 pairs | `{"action":"cross_verify"}` |
-| `fractal_encrypt` | Recursive encryption | `{"action":"fractal_encrypt","value":"42","depth":7}` |
-| `fractal_decrypt` | Recursive decryption | `{"action":"fractal_decrypt","ciphertext":"...","depth":7}` |
-| `status` | System status | `{"action":"status"}` |
-| `tps` | TPS metrics | `{"action":"tps"}` |
-| `antimatter` | Security check | `{"action":"antimatter"}` |
-| `pqc` | PQC algorithm status | `{"action":"pqc"}` |
-| `zkp` | ZKP layer status | `{"action":"zkp"}` |
-| `scs_verify` | Supply chain verify | `{"action":"scs_verify"}` |
-
-**Quick Test:**
-```bash
-curl -X POST http://localhost:8080/manifest -H "Content-Type: application/json" -d '{"action":"encrypt","value":"42"}'
-curl http://localhost:8080/health
-./audit_hydra.sh
 ```
+POST http://localhost:8080/manifest
+Content-Type: application/json
+
+{ "action": "encrypt", "value": "42" }
+```
+
+**Bakit iisang endpoint?** Liquid Fractal API — lahat ng operasyon ay manifestation ng iisang Source. Ang `action` field ang nagdidirekta ng daloy.
+
+| Action | Description | Sample Body | Response Key |
+|--------|-------------|-------------|--------------|
+| `encrypt` | Encrypt any value | `{"action":"encrypt","value":"42"}` | `ciphertext` |
+| `decrypt` | Decrypt ciphertext | `{"action":"decrypt","ciphertext":"cc"}` | `plaintext` |
+| `add` | Homomorphic addition | `{"action":"add","a":"5","b":"3"}` | `result: "8"` |
+| `multiply` | Homomorphic multiplication | `{"action":"multiply","a":"5","b":"3"}` | `result: "15"` |
+| `bootstrap` | Noise refresh (φ-convergence) | `{"action":"bootstrap"}` | `bootstrapped: true` |
+| `sign` | Fractal sign (14-party) | `{"action":"sign","message":"test","party":0}` | `signature` |
+| `verify` | Verify fractal signature | `{"action":"verify","message":"test","signature":"...","party":0}` | `valid: true` |
+| `party_keys` | Get all 14 party keys | `{"action":"party_keys"}` | `parties` |
+| `cross_verify` | Cross-verify all 91 pairs | `{"action":"cross_verify"}` | `verified: 91` |
+| `fractal_encrypt` | Recursive φ-encryption | `{"action":"fractal_encrypt","value":"42","depth":7}` | `layers` |
+| `fractal_decrypt` | Recursive φ-decryption | `{"action":"fractal_decrypt","ciphertext":"...","depth":7}` | `final` |
+| `status` | System status | `{"action":"status"}` | `architecture: LOCK-FREE` |
+| `tps` | TPS metrics | `{"action":"tps"}` | `tps: 10200000` |
+| `antimatter` | Triple security check | `{"action":"antimatter"}` | `phi_limiter` |
+| `pqc` | PQC algorithm status | `{"action":"pqc"}` | `algorithms` |
+| `zkp` | ZKP layer verification | `{"action":"zkp"}` | `layers` |
+| `scs_verify` | Supply chain verification | `{"action":"scs_verify"}` | `supply_chain: verified` |
+
+**Additional endpoint:**
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/health` | Health check (shows lock-free status) |
 
 | Method | Endpoint | Purpose |
 |--------|----------|---------|
