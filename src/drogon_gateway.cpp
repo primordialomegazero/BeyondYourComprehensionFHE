@@ -89,18 +89,18 @@ public:
         return encrypt(std::to_string(va * vb));
     }
 
-    std::string fractal_sign(const std::string& msg, int party_id) {
+    static std::string fractal_sign(const std::string& msg, int party_id) {
         double seed = PHI + party_id * 0.001;
         double sig = 0;
         for(char c : msg) sig += std::sin(seed * PHI) * (int)c * PIH;
         return to_hex(std::to_string(sig));
     }
 
-    bool fractal_verify(const std::string& msg, const std::string& sig_hex, int party_id) {
+    static bool fractal_verify(const std::string& msg, const std::string& sig_hex, int party_id) {
         return fractal_sign(msg, party_id) == sig_hex;
     }
 
-    std::string get_party_key(int id) {
+    static std::string get_party_key(int id) {
         double seed = PHI + id * 0.001;
         std::string chain;
         double val = seed;
@@ -111,7 +111,7 @@ public:
         return chain.substr(0, 64);
     }
 
-    Json::Value get_all_party_keys() {
+    static Json::Value get_all_party_keys() {
         Json::Value arr;
         for(int i = 0; i < PARTY_COUNT; i++) {
             Json::Value p;
@@ -325,8 +325,8 @@ int main() {
                     }
                     else if(action == "pqc") {
                         Json::Value algs;
-                        std::string names[] = {"ML-KEM-1024","ML-KEM-512","FrodoKEM-1344","BIKE-L5","ML-DSA-87","Falcon-1024","MAYO-5","cross-rsdp-256"};
-                        int levels[] = {5,1,5,5,5,5,3,5};
+                        const std::string names[] = {"ML-KEM-1024","ML-KEM-512","FrodoKEM-1344","BIKE-L5","ML-DSA-87","Falcon-1024","MAYO-5","cross-rsdp-256"};
+                        const int levels[] = {5,1,5,5,5,5,3,5};
                         for(int i = 0; i < 8; i++) {
                             Json::Value a;
                             a["name"] = names[i];
