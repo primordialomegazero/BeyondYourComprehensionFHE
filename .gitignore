@@ -132,3 +132,9 @@ lattigo/
 
 # Allow benchmark files
 BeyondYourComprehensionFHE/
+build/b6_hydra
+build/drogon_gateway
+build/hydra_gateway
+build/*.log
+build/*.txt
+BeyondYourComprehensionFHE/

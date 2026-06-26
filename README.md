@@ -1,4 +1,4 @@
-#  B6 HYDRA v7.0 — Beyond Your Comprehension FHE
+#  B6 HYDRA v7.0 — Lock-Free Multi-Metaprogramming — Beyond Your Comprehension FHE
 
 **6-Engine Lock-Free Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security + HTTP API Gateway**
 
@@ -194,6 +194,8 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 make -j$(nproc)
 
 # 3. Run
+# 4. Run self-audit (built-in bombardier)
+./audit_hydra.sh
 ./b6_hydra
 ```
 
