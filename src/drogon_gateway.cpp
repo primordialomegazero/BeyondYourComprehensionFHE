@@ -74,8 +74,8 @@ public:
     std::string add(const std::string& a, const std::string& b) {
         std::string pt_a = decrypt(a);
         std::string pt_b = decrypt(b);
-        int va = atoi(pt_a.c_str());
-        int vb = atoi(pt_b.c_str());
+        double va = atof(pt_a.c_str());
+        double vb = atof(pt_b.c_str());
         bootstrap();
         return encrypt(std::to_string(va + vb));
     }
@@ -83,8 +83,8 @@ public:
     std::string multiply(const std::string& a, const std::string& b) {
         std::string pt_a = decrypt(a);
         std::string pt_b = decrypt(b);
-        int va = atoi(pt_a.c_str());
-        int vb = atoi(pt_b.c_str());
+        double va = atof(pt_a.c_str());
+        double vb = atof(pt_b.c_str());
         bootstrap();
         return encrypt(std::to_string(va * vb));
     }
@@ -151,6 +151,12 @@ int main() {
                 try {
                     if(action == "encrypt") {
                         std::string value = (*json)["value"].asString();
+                        if(value.empty()) {
+                            result["error"] = "Empty value not allowed";
+                            auto resp = HttpResponse::newHttpJsonResponse(result);
+                            callback(resp);
+                            return;
+                        }
                         std::string ct = g_fhe.encrypt(value);
                         result["ciphertext"] = ct;
                         result["noise"] = 40;
@@ -158,8 +164,17 @@ int main() {
                     }
                     else if(action == "decrypt") {
                         std::string ct = (*json)["ciphertext"].asString();
+                        if(ct.empty() || ct.find_first_not_of("0123456789abcdefABCDEF") != std::string::npos) {
+                            result["error"] = "Invalid ciphertext format";
+                            auto resp = HttpResponse::newHttpJsonResponse(result);
+                            callback(resp);
+                            return;
+                        }
                         std::string pt = g_fhe.decrypt(ct);
                         result["plaintext"] = pt;
+                        if(pt.empty() || pt.find_first_not_of("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ .,!?@#$%^&*()-_=+[]{}|;:'\"/<>`~") != std::string::npos) {
+                            result["warning"] = "Decryption produced non-printable characters — ciphertext may be tampered";
+                        }
                     }
                     else if(action == "add") {
                         std::string a = (*json)["a"].asString();
@@ -169,8 +184,8 @@ int main() {
                         std::string ct_b = g_fhe.encrypt(b);
                         std::string sum_ct = g_fhe.add(ct_a, ct_b);
                         std::string pt_sum = g_fhe.decrypt(sum_ct);
-                        int sum_val = atoi(pt_sum.c_str());
-                        result["result"] = sum_val;
+                        double sum_val = atof(pt_sum.c_str());
+                        char buf[64]; snprintf(buf, sizeof(buf), "%.0f", sum_val); result["result"] = buf;
                         result["ciphertext"] = sum_ct;
                         result["homomorphic"] = true;
                     }
@@ -182,8 +197,8 @@ int main() {
                         std::string ct_b = g_fhe.encrypt(b);
                         std::string prod_ct = g_fhe.multiply(ct_a, ct_b);
                         std::string pt_prod = g_fhe.decrypt(prod_ct);
-                        int prod_val = atoi(pt_prod.c_str());
-                        result["result"] = prod_val;
+                        double prod_val = atof(pt_prod.c_str());
+                        char buf2[64]; snprintf(buf2, sizeof(buf2), "%.0f", prod_val); result["result"] = buf2;
                         result["ciphertext"] = prod_ct;
                         result["homomorphic"] = true;
                     }
@@ -214,6 +229,12 @@ int main() {
                     }
                     else if(action == "fractal_encrypt") {
                         std::string value = (*json)["value"].asString();
+                        if(value.empty()) {
+                            result["error"] = "Empty value not allowed";
+                            auto resp = HttpResponse::newHttpJsonResponse(result);
+                            callback(resp);
+                            return;
+                        }
                         int depth = (*json).get("depth", FRACTAL_DEPTH).asInt();
                         Json::Value layers;
                         std::string current = value;
@@ -230,6 +251,12 @@ int main() {
                     }
                     else if(action == "fractal_decrypt") {
                         std::string ct = (*json)["ciphertext"].asString();
+                        if(ct.empty() || ct.find_first_not_of("0123456789abcdefABCDEF") != std::string::npos) {
+                            result["error"] = "Invalid ciphertext format";
+                            auto resp = HttpResponse::newHttpJsonResponse(result);
+                            callback(resp);
+                            return;
+                        }
                         int depth = (*json).get("depth", FRACTAL_DEPTH).asInt();
                         Json::Value layers;
                         std::string current = ct;
