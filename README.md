@@ -169,6 +169,117 @@ curl -X POST http://localhost:8080/manifest \
 |--------|----------|-------------|
 | GET | `/health` | System health, lock-free architecture status |
 
+### Actual API Response Examples
+
+**Encrypt (42):**
+```bash
+curl -X POST http://localhost:8080/manifest \
+  -H "Content-Type: application/json" \
+  -d '{"action":"encrypt","value":"42"}'
+```
+```json
+{
+  "action": "encrypt",
+  "ciphertext": "cdf3",
+  "format": "hex",
+  "lock_free": true,
+  "lyapunov": 0.4812,
+  "noise": 40,
+  "phi": 1.618033988749895
+}
+```
+
+**Decrypt ("cdf3" → 42):**
+```bash
+curl -X POST http://localhost:8080/manifest \
+  -H "Content-Type: application/json" \
+  -d '{"action":"decrypt","ciphertext":"cdf3"}'
+```
+```json
+{
+  "action": "decrypt",
+  "lyapunov": 0.4812,
+  "phi": 1.618033988749895,
+  "plaintext": "42"
+}
+```
+
+**Homomorphic Add (5 + 3 = 8):**
+```bash
+curl -X POST http://localhost:8080/manifest \
+  -H "Content-Type: application/json" \
+  -d '{"action":"add","a":"5","b":"3"}'
+```
+```json
+{
+  "action": "add",
+  "ciphertext": "c1",
+  "homomorphic": true,
+  "lock_free": true,
+  "lyapunov": 0.4812,
+  "phi": 1.618033988749895,
+  "result": "8"
+}
+```
+
+**Homomorphic Multiply (5 × 3 = 15):**
+```bash
+curl -X POST http://localhost:8080/manifest \
+  -H "Content-Type: application/json" \
+  -d '{"action":"multiply","a":"5","b":"3"}'
+```
+```json
+{
+  "action": "multiply",
+  "ciphertext": "c8f4",
+  "homomorphic": true,
+  "lock_free": true,
+  "lyapunov": 0.4812,
+  "phi": 1.618033988749895,
+  "result": "15"
+}
+```
+
+**Health Check:**
+```bash
+curl http://localhost:8080/health
+```
+```json
+{
+  "architecture": "LOCK-FREE MULTI-METAPROGRAMMING",
+  "atomic_operations": "compare-exchange",
+  "engines": 6,
+  "lyapunov": 0.4812,
+  "mutex_count": 0,
+  "phi": 1.618033988749895,
+  "pqc": 8,
+  "status": "LIQUID",
+  "zkp": 7
+}
+```
+
+**Status:**
+```bash
+curl -X POST http://localhost:8080/manifest \
+  -H "Content-Type: application/json" \
+  -d '{"action":"status"}'
+```
+```json
+{
+  "action": "status",
+  "architecture": "LOCK-FREE MULTI-METAPROGRAMMING",
+  "engines": 6,
+  "fractal_depth": 7,
+  "lock_free": true,
+  "lyapunov": 0.4812,
+  "party_keys": 14,
+  "phi": 1.618033988749895,
+  "pqc": 8,
+  "status": "LIQUID",
+  "zkp": 7
+}
+```
+
 ##  Built-in Security Audit Suite
 
 B6 HYDRA includes a self-audit system more rigorous than commercial third-party audits:
