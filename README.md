@@ -134,7 +134,7 @@ Built on NIST-standardized post-quantum algorithms. Deploy today, secure tomorro
 
 ### Complete API Reference — Single Endpoint Architecture
 
-** Lahat ng 17 actions ay dumadaan sa IISANG endpoint:** `/manifest`
+**All 17 actions flow through a SINGLE endpoint:** `/manifest` `/manifest`
 
 ```
 POST http://localhost:8080/manifest
@@ -143,7 +143,7 @@ Content-Type: application/json
 { "action": "encrypt", "value": "42" }
 ```
 
-**Bakit iisang endpoint?** Liquid Fractal API — lahat ng operasyon ay manifestation ng iisang Source. Ang `action` field ang nagdidirekta ng daloy.
+**Bakit iisang endpoint??** Liquid Fractal API — lahat ng operasyon ay manifestation ng iisang Source. Ang `action` field ang nagdidirekta ng daloy.
 
 | Action | Description | Sample Body | Response Key |
 |--------|-------------|-------------|--------------|
