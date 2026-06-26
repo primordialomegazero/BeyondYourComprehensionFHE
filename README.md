@@ -130,20 +130,18 @@ Built on NIST-standardized post-quantum algorithms. Deploy today, secure tomorro
 
 ---
 
-##  HTTP API Gateway — Business Ready
 
-### Complete API Reference — Single Endpoint Architecture
+##  HTTP API Gateway — Single Endpoint Architecture
 
-**All 17 actions flow through a SINGLE endpoint:** `/manifest` `/manifest`
+**All 17 actions flow through a SINGLE endpoint:** `/manifest`
 
-```
-POST http://localhost:8080/manifest
-Content-Type: application/json
-
-{ "action": "encrypt", "value": "42" }
+```bash
+curl -X POST http://localhost:8080/manifest \
+  -H "Content-Type: application/json" \
+  -d '{"action":"encrypt","value":"42"}'
 ```
 
-**Bakit iisang endpoint?** Liquid Fractal API — lahat ng operasyon ay manifestation ng iisang Source. Ang `action` field ang nagdidirekta ng daloy.
+**Why a single endpoint?** Liquid Fractal API — all operations are manifestations of a single Source. The `action` field directs the flow.
 
 | Action | Description | Sample Body | Response Key |
 |--------|-------------|-------------|--------------|
@@ -165,7 +163,11 @@ Content-Type: application/json
 | `zkp` | ZKP layer verification | `{"action":"zkp"}` | `layers` |
 | `scs_verify` | Supply chain verification | `{"action":"scs_verify"}` | `supply_chain: verified` |
 
-**Additional endpoint:**
+**Health Check Endpoint:**
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/health` | System health (shows lock-free architecture status) |
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/health` | Health check (shows lock-free status) |
