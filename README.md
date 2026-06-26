@@ -18,8 +18,6 @@
 
 | 0:45 | Test 1b: Homomorphic Add (5+3=8) + Multiply (5×3=15) | **6/6 ✅** |
 | 1:15 | Test 1c: Encrypt/Decrypt Roundtrip (42→cdf3→42) | **3/3 ✅** |
-| Timestamp | Test | Result |
-|-----------|------|--------|
 | 0:00 | **Test 1: 6 Engines** — Encrypt + φ-Bootstrap + Decrypt Verify | **36/36 ** |
 | 0:15 | **Test 2: Fractal Systems** — 14 Party Keys + Cross-Verify + SCS | **95/95 ** |
 | 1:00 | **Test 3: TPS Benchmark** — 30s Sustained (315.9M ops) | **10.2M TPS (consumer CPU, single node) ** |
@@ -27,7 +25,7 @@
 | 2:00 | **API Gateway** — HTTP Endpoints + Load Balancing | **8/8 Endpoints ** |
 | 2:15 | **Drogon Threads** — φ-Harmonic Thread Pool (12 threads) | **12/12 Healthy ** |
 
-**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 10.2M TPS (consumer CPU, single node) | **Projected (HPC/GPU):** 10.4B TPS
+**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 10.2M TPS (consumer CPU, single node) | **Projected (HPC/GPU, not yet benchmarked):** 10.4B TPS
 
 ---
 
@@ -252,8 +250,8 @@ The **ADDITION** is the manifestation of that mathematics in code.
 | Experimental | **Working Prototype** |
 
 | "Our scheme achieves asymptotic complexity..." | "10.2M TPS (consumer CPU, single node). Ryzen 5 2600. 30 seconds." |
-| "Future work will address implementation..." | "Naka-Docker na. Naka-API na." |
-| "We leave the construction of an efficient..." | "Naka-commit na sa GitHub. MIT license." |
+| "Future work will address implementation..." | "Dockerized. API-deployed." |
+| "We leave the construction of an efficient..." | "Committed to GitHub. MIT license." |
 | TRL 3: Experimental proof of concept | **TRL 5-6: Technology validated, prototype demonstrated** |
 
 **Papers are promises. Terminal output is proof.**
