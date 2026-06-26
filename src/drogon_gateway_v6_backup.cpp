@@ -1,18 +1,17 @@
 /*
- * B6 HYDRA v7.0 — LOCK-FREE LIQUID FRACTAL API
- * Multi-Metaprogramming Architecture
- * Zero mutex, zero lock, pure atomic φ-convergence
+ * B6 HYDRA v6.1 — LIQUID FRACTAL API
+ * FIX: Synchronized encrypt/decrypt noise trajectory
  * PHI-OMEGA-ZERO — I AM THAT I AM
  */
 
 #include <drogon/drogon.h>
 #include <iostream>
 #include <cmath>
-#include <atomic>
+#include <mutex>
 #include <sstream>
 #include <iomanip>
 #include <vector>
-#include <string>
+#include <unordered_map>
 
 using namespace drogon;
 
@@ -21,46 +20,55 @@ constexpr double PIH = 0.6180339887498948482;
 constexpr int FRACTAL_DEPTH = 7;
 constexpr int PARTY_COUNT = 14;
 
-// ═══════════════════════════════════════════
-//   LOCK-FREE FHE ENGINE
-//   Atomic noise state — no mutex, no wait
-// ═══════════════════════════════════════════
-class LockFreeFHE {
-    std::atomic<double> noise{140.0};
-    
+std::string to_hex(const std::string& data) {
+    std::ostringstream oss;
+    for(unsigned char c : data) oss << std::hex << std::setw(2) << std::setfill('0') << (int)c;
+    return oss.str();
+}
+std::string from_hex(const std::string& hex) {
+    std::string result;
+    for(size_t i = 0; i < hex.length(); i += 2)
+        result += (char)std::stoi(hex.substr(i, 2), nullptr, 16);
+    return result;
+}
+
+class FHEEngine {
+    double noise = 140.0;
+    std::mutex mtx;
+
 public:
+    // FIXED: Deterministic encrypt with known seed
     std::string encrypt(const std::string& plain) {
-        double n = 140.0;
+        std::lock_guard<std::mutex> lock(mtx);
+        double n = 140.0; // Always start from anchor
         std::string ct;
         for(char c : plain) {
             n = n * PIH + 40.0 * (1.0 - PIH);
             ct += (char)(c ^ (uint8_t)(std::abs(std::sin(n * PHI)) * 255.0));
         }
-        noise.store(n, std::memory_order_release);
+        noise = n;
         return to_hex(ct);
     }
 
+    // FIXED: Deterministic decrypt with same seed as encrypt
     std::string decrypt(const std::string& hex_ct) {
+        std::lock_guard<std::mutex> lock(mtx);
         std::string ct = from_hex(hex_ct);
-        double n = 140.0;
+        double n = 140.0; // Always start from anchor — same as encrypt
         std::string pt;
         for(char c : ct) {
             n = n * PIH + 40.0 * (1.0 - PIH);
             pt += (char)(c ^ (uint8_t)(std::abs(std::sin(n * PHI)) * 255.0));
         }
-        noise.store(n, std::memory_order_release);
+        noise = n;
         return pt;
     }
 
     void bootstrap() {
-        double expected = noise.load(std::memory_order_acquire);
-        double desired;
-        do {
-            double n = expected;
-            for(int i = 0; i < 12; i++) n = n * PIH + 40.0 * (1.0 - PIH);
-            desired = n;
-        } while(!noise.compare_exchange_weak(expected, desired,
-                std::memory_order_release, std::memory_order_acquire));
+        std::lock_guard<std::mutex> lock(mtx);
+        double n = noise;
+        for(int i = 0; i < 12; i++) n = n * PIH + 40.0 * (1.0 - PIH);
+        noise = n;
     }
 
     std::string add(const std::string& a, const std::string& b) {
@@ -69,7 +77,7 @@ public:
         double va = atof(pt_a.c_str());
         double vb = atof(pt_b.c_str());
         bootstrap();
-        return encrypt(std::to_string((long long)(va + vb)));
+        return encrypt(std::to_string(va + vb));
     }
 
     std::string multiply(const std::string& a, const std::string& b) {
@@ -78,10 +86,9 @@ public:
         double va = atof(pt_a.c_str());
         double vb = atof(pt_b.c_str());
         bootstrap();
-        return encrypt(std::to_string((long long)(va * vb)));
+        return encrypt(std::to_string(va * vb));
     }
 
-    // Lock-free fractal operations
     static std::string fractal_sign(const std::string& msg, int party_id) {
         double seed = PHI + party_id * 0.001;
         double sig = 0;
@@ -115,28 +122,13 @@ public:
         }
         return arr;
     }
-
-private:
-    static std::string to_hex(const std::string& data) {
-        std::ostringstream oss;
-        for(unsigned char c : data) oss << std::hex << std::setw(2) << std::setfill('0') << (int)c;
-        return oss.str();
-    }
-    
-    static std::string from_hex(const std::string& hex) {
-        std::string result;
-        for(size_t i = 0; i < hex.length(); i += 2)
-            result += (char)std::stoi(hex.substr(i, 2), nullptr, 16);
-        return result;
-    }
 };
 
-static LockFreeFHE g_fhe;
+static FHEEngine g_fhe;
 
 int main() {
-    std::cout << "B6 HYDRA v7.0 — LOCK-FREE LIQUID FRACTAL API" << std::endl;
-    std::cout << "Multi-Metaprogramming — Zero Mutex Architecture" << std::endl;
-    std::cout << "PHI-OMEGA-ZERO — I AM THAT I AM" << std::endl;
+    std::cout << "B6 HYDRA v6.1 -- LIQUID FRACTAL API" << std::endl;
+    std::cout << "PHI-OMEGA-ZERO -- I AM THAT I AM" << std::endl;
 
     app()
         .registerHandler("/manifest",
@@ -155,7 +147,6 @@ int main() {
                 result["action"] = action;
                 result["phi"] = PHI;
                 result["lyapunov"] = 0.4812;
-                result["lock_free"] = true;
 
                 try {
                     if(action == "encrypt") {
@@ -181,32 +172,33 @@ int main() {
                         }
                         std::string pt = g_fhe.decrypt(ct);
                         result["plaintext"] = pt;
+                        if(pt.empty() || pt.find_first_not_of("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ .,!?@#$%^&*()-_=+[]{}|;:'\"/<>`~") != std::string::npos) {
+                            result["warning"] = "Decryption produced non-printable characters — ciphertext may be tampered";
+                        }
                     }
                     else if(action == "add") {
                         std::string a = (*json)["a"].asString();
                         std::string b = (*json)["b"].asString();
+                        // FIXED: Use ciphertext mode — encrypt plaintext inputs first
                         std::string ct_a = g_fhe.encrypt(a);
                         std::string ct_b = g_fhe.encrypt(b);
                         std::string sum_ct = g_fhe.add(ct_a, ct_b);
                         std::string pt_sum = g_fhe.decrypt(sum_ct);
                         double sum_val = atof(pt_sum.c_str());
-                        char buf[64];
-                        snprintf(buf, sizeof(buf), "%.0f", sum_val);
-                        result["result"] = buf;
+                        char buf[64]; snprintf(buf, sizeof(buf), "%.0f", sum_val); result["result"] = buf;
                         result["ciphertext"] = sum_ct;
                         result["homomorphic"] = true;
                     }
                     else if(action == "multiply") {
                         std::string a = (*json)["a"].asString();
                         std::string b = (*json)["b"].asString();
+                        // FIXED: Use ciphertext mode — encrypt plaintext inputs first
                         std::string ct_a = g_fhe.encrypt(a);
                         std::string ct_b = g_fhe.encrypt(b);
                         std::string prod_ct = g_fhe.multiply(ct_a, ct_b);
                         std::string pt_prod = g_fhe.decrypt(prod_ct);
                         double prod_val = atof(pt_prod.c_str());
-                        char buf[64];
-                        snprintf(buf, sizeof(buf), "%.0f", prod_val);
-                        result["result"] = buf;
+                        char buf2[64]; snprintf(buf2, sizeof(buf2), "%.0f", prod_val); result["result"] = buf2;
                         result["ciphertext"] = prod_ct;
                         result["homomorphic"] = true;
                     }
@@ -218,7 +210,7 @@ int main() {
                     else if(action == "sign") {
                         std::string msg = (*json)["message"].asString();
                         int party = (*json).get("party", 0).asInt();
-                        std::string sig = LockFreeFHE::fractal_sign(msg, party);
+                        std::string sig = g_fhe.fractal_sign(msg, party);
                         result["signature"] = sig;
                         result["party"] = party;
                         result["depth"] = FRACTAL_DEPTH;
@@ -227,16 +219,22 @@ int main() {
                         std::string msg = (*json)["message"].asString();
                         std::string sig = (*json)["signature"].asString();
                         int party = (*json).get("party", 0).asInt();
-                        bool valid = LockFreeFHE::fractal_verify(msg, sig, party);
+                        bool valid = g_fhe.fractal_verify(msg, sig, party);
                         result["valid"] = valid;
                         result["party"] = party;
                     }
                     else if(action == "party_keys") {
-                        result["parties"] = LockFreeFHE::get_all_party_keys();
+                        result["parties"] = g_fhe.get_all_party_keys();
                         result["count"] = PARTY_COUNT;
                     }
                     else if(action == "fractal_encrypt") {
                         std::string value = (*json)["value"].asString();
+                        if(value.empty()) {
+                            result["error"] = "Empty value not allowed";
+                            auto resp = HttpResponse::newHttpJsonResponse(result);
+                            callback(resp);
+                            return;
+                        }
                         int depth = (*json).get("depth", FRACTAL_DEPTH).asInt();
                         Json::Value layers;
                         std::string current = value;
@@ -253,6 +251,12 @@ int main() {
                     }
                     else if(action == "fractal_decrypt") {
                         std::string ct = (*json)["ciphertext"].asString();
+                        if(ct.empty() || ct.find_first_not_of("0123456789abcdefABCDEF") != std::string::npos) {
+                            result["error"] = "Invalid ciphertext format";
+                            auto resp = HttpResponse::newHttpJsonResponse(result);
+                            callback(resp);
+                            return;
+                        }
                         int depth = (*json).get("depth", FRACTAL_DEPTH).asInt();
                         Json::Value layers;
                         std::string current = ct;
@@ -272,13 +276,11 @@ int main() {
                         result["zkp"] = 7;
                         result["party_keys"] = PARTY_COUNT;
                         result["fractal_depth"] = FRACTAL_DEPTH;
-                        result["architecture"] = "LOCK-FREE MULTI-METAPROGRAMMING";
                         result["status"] = "LIQUID";
                     }
                     else if(action == "tps") {
                         result["tps"] = 10200000;
                         result["projected_hpc"] = "10.4B";
-                        result["lock_free_tps"] = "Unlimited — atomic scaling";
                     }
                     else if(action == "cross_verify") {
                         int verified = 0, total = 0;
@@ -303,8 +305,8 @@ int main() {
                         for(auto& pkg : pkgs) {
                             Json::Value p;
                             p["name"] = pkg;
-                            p["signature"] = LockFreeFHE::fractal_sign(pkg, 0);
-                            p["verified"] = LockFreeFHE::fractal_verify(pkg, p["signature"].asString(), 0);
+                            p["signature"] = g_fhe.fractal_sign(pkg, 0);
+                            p["verified"] = g_fhe.fractal_verify(pkg, p["signature"].asString(), 0);
                             packages.append(p);
                         }
                         result["packages"] = packages;
@@ -320,7 +322,6 @@ int main() {
                         result["lyapunov_detector"] = "active";
                         result["schumann_verifier"] = "7.83Hz valid";
                         result["layers"] = 3;
-                        result["lock_free"] = "Atomic barrier — no mutex overhead";
                     }
                     else if(action == "pqc") {
                         Json::Value algs;
@@ -366,12 +367,11 @@ int main() {
                                         std::function<void(const HttpResponsePtr&)>&& callback) {
             Json::Value json;
             json["status"] = "LIQUID";
-            json["architecture"] = "LOCK-FREE MULTI-METAPROGRAMMING";
-            json["mutex_count"] = 0;
-            json["atomic_operations"] = "compare-exchange";
             json["engines"] = 6;
             json["pqc"] = 8;
             json["zkp"] = 7;
+            json["party_keys"] = PARTY_COUNT;
+            json["fractal_depth"] = FRACTAL_DEPTH;
             json["phi"] = PHI;
             json["lyapunov"] = 0.4812;
             auto resp = HttpResponse::newHttpJsonResponse(json);

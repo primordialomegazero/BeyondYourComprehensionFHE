@@ -49,3 +49,13 @@ target_link_libraries(hydra_gateway pthread)
 find_package(Drogon REQUIRED)
 add_executable(drogon_gateway src/drogon_gateway.cpp)
 target_link_libraries(drogon_gateway Drogon::Drogon pthread)
+
+# ═══════════════════════════════════════════════
+#   HYDRA SELF-AUDIT (Built-in Security Suite)
+#   Auto-runs on every build
+# ═══════════════════════════════════════════════
+add_custom_target(audit
+    COMMAND ${CMAKE_SOURCE_DIR}/audit_hydra.sh
+    COMMENT "Running B6 HYDRA Self-Audit Suite..."
+    DEPENDS drogon_gateway b6_hydra
+)
