@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 #   INCLUDE PATHS — ALL 6 ENGINES
 # ═══════════════════════════════════════════════
 include_directories(
+    ${CMAKE_SOURCE_DIR}/src/fhe
+    ${CMAKE_SOURCE_DIR}/src/zkp
     ${CMAKE_SOURCE_DIR}/src
     /usr/local/include/SEAL-4.3
     /usr/local/include/openfhe/pke
@@ -102,8 +104,8 @@ target_link_libraries(hydra_gateway pthread)
 #   DROGON FHE GATEWAY
 # ═══════════════════════════════════════════════
 find_package(Drogon REQUIRED)
-add_executable(drogon_gateway src/drogon_gateway.cpp)
-target_link_libraries(drogon_gateway Drogon::Drogon pthread)
+add_executable(drogon_gateway src/drogon_gateway.cpp src/fhe/multi_recursive_fhe.cpp)
+target_link_libraries(drogon_gateway Drogon::Drogon pthread SEAL::seal ${OQS_LIBRARIES} ${OPENFHE_PKE} ${OPENFHE_CORE} ${OPENFHE_BINFHE} ${TFHE_LIBS} ${HELIB_LIB} ${NTL_LIB})
 
 # ═══════════════════════════════════════════════
 #   SELF-AUDIT
