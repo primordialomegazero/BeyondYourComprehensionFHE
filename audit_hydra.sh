@@ -108,7 +108,7 @@ echo -n "  [3.1] Startup + health check... "
 pkill drogon_gateway 2>/dev/null
 timeout 5 ./drogon_gateway &>/dev/null &
 PID=$!
-sleep 2
+sleep 4
 if curl -s --max-time 2 http://localhost:8080/health >/dev/null 2>&1; then
     echo -e "${GREEN}✅ OK${NC}"; ((PASS++))
 else
@@ -121,7 +121,7 @@ sleep 1
 echo -n "  [3.2] 10 concurrent requests... "
 timeout 8 ./drogon_gateway &>/dev/null &
 PID=$!
-sleep 2
+sleep 4
 for i in {1..10}; do
     curl -s --max-time 3 -X POST http://localhost:8080/manifest \
         -H "Content-Type: application/json" \
@@ -140,7 +140,7 @@ sleep 1
 echo -n "  [3.3] Injection attacks... "
 timeout 8 ./drogon_gateway &>/dev/null &
 PID=$!
-sleep 2
+sleep 4
 curl -s --max-time 2 -X POST http://localhost:8080/manifest \
     -H "Content-Type: application/json" \
     -d '{"action":"encrypt","value":"1; DROP TABLE;"}' &>/dev/null

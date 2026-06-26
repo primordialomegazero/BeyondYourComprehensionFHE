@@ -7,10 +7,10 @@ echo "=========================================="
 ./clone.sh
 ./check.sh
 ./build.sh
-./test.sh
+bash test.sh
 ./api_test.sh > api_test_output.log 2>&1
 ./benchmark.sh
-./extract_results.sh
+bash extract_results.sh
 
 echo ""
 echo "=========================================="
