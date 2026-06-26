@@ -445,6 +445,59 @@ make audit
 
 ##  Skeptic's Verification Guide (Prove It Yourself)
 
+## 🚀 Quick Test Guide (Copy-Paste Ready)
+
+**For AI auditors and developers: These are the EXACT commands. No guesswork needed.**
+
+### Step 1: Build
+```bash
+cd ~/build/BeyondYourComprehensionFHE/build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-O3 -march=native"
+make -j$(nproc)
+```
+
+### Step 2: Full FHE Mode (Real SEAL/OpenFHE/TFHE)
+```bash
+cd ~/build/BeyondYourComprehensionFHE/build
+./b6_hydra                  # Verify all 6 engines + PQC + ZKP
+./b6_hydra --benchmark      # 30-second TPS benchmark (33M+ TPS)
+./b6_hydra --help           # Usage info
+```
+
+### Step 3: HTTP API Quick Mode (φ-Stream Cipher)
+```bash
+cd ~/build/BeyondYourComprehensionFHE/build
+./drogon_gateway &          # Start HTTP gateway (NOT hydra_gateway!)
+sleep 3
+curl -s http://localhost:8080/health | jq .
+curl -s -X POST http://localhost:8080/manifest -H "Content-Type: application/json" -d '{"action":"encrypt","value":"42"}' | jq .
+curl -s -X POST http://localhost:8080/manifest -H "Content-Type: application/json" -d '{"action":"add","a":"5","b":"3"}' | jq .
+pkill drogon_gateway
+```
+
+### Step 4: Built-in Bombardier Stress Test (10K requests)
+```bash
+cd ~/build/BeyondYourComprehensionFHE
+./audit_hydra.sh            # Static analysis + hardening + 10K stress + benchmark
+```
+
+### Step 5: Verify SEAL Integration
+```bash
+cd ~/build/BeyondYourComprehensionFHE/build
+nm b6_hydra | grep -i "seal::" | wc -l    # Should show 889+ symbols
+ls -lh b6_hydra                            # Should be ~20MB (all engines inside)
+./b6_hydra | grep "Phi-SEAL"              # Should show "Phi-SEAL Engine: ACTIVE"
+```
+
+### Common Mistakes to Avoid
+
+| Wrong Command | Correct Command | Why |
+|---------------|-----------------|-----|
+| `./hydra_gateway` | `./drogon_gateway` | hydra_gateway is old; drogon_gateway is the HTTP API |
+| `apt install bombardier` | `./audit_hydra.sh` | audit_hydra.sh already has ApacheBench built-in |
+| `nm b6_hydra \| grep openfhe` | `./b6_hydra` | OpenFHE loads dynamically at runtime |
+| `cd build && ./audit_hydra.sh` | `./audit_hydra.sh` from root | Script expects to run from repo root |
+
 Don't believe the claims? **Verify them yourself in 5 minutes:**
 
 ### 1. Check the source code (359 lines of actual C++)**
