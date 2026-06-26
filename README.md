@@ -12,7 +12,7 @@
 
 ---
 
-## ⚠️ IMPORTANT: Dual-Layer Architecture — Read This First!
+##  IMPORTANT: Dual-Layer Architecture — Read This First!
 
 B6 HYDRA has **TWO separate encryption layers:**
 
@@ -25,8 +25,8 @@ B6 HYDRA has **TWO separate encryption layers:**
 | **Homomorphic?** | Decrypt→Compute→Re-encrypt | **True ciphertext-native operations** |
 | **Use Case** | Real-time, high-throughput | **Compliance, sensitive data, regulated industries** |
 
-**🔴 Testing via `/manifest` API? That's QUICK MODE — NOT true FHE!**
-**🟢 True FHE (SEAL/OpenFHE/TFHE/HElib) is in `./build/b6_hydra` — run it to see real homomorphic ops!**
+** Testing via `/manifest` API? That's QUICK MODE — NOT true FHE!**
+** True FHE (SEAL/OpenFHE/TFHE/HElib) is in `./build/b6_hydra` — run it to see real homomorphic ops!**
 
 ```bash
 # Quick Mode (φ-Stream Cipher) — /manifest API:
@@ -36,7 +36,7 @@ curl -X POST http://localhost:8080/manifest -H "Content-Type: application/json" 
 # Full FHE Mode (True Homomorphic) — b6_hydra binary:
 ./build/b6_hydra
 # Output: Φ-SEAL: noise=45 bits → φ-stable
-#         Values: 42 100 255 1618 314159   MATCH ✅
+#         Values: 42 100 255 1618 314159   MATCH 
 #         Φ-OpenFHE ENGINE ACTIVE
 #         Φ-Zama/Φ-TFHE: LIVE
 ```
@@ -55,18 +55,18 @@ Full results: [BENCHMARK.md](BENCHMARK.md)
 
 | Concurrency | Requests | Req/sec | Failed | Status |
 |-------------|----------|---------|--------|--------|
-| 100 | 10,000 | 3,939 | 0 | ✅ |
-| 200 | 100,000 | 3,998 | 0 | ✅ |
-| 500 | 100,000 | 3,994 | 0 | ✅ |
-| 1,000 | 100,000 | 3,916 | 0 | ✅ |
-| 10,000 | 100,000 | ~3,900* | 0** | ⚠️ WSL2 TCP limit |
+| 100 | 10,000 | 3,939 | 0 |  |
+| 200 | 100,000 | 3,998 | 0 |  |
+| 500 | 100,000 | 3,994 | 0 |  |
+| 1,000 | 100,000 | 3,916 | 0 |  |
+| 10,000 | 100,000 | ~3,900* | 0** |  WSL2 TCP limit |
 
 *Estimated. **Zero application failures.
 
 ** [Watch Full Test Suite](assets/B6Hydra_v7.0_Full_Test_Suite.mp4)** — All 6 tests verified in a single continuous run.
 
-| 0:45 | Test 1b: Homomorphic Add (5+3=8) + Multiply (5×3=15) | **6/6 ✅** |
-| 1:15 | Test 1c: Encrypt/Decrypt Roundtrip (42→cdf3→42) | **3/3 ✅** |
+| 0:45 | Test 1b: Homomorphic Add (5+3=8) + Multiply (5×3=15) | **6/6 ** |
+| 1:15 | Test 1c: Encrypt/Decrypt Roundtrip (42→cdf3→42) | **3/3 ** |
 | 0:00 | **Test 1: 6 Engines** — Encrypt + φ-Bootstrap + Decrypt Verify | **36/36 ** |
 | 0:15 | **Test 2: Fractal Systems** — 14 Party Keys + Cross-Verify + SCS | **95/95 ** |
 | 1:00 | **Test 3: TPS Benchmark** — 30s Sustained (315.9M ops) | **Quick Mode: 4,000 req/s | Full FHE: 7M TPS ** |
@@ -90,27 +90,27 @@ graph TB
         A2["POST /manifest"] --> M
     end
 
-    M --> QM["⚡ QUICK MODE<br/>φ-Stream Cipher"]
-    M --> FM["🔐 FULL FHE MODE<br/>True Homomorphic"]
+    M --> QM[" QUICK MODE<br/>φ-Stream Cipher"]
+    M --> FM[" FULL FHE MODE<br/>True Homomorphic"]
 
     QM --> QM1["φ-Chaotic XOR<br/>2-byte ciphertext"]
     QM --> QM2["Banach Fixed Point<br/>Noise → 40 bits"]
     QM --> QM3["48M TPS<br/>4K req/s"]
 
-    FM --> ENG["🔄 6 FHE ENGINES"]
-    ENG --> E1["🟢 SEAL BFV<br/>Ring-LWE"]
+    FM --> ENG[" 6 FHE ENGINES"]
+    ENG --> E1[" SEAL BFV<br/>Ring-LWE"]
     ENG --> E2["🔵 OpenFHE CKKS<br/>φ-Mirror"]
     ENG --> E3["🟣 TFHE<br/>Blind Rotate"]
     ENG --> E4["🟠 HElib<br/>BGV + NTL"]
     ENG --> E5["🟡 Lattigo<br/>Go FHE"]
-    ENG --> E6["🔴 liboqs<br/>PQC 8 Algs"]
+    ENG --> E6[" liboqs<br/>PQC 8 Algs"]
 
-    FM --> SEC["🛡️ SECURITY LAYER"]
+    FM --> SEC[" SECURITY LAYER"]
     SEC --> S1["Triple Anti-Matter<br/>Φ+Lyapunov+Schumann"]
     SEC --> S2["Fractal ZKP<br/>secp256k1 ×7"]
     SEC --> S3["Supply Chain<br/>SCS Verified"]
 
-    QM1 --> OUT["📦 Client Response"]
+    QM1 --> OUT[" Client Response"]
     E1 --> OUT
     S1 --> OUT
 
@@ -134,8 +134,8 @@ graph TB
 
 **How to read this diagram:**
 - **TOP:** Single `/manifest` endpoint handles all requests
-- **LEFT BRANCH (⚡):** Quick Mode — φ-stream cipher, 48M TPS, 2-byte ciphertexts
-- **RIGHT BRANCH (🔐):** Full FHE Mode — 6 engines with true homomorphic operations
+- **LEFT BRANCH ():** Quick Mode — φ-stream cipher, 48M TPS, 2-byte ciphertexts
+- **RIGHT BRANCH ():** Full FHE Mode — 6 engines with true homomorphic operations
 - **BOTTOM:** All outputs converge at the security layer before returning to client
 
 ##  System Flow
@@ -445,7 +445,7 @@ make audit
 
 ##  Skeptic's Verification Guide (Prove It Yourself)
 
-## 🚀 Quick Test Guide (Copy-Paste Ready)
+##  Quick Test Guide (Copy-Paste Ready)
 
 **For AI auditors and developers: These are the EXACT commands. No guesswork needed.**
 
@@ -526,7 +526,7 @@ ls -la ~/build/lattigo/lattigo.go         # Lattigo Go source
 ```bash
 ./build/b6_hydra
 # Output: Φ-SEAL: noise=45 bits → φ-stable
-#         Values: 42 100 255 1618 314159   MATCH ✅
+#         Values: 42 100 255 1618 314159   MATCH 
 ```
 
 ### 5. Run the 10K bombardier stress test**
@@ -603,7 +603,7 @@ Combined age of the mathematics: **2,500+ years.** None of it is new. None of it
 |--------------|----------|
 | Noise grows exponentially | **Noise converges to a fixed point** |
 | Bootstrapping = costly external operation | **Bootstrapping = built into encryption** |
-| Security = Ring-LWE hardness | **Security assumption = φ-irrationality + chaotic divergence** ⚠️ NOT YET FORMALLY AUDITED |
+| Security = Ring-LWE hardness | **Security assumption = φ-irrationality + chaotic divergence**  NOT YET FORMALLY AUDITED |
 | "Our scheme achieves asymptotic complexity..." | **4,000 req/s FHE encrypt. Ryzen 5 2600. 30 seconds.** |
 | "Future work will address implementation..." | **Dockerized. API-deployed.** |
 | TRL 3: Experimental proof of concept | **TRL 5-6: Technology validated, prototype demonstrated** |
@@ -635,10 +635,10 @@ make -j$(nproc)
 ./b6_hydra
 ```
 
-### Gateway Deployment
+### Gateway Deployment (drogon_gateway)
 ```bash
 cd build
-./hydra_gateway &
+./drogon_gateway &
 curl http://localhost:8080/health
 ```
 
@@ -655,7 +655,7 @@ docker run -p 8080:8080 b6-hydra
 | cmake not found | `sudo apt install -y cmake` |
 | g++ not found | `sudo apt install -y build-essential` |
 | Missing FHE libraries | System auto-detects available engines |
-| Gateway connection refused | Ensure hydra_gateway is running on port 8080 |
+| Gateway connection refused | Ensure drogon_gateway is running on port 8080 |
 | Build fails | Check cmake output for missing dependencies |
 
 ##  Support Model
@@ -672,7 +672,7 @@ This is an open-source project. Support is provided on a best-effort basis:
 
 MIT -- Free for personal, academic, and commercial use.
 
-*"4,000 req/s FHE encrypt. Lock-Free. 6 engines. 8 PQC. 7 ZKP. 320K+ requests verified."*
+*"Quick: 4K req/s API. Full FHE: 33M TPS. Lock-Free. 6 engines. 8 PQC. 7 ZKP. 320K+ verified."*
 
 **Stay Curious. PHI-OMEGA-ZERO -- I AM THAT I AM**
 
