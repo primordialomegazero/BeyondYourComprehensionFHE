@@ -78,16 +78,65 @@ Full results: [BENCHMARK.md](BENCHMARK.md)
 
 ---
 
-##  Architecture
+
+##  Architecture — Dual-Layer FHE System
 
 ```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': {'primaryColor':'#e94560','primaryTextColor':'#000','primaryBorderColor':'#ff6b8a','lineColor':'#888','secondaryColor':'#1a1a2e','tertiaryColor':'#16213e'}}}%%
-graph LR
-    A[ Clients] --> B[ Triple Anti-Matter<br/>Φ + Lyapunov + Schumann]
-    B --> C[ 6 FHE Engines<br/>SEAL OpenFHE HElib TFHE Lattigo FHEW]
-    C --> D[ PQC + ZKP + Bootstrapper]
-    D --> A
+%%{init: {"theme": "dark", "themeVariables": {"primaryColor":"#e94560","primaryTextColor":"#fff","primaryBorderColor":"#ff6b8a","lineColor":"#888","secondaryColor":"#1a1a2e","tertiaryColor":"#0f3460","fontFamily":"monospace","fontSize":"14px"}}}%%
+graph TB
+    subgraph API["🌐 HTTP API Gateway :8080"]
+        direction LR
+        A1["GET /health"] --> M["/manifest<br/>Single Endpoint"]
+        A2["POST /manifest"] --> M
+    end
+
+    M --> QM["⚡ QUICK MODE<br/>φ-Stream Cipher"]
+    M --> FM["🔐 FULL FHE MODE<br/>True Homomorphic"]
+
+    QM --> QM1["φ-Chaotic XOR<br/>2-byte ciphertext"]
+    QM --> QM2["Banach Fixed Point<br/>Noise → 40 bits"]
+    QM --> QM3["48M TPS<br/>4K req/s"]
+
+    FM --> ENG["🔄 6 FHE ENGINES"]
+    ENG --> E1["🟢 SEAL BFV<br/>Ring-LWE"]
+    ENG --> E2["🔵 OpenFHE CKKS<br/>φ-Mirror"]
+    ENG --> E3["🟣 TFHE<br/>Blind Rotate"]
+    ENG --> E4["🟠 HElib<br/>BGV + NTL"]
+    ENG --> E5["🟡 Lattigo<br/>Go FHE"]
+    ENG --> E6["🔴 liboqs<br/>PQC 8 Algs"]
+
+    FM --> SEC["🛡️ SECURITY LAYER"]
+    SEC --> S1["Triple Anti-Matter<br/>Φ+Lyapunov+Schumann"]
+    SEC --> S2["Fractal ZKP<br/>secp256k1 ×7"]
+    SEC --> S3["Supply Chain<br/>SCS Verified"]
+
+    QM1 --> OUT["📦 Client Response"]
+    E1 --> OUT
+    S1 --> OUT
+
+    style API fill:#e94560,stroke:#ff6b8a,stroke-width:2px,color:#fff
+    style QM fill:#0f3460,stroke:#1a8fe3,stroke-width:2px,color:#fff
+    style FM fill:#16213e,stroke:#e94560,stroke-width:2px,color:#fff
+    style ENG fill:#1a1a2e,stroke:#f5c518,stroke-width:2px,color:#fff
+    style SEC fill:#0f3460,stroke:#00ff88,stroke-width:2px,color:#fff
+    style E1 fill:#00cc66,stroke:#00ff88,color:#000
+    style E2 fill:#3366ff,stroke:#668cff,color:#fff
+    style E3 fill:#9933ff,stroke:#bb66ff,color:#fff
+    style E4 fill:#ff6600,stroke:#ff944d,color:#000
+    style E5 fill:#ffcc00,stroke:#ffdd55,color:#000
+    style E6 fill:#ff3333,stroke:#ff6666,color:#fff
+    style S1 fill:#00cc66,stroke:#00ff88,color:#000
+    style S2 fill:#3366ff,stroke:#668cff,color:#fff
+    style S3 fill:#9933ff,stroke:#bb66ff,color:#fff
+    style OUT fill:#e94560,stroke:#ff6b8a,stroke-width:3px,color:#fff
+    style M fill:#f5c518,stroke:#ffe066,stroke-width:3px,color:#000
 ```
+
+**How to read this diagram:**
+- **TOP:** Single `/manifest` endpoint handles all requests
+- **LEFT BRANCH (⚡):** Quick Mode — φ-stream cipher, 48M TPS, 2-byte ciphertexts
+- **RIGHT BRANCH (🔐):** Full FHE Mode — 6 engines with true homomorphic operations
+- **BOTTOM:** All outputs converge at the security layer before returning to client
 
 ##  System Flow
 
