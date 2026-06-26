@@ -12,6 +12,39 @@
 
 ---
 
+## ⚠️ IMPORTANT: Dual-Layer Architecture — Read This First!
+
+B6 HYDRA has **TWO separate encryption layers:**
+
+| | **Quick Mode** (`/manifest` API) | **Full FHE Mode** (`b6_hydra` CLI) |
+|---|---|---|
+| **Technology** | φ-Chaotic Stream Cipher | Microsoft SEAL BFV + OpenFHE CKKS + TFHE + HElib |
+| **Speed** | 48M TPS, 4K req/s | True FHE speed |
+| **Security** | Experimental (φ-irrationality) | **Proven (Ring-LWE, NIST standards)** |
+| **Ciphertext** | 2-16 bytes (hex) | Kilobytes (polynomial rings) |
+| **Homomorphic?** | Decrypt→Compute→Re-encrypt | **True ciphertext-native operations** |
+| **Use Case** | Real-time, high-throughput | **Compliance, sensitive data, regulated industries** |
+
+**🔴 Testing via `/manifest` API? That's QUICK MODE — NOT true FHE!**
+**🟢 True FHE (SEAL/OpenFHE/TFHE/HElib) is in `./build/b6_hydra` — run it to see real homomorphic ops!**
+
+```bash
+# Quick Mode (φ-Stream Cipher) — /manifest API:
+curl -X POST http://localhost:8080/manifest -H "Content-Type: application/json" -d '{"action":"encrypt","value":"42"}'
+# Response: {"ciphertext":"cdf3"} — 2-byte hex stream cipher
+
+# Full FHE Mode (True Homomorphic) — b6_hydra binary:
+./build/b6_hydra
+# Output: Φ-SEAL: noise=45 bits → φ-stable
+#         Values: 42 100 255 1618 314159   MATCH ✅
+#         Φ-OpenFHE ENGINE ACTIVE
+#         Φ-Zama/Φ-TFHE: LIVE
+```
+
+---
+
+---
+
 ##  Complete Test Suite Video
 
 ##  Verified Benchmark Results
