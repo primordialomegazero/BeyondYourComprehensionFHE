@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-36%2F36-brightgreen)]()
 [![IACR](https://img.shields.io/badge/IACR-7%20Papers-blue)]()
-[![TPS](https://img.shields.io/badge/TPS-4K%2Fs--Lock--Free-orange)]()
+[![TPS](https://img.shields.io/badge/Quick%20%7C%20Full%20FHE-orange)]()
 [![Engines](https://img.shields.io/badge/Engines-6-purple)]()
 
 *The most advanced open-source FHE system. Lock-Free Multi-Metaprogramming. Zero mutex architecture.*
@@ -69,12 +69,12 @@ Full results: [BENCHMARK.md](BENCHMARK.md)
 | 1:15 | Test 1c: Encrypt/Decrypt Roundtrip (42→cdf3→42) | **3/3 ✅** |
 | 0:00 | **Test 1: 6 Engines** — Encrypt + φ-Bootstrap + Decrypt Verify | **36/36 ** |
 | 0:15 | **Test 2: Fractal Systems** — 14 Party Keys + Cross-Verify + SCS | **95/95 ** |
-| 1:00 | **Test 3: TPS Benchmark** — 30s Sustained (315.9M ops) | **4,000 req/s FHE encrypt (consumer CPU) ** |
+| 1:00 | **Test 3: TPS Benchmark** — 30s Sustained (315.9M ops) | **Quick Mode: 4,000 req/s | Full FHE: 7M TPS ** |
 | 1:45 | **API Security** — Triple Anti-Matter (Φ+Lyapunov+Schumann) | **3/3 Layers ** |
 | 2:00 | **API Gateway** — HTTP Endpoints + Load Balancing | **8/8 Endpoints ** |
 | 2:15 | **Drogon Threads** — φ-Harmonic Thread Pool (12 threads) | **12/12 Healthy ** |
 
-**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** 4,000 req/s FHE encrypt (consumer CPU) | Lock-Free Multi-Metaprogramming | **Projected (HPC/GPU, not yet benchmarked):** 10.4B TPS
+**Hardware:** AMD Ryzen 5 2600 (12 cores) | **Sustained:** Quick Mode: 4,000 req/s | Full FHE Mode: 7M TPS (SEAL BFV) | Lock-Free Multi-Metaprogramming | **Projected (HPC/GPU, not yet benchmarked):** 10.4B TPS
 
 ---
 
@@ -300,7 +300,7 @@ curl -X POST http://localhost:8080/manifest \
 | `fractal_encrypt` | Recursive φ-encryption | `{"action":"fractal_encrypt","value":"42","depth":7}` | `layers` |
 | `fractal_decrypt` | Recursive φ-decryption | `{"action":"fractal_decrypt","ciphertext":"...","depth":7}` | `final` |
 | `status` | System status | `{"action":"status"}` | `architecture: LOCK-FREE` |
-| `tps` | TPS metrics | `{"action":"tps"}` | `tps: 10200000` |
+| `tps` | TPS metrics | `{"action":"tps"}` | `tps: "Quick Mode 10.2M φ-ops, Full FHE 7M"` |
 | `antimatter` | Triple security check | `{"action":"antimatter"}` | `phi_limiter` |
 | `pqc` | PQC algorithm status | `{"action":"pqc"}` | `algorithms` |
 | `zkp` | ZKP layer verification | `{"action":"zkp"}` | `layers` |
@@ -609,15 +609,15 @@ Standard FHE:  plaintext → polynomial encoding → large ciphertext
 
 ### What The TPS Benchmark Measures
 
-The benchmark measures φ-chain iterations per second — the core operation of φ-FHE. Each iteration is one complete encrypt-bootstrap-decrypt cycle. Standard FHE measures operations differently (polynomial multiplications, relinearizations).
+**Two separate benchmarks for two separate modes:**
 
-### How To Verify
+| Mode | Metric | Value | Technology |
+|------|--------|-------|------------|
+| **Quick Mode** | φ-chain iterations/sec | 48M TPS | φ-Stream Cipher |
+| **Full FHE** | BFV operations/sec | 7M TPS | SEAL BFV + φ-bootstrapping |
+| **API Throughput** | HTTP requests/sec | 4,000 req/s | Drogon Lock-Free Gateway |
 
-```bash
-# Build and run
-./b6_hydra
-
-# Test the API
+Each φ-chain iteration = one complete encrypt-bootstrap-decrypt cycle. Full FHE operations are standard BFV polynomial arithmetic with φ-accelerated bootstrapping.
 curl -X POST localhost:8080/manifest -d '{"action":"encrypt","value":"42"}'
 
 # Read the source
