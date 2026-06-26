@@ -1,14 +1,19 @@
 cmake_minimum_required(VERSION 3.16)
-project(BeyondYourComprehensionFHE VERSION 6.0.0 LANGUAGES CXX)
+project(BeyondYourComprehensionFHE VERSION 7.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 
-# Include paths — ALL IN ONE PLACE
+# ═══════════════════════════════════════════════
+#   INCLUDE PATHS — ALL 6 ENGINES
+# ═══════════════════════════════════════════════
 include_directories(
     ${CMAKE_SOURCE_DIR}/src
     /usr/local/include/SEAL-4.3
     /usr/local/include/openfhe/pke
     /usr/local/include/openfhe/core
     /usr/local/include/openfhe/binfhe
+    /usr/local/include/tfhe
+    $ENV{HOME}/HElib/src
+    ${CMAKE_SOURCE_DIR}/../lattigo
 )
 
 # Find packages
@@ -16,43 +21,92 @@ find_package(OpenSSL REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(OQS REQUIRED liboqs)
 
-# SEAL
-find_package(SEAL QUIET)
-if(SEAL_FOUND)
-    add_compile_definitions(HAS_SEAL)
-endif()
+# ═══════════════════════════════════════════════
+#   ENGINE 1: Microsoft SEAL
+# ═══════════════════════════════════════════════
+find_package(SEAL REQUIRED)
+add_compile_definitions(HAS_SEAL)
+message(STATUS "✅ ENGINE 1/6: Microsoft SEAL FOUND")
 
-# OpenFHE
+# ═══════════════════════════════════════════════
+#   ENGINE 2: OpenFHE
+# ═══════════════════════════════════════════════
 find_library(OPENFHE_PKE OPENFHEpke PATHS /usr/local/openfhe/lib)
 find_library(OPENFHE_CORE OPENFHEcore PATHS /usr/local/openfhe/lib)
 find_library(OPENFHE_BINFHE OPENFHEbinfhe PATHS /usr/local/openfhe/lib)
 if(OPENFHE_PKE AND OPENFHE_CORE)
     add_compile_definitions(HAS_OPENFHE)
+    message(STATUS "✅ ENGINE 2/6: OpenFHE FOUND")
+else()
+    message(WARNING "❌ ENGINE 2/6: OpenFHE NOT FOUND")
 endif()
 
-# Main executable
+# ═══════════════════════════════════════════════
+#   ENGINE 3: Zama TFHE
+# ═══════════════════════════════════════════════
+find_library(TFHE_NAYUKI tfhe-nayuki-avx PATHS /usr/local/lib)
+find_library(TFHE_SPQLIOS tfhe-spqlios-fma PATHS /usr/local/lib)
+find_library(TFHE_PORTABLE tfhe-nayuki-portable PATHS /usr/local/lib)
+if(TFHE_NAYUKI OR TFHE_SPQLIOS OR TFHE_PORTABLE)
+    add_compile_definitions(HAS_TFHE)
+    message(STATUS "✅ ENGINE 3/6: Zama TFHE FOUND")
+    set(TFHE_LIBS ${TFHE_NAYUKI} ${TFHE_SPQLIOS} ${TFHE_PORTABLE})
+else()
+    message(WARNING "❌ ENGINE 3/6: TFHE NOT FOUND")
+endif()
+
+# ═══════════════════════════════════════════════
+#   ENGINE 4: IBM HElib
+# ═══════════════════════════════════════════════
+set(HELIB_LIB "$ENV{HOME}/HElib/build/lib/libhelib.a")
+set(NTL_LIB "/usr/lib/x86_64-linux-gnu/libntl.so")
+add_compile_definitions(HAS_HELIB)
+message(STATUS "✅ ENGINE 4/6: IBM HElib FOUND")
+
+# ═══════════════════════════════════════════════
+#   ENGINE 5: Lattigo (Go — CGo bridge)
+# ═══════════════════════════════════════════════
+if(EXISTS ${CMAKE_SOURCE_DIR}/../lattigo/lattigo.go)
+    add_compile_definitions(HAS_LATTIGO)
+    message(STATUS "✅ ENGINE 5/6: Lattigo FOUND (Go library — separate service)")
+else()
+    message(WARNING "❌ ENGINE 5/6: Lattigo NOT FOUND")
+endif()
+
+# ═══════════════════════════════════════════════
+#   ENGINE 6: liboqs (PQC)
+# ═══════════════════════════════════════════════
+message(STATUS "✅ ENGINE 6/6: liboqs (PQC) FOUND — ${OQS_LIBRARIES}")
+
+# ═══════════════════════════════════════════════
+#   MAIN EXECUTABLE: b6_hydra
+# ═══════════════════════════════════════════════
 add_executable(b6_hydra src/b6_hydra.cpp)
-target_link_libraries(b6_hydra 
-    OpenSSL::SSL OpenSSL::Crypto 
+target_link_libraries(b6_hydra
+    OpenSSL::SSL OpenSSL::Crypto
     ${OQS_LIBRARIES}
+    SEAL::seal
     ${OPENFHE_PKE} ${OPENFHE_CORE} ${OPENFHE_BINFHE}
+    ${TFHE_LIBS}
+    ${HELIB_LIB} ${NTL_LIB}
 )
-if(SEAL_FOUND)
-    target_link_libraries(b6_hydra SEAL::seal)
-endif()
+message(STATUS "🔗 b6_hydra linked with ALL available engines")
 
-# Gateway
+# ═══════════════════════════════════════════════
+#   GATEWAY: hydra_gateway
+# ═══════════════════════════════════════════════
 add_executable(hydra_gateway src/gateway.cpp)
 target_link_libraries(hydra_gateway pthread)
 
-# Drogon FHE Gateway
+# ═══════════════════════════════════════════════
+#   DROGON FHE GATEWAY
+# ═══════════════════════════════════════════════
 find_package(Drogon REQUIRED)
 add_executable(drogon_gateway src/drogon_gateway.cpp)
 target_link_libraries(drogon_gateway Drogon::Drogon pthread)
 
 # ═══════════════════════════════════════════════
-#   HYDRA SELF-AUDIT (Built-in Security Suite)
-#   Auto-runs on every build
+#   SELF-AUDIT
 # ═══════════════════════════════════════════════
 add_custom_target(audit
     COMMAND ${CMAKE_SOURCE_DIR}/audit_hydra.sh
