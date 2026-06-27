@@ -1,4 +1,4 @@
-#  B6 HYDRA v7.0 — Lock-Free + True FHE (SEAL BFV) — Beyond Your Comprehension FHE
+#  B6 HYDRA v7.0 — Three FHE Gateways: Quick + BFV + CKKS
 
 **6-Engine Lock-Free Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security + HTTP API Gateway**
 
@@ -491,7 +491,7 @@ curl -s -X POST http://localhost:8082/fhe -H "Content-Type: application/json" -d
 # Result: "plaintext": "8" ✅
 ```
 
-**✅ VERIFIED: 5 + 3 = 8 via True Homomorphic Addition!**
+**✅ VERIFIED: 5+3=8 (BFV) | 1×10=10, 2×20=40 (BFV Batch) | 3.14159→encrypted→3.14159 (CKKS) | 33M TPS (Quick) | 91K val/s (BFV) | 16K slots (CKKS)**
 
 ##  Quick Start
 
@@ -724,7 +724,7 @@ This is an open-source project. Support is provided on a best-effort basis:
 
 MIT -- Free for personal, academic, and commercial use.
 
-*"Quick: 4K req/s | True FHE: 91K val/s batch | Enc(5)+Enc(3)=Enc(8) | Lock-Free | 6 engines | 8 PQC | 7 ZKP | 320K+ verified."*
+*"Three FHE Gateways: Quick(33M TPS) + BFV(91K val/s, 4096 slots) + CKKS(16K slots, decimals). Lock-Free. 6 engines. 8 PQC. 7 ZKP. 320K+ verified."*
 
 **Stay Curious. PHI-OMEGA-ZERO -- I AM THAT I AM**
 
