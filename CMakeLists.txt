@@ -121,3 +121,9 @@ add_custom_target(audit
 # ═══════════════════════════════════════════════
 add_executable(phiseal_gateway src/phiseal_gateway.cpp)
 target_link_libraries(phiseal_gateway Drogon::Drogon pthread SEAL::seal)
+
+# ═══════════════════════════════════════════════
+#   PhiCKKS HTTP API (CKKS Scheme — 32K Slots)
+# ═══════════════════════════════════════════════
+add_executable(phickks_gateway src/phickks_gateway.cpp)
+target_link_libraries(phickks_gateway Drogon::Drogon pthread SEAL::seal)
