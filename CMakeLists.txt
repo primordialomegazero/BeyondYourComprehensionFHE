@@ -127,3 +127,9 @@ target_link_libraries(phiseal_gateway Drogon::Drogon pthread SEAL::seal)
 # ═══════════════════════════════════════════════
 add_executable(phickks_gateway src/phickks_gateway.cpp)
 target_link_libraries(phickks_gateway Drogon::Drogon pthread SEAL::seal)
+
+# ═══════════════════════════════════════════════
+#   PhiBFV OPTIMIZED (2048° φ-BFV, <10ms target)
+# ═══════════════════════════════════════════════
+add_executable(phiopt_gateway src/phiopt_gateway.cpp)
+target_link_libraries(phiopt_gateway Drogon::Drogon pthread SEAL::seal)
