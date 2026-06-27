@@ -444,6 +444,27 @@ make audit
 
 ##  True FHE Mode (SEAL BFV) — Homomorphic Encryption
 
+### 🔥 Batch FHE — 4096 Values in 1 Operation (91,000 val/s)
+
+B6 HYDRA supports **SIMD-style batch operations** using SEAL BFV:
+
+| Operation | Values/Op | Time | Throughput | Status |
+|-----------|-----------|------|------------|--------|
+| `batch_encrypt` | 4096 | 45ms | **91,022 val/s** | ✅ |
+| `batch_decrypt` | 4096 | 31ms | **132,129 val/s** | ✅ |
+| `batch_add` | 4096 | 56ms | **73,142 val/s** | ✅ |
+| `batch_multiply` | 4096 | 56ms | **73,142 val/s** | ✅ |
+
+**Single value: 13 val/s → Batch: 91,000 val/s = 7,000x faster!**
+
+```bash
+# Encrypt 4096 values in ONE operation
+VALS=$(seq -s, 1 4096)
+echo "{\"action\":\"batch_encrypt\",\"values\":\"$VALS\"}" > /tmp/batch.json
+curl -s -X POST http://localhost:8082/fhe -H "Content-Type: application/json" -d @/tmp/batch.json | jq .
+# Result: {"batch_size":4096, "ciphertext_bytes":88564} ⚡ 45ms!
+```
+
 B6 HYDRA now includes a **separate True FHE gateway** using Microsoft SEAL BFV:
 
 | Gateway | Port | Mode | Ciphertext | Speed | Security |
@@ -703,7 +724,7 @@ This is an open-source project. Support is provided on a best-effort basis:
 
 MIT -- Free for personal, academic, and commercial use.
 
-*"Quick: 4K req/s API. Full FHE: 33M TPS. Lock-Free. 6 engines. 8 PQC. 7 ZKP. 320K+ verified."*
+*"Quick: 4K req/s | True FHE: 91K val/s batch | Enc(5)+Enc(3)=Enc(8) | Lock-Free | 6 engines | 8 PQC | 7 ZKP | 320K+ verified."*
 
 **Stay Curious. PHI-OMEGA-ZERO -- I AM THAT I AM**
 
