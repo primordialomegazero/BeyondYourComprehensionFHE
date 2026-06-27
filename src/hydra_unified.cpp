@@ -1,4 +1,5 @@
 #include "engines/phi_seal.h"
+#include "engines/phi_ckks.h"
 #include "engines/phi_bfv_optimized.h"
 #include "engines/phi_auto_harmonize.h"
 #include <drogon/drogon.h>
@@ -9,6 +10,7 @@ using namespace drogon;
 int main() {
     phi_seal::PhiSEALEngine g_seal;
     phi_seal::PhiBFVOptimized g_opt;
+    phi_seal::PhiCKKS g_ckks;
     
     std::cout << "╔══════════════════════════════════════════════╗" << std::endl;
     std::cout << "║  B6 HYDRA — AUTO-HARMONIZED UNIFIED FHE     ║" << std::endl;
@@ -18,7 +20,7 @@ int main() {
     std::cout << "╚══════════════════════════════════════════════╝" << std::endl;
 
     app()
-        .registerHandler("/manifest", [&g_seal, &g_opt](const HttpRequestPtr& req,
+        .registerHandler("/manifest", [&g_seal, &g_opt, &g_ckks](const HttpRequestPtr& req,
             std::function<void(const HttpResponsePtr&)>&& callback) {
             auto json = req->getJsonObject();
             Json::Value result;
@@ -117,7 +119,7 @@ int main() {
             auto resp = HttpResponse::newHttpJsonResponse(result);
             callback(resp);
         })
-        .registerHandler("/health", [&g_seal, &g_opt](const HttpRequestPtr& req,
+        .registerHandler("/health", [&g_seal, &g_opt, &g_ckks](const HttpRequestPtr& req,
             std::function<void(const HttpResponsePtr&)>&& callback) {
             Json::Value r;
             r["status"] = "LIQUID_AUTO_HARMONIZED";

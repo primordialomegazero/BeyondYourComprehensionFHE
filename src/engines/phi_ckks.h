@@ -9,7 +9,6 @@
 #include <iomanip>
 
 namespace phi_seal {
-    constexpr double PHI = 1.6180339887498948482;
 
 #ifdef HAS_SEAL
     class PhiCKKS {
