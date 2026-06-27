@@ -3,10 +3,9 @@
 #include <sstream>
 using namespace drogon;
 
-// Engine initialized in main()
-
 int main() {
     phi_seal::PhiSEALEngine g_seal;
+    
     std::cout << "╔══════════════════════════════════════════════╗" << std::endl;
     std::cout << "║  PhiSEAL HTTP API — True FHE (SEAL BFV)     ║" << std::endl;
     std::cout << "║  Engine: " << (g_seal.ready ? "ACTIVE" : "INACTIVE") << "                               ║" << std::endl;
@@ -23,7 +22,20 @@ int main() {
                 std::string action = (*json)["action"].asString();
                 result["action"] = action;
                 
-                if(action == "encrypt_decrypt_test" && g_seal.ready) {
+                if(action == "encrypt" && g_seal.ready) {
+                    int64_t value = atoll((*json)["value"].asString().c_str());
+                    std::string ct = g_seal.encrypt_value(value);
+                    result["ciphertext"] = ct;
+                    result["format"] = "seal_bfv_hex";
+                    result["noise"] = g_seal.get_noise();
+                    result["ciphertext_bytes"] = (int)ct.length() / 2;
+                }
+                else if(action == "decrypt" && g_seal.ready) {
+                    std::string ct = (*json)["ciphertext"].asString();
+                    int64_t pt = g_seal.decrypt_value(ct);
+                    result["plaintext"] = std::to_string(pt);
+                }
+                else if(action == "encrypt_decrypt_test" && g_seal.ready) {
                     auto test = g_seal.encrypt_decrypt_test({42, 100, 255, 1618, 314159});
                     result["values"] = test.empty() ? "FAILED" : "MATCH";
                     if(!test.empty()) {
@@ -34,8 +46,28 @@ int main() {
                         }
                         result["data"] = oss.str();
                     }
-                } else if(action == "status") {
+                }
+                else if(action == "add" && g_seal.ready) {
+                    std::string a = (*json)["ciphertext_a"].asString();
+                    std::string b = (*json)["ciphertext_b"].asString();
+                    std::string sum = g_seal.add_ct(a, b);
+                    result["ciphertext"] = sum;
+                    result["ciphertext_bytes"] = (int)sum.length() / 2;
+                    result["homomorphic"] = true;
+                    result["operation"] = "ciphertext + ciphertext = ciphertext";
+                }
+                else if(action == "multiply" && g_seal.ready) {
+                    std::string a = (*json)["ciphertext_a"].asString();
+                    std::string b = (*json)["ciphertext_b"].asString();
+                    std::string prod = g_seal.multiply_ct(a, b);
+                    result["ciphertext"] = prod;
+                    result["ciphertext_bytes"] = (int)prod.length() / 2;
+                    result["homomorphic"] = true;
+                    result["operation"] = "ciphertext * ciphertext = ciphertext";
+                }
+                else if(action == "status") {
                     result["ready"] = g_seal.ready;
+                    result["noise"] = g_seal.ready ? g_seal.get_noise() : 0;
                 }
             }
             
