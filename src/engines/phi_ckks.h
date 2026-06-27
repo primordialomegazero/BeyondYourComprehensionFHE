@@ -36,7 +36,7 @@ namespace phi_seal {
         PhiCKKS() {
             try {
                 seal::EncryptionParameters parms(seal::scheme_type::ckks);
-                size_t poly_modulus_degree = 32768;
+                size_t poly_modulus_degree = 16384;
                 parms.set_poly_modulus_degree(poly_modulus_degree);
                 parms.set_coeff_modulus(seal::CoeffModulus::Create(poly_modulus_degree, {60, 40, 40, 60}));
                 ctx = std::make_shared<seal::SEALContext>(parms);
