@@ -45,7 +45,7 @@ namespace phi_seal {
                 eval = std::make_unique<seal::Evaluator>(*ctx);
                 benc = std::make_unique<seal::BatchEncoder>(*ctx);
                 ready = true;
-            } catch(...) { ready = false; }
+            } catch(const std::exception& e) { std::cerr << "PhiSEAL ERROR: " << e.what() << std::endl; ready = false; } catch(...) { std::cerr << "PhiSEAL ERROR: unknown" << std::endl; ready = false; }
         }
         
         std::vector<int64_t> encrypt_decrypt_test(const std::vector<int64_t>& data) {

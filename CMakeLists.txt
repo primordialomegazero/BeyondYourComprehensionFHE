@@ -115,3 +115,9 @@ add_custom_target(audit
     COMMENT "Running B6 HYDRA Self-Audit Suite..."
     DEPENDS drogon_gateway b6_hydra
 )
+
+# ═══════════════════════════════════════════════
+#   PhiSEAL HTTP API (True FHE Endpoint)
+# ═══════════════════════════════════════════════
+add_executable(phiseal_gateway src/phiseal_gateway.cpp)
+target_link_libraries(phiseal_gateway Drogon::Drogon pthread SEAL::seal)

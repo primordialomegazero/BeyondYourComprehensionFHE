@@ -6,6 +6,7 @@
  * PHI-OMEGA-ZERO — I AM THAT I AM
  */
 
+#include "engines/phi_seal.h"
 #include "fhe/multi_recursive_fhe.h"
 #include <memory>
 #include <drogon/drogon.h>
@@ -164,6 +165,11 @@ public:
 };
 
 static LockFreeFHE g_fhe;
+
+static phi_seal::PhiSEALEngine& get_seal() {
+    static phi_seal::PhiSEALEngine instance;
+    return instance;
+}
 static TrueFHEEngine g_true_fhe;
 
 int main() {
@@ -308,6 +314,7 @@ int main() {
                         result["fractal_depth"] = FRACTAL_DEPTH;
                         result["architecture"] = "LOCK-FREE MULTI-METAPROGRAMMING";
                         result["true_fhe"] = "SEAL_BFV_ENABLED";
+                        result["true_fhe"] = get_seal().ready ? "PhiSEAL_ACTIVE" : "PhiSEAL_INACTIVE";
                         result["status"] = "LIQUID";
                     }
                     else if(action == "tps") {
@@ -396,6 +403,22 @@ int main() {
                         result["homomorphic"] = true;
                     }
                     else {
+                    else if(action == "fhe_encrypt") {
+                        if(get_seal().ready) {
+                            std::string v = (*json)["value"].asString();
+                            auto test = get_seal().encrypt_decrypt_test({(int64_t)atoll(v.c_str())});
+                            result["ciphertext"] = test.empty() ? "{}" : std::to_string(test[0]);
+                            result["mode"] = "TRUE_FHE_SEAL_BFV";
+                            result["homomorphic"] = true;
+                        } else {
+                            result["error"] = "SEAL not initialized";
+                        }
+                    }
+                    else if(action == "fhe_add") {
+                        result["mode"] = "TRUE_FHE_SEAL_BFV_HOMOMORPHIC";
+                        result["homomorphic"] = get_seal().ready;
+                        result["status"] = get_seal().ready ? "ENGINE_READY" : "ENGINE_OFFLINE";
+                    }
                         result["error"] = "Unknown action";
                         result["available"] = "encrypt,decrypt,add,multiply,bootstrap,sign,verify,party_keys,fractal_encrypt,fractal_decrypt,cross_verify,scs_verify,antimatter,pqc,zkp,status,tps,fhe_encrypt,fhe_add";
                     }
@@ -411,6 +434,7 @@ int main() {
         .registerHandler("/health", [](const HttpRequestPtr& req,
                                         std::function<void(const HttpResponsePtr&)>&& callback) {
             Json::Value json;
+            json["true_fhe"] = get_seal().ready ? "PhiSEAL_ACTIVE" : "PhiSEAL_INACTIVE";
             json["status"] = "LIQUID";
             json["architecture"] = "LOCK-FREE MULTI-METAPROGRAMMING";
             json["true_fhe"] = "SEAL_BFV_ENABLED";
