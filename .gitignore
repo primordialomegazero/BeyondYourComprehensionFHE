@@ -138,3 +138,5 @@ build/hydra_gateway
 build/*.log
 build/*.txt
 BeyondYourComprehensionFHE/
+build/phiseal_gateway
+build/test_seal_init
