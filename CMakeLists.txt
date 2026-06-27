@@ -133,3 +133,9 @@ target_link_libraries(phickks_gateway Drogon::Drogon pthread SEAL::seal)
 # ═══════════════════════════════════════════════
 add_executable(phiopt_gateway src/phiopt_gateway.cpp)
 target_link_libraries(phiopt_gateway Drogon::Drogon pthread SEAL::seal)
+
+# ═══════════════════════════════════════════════
+#   HYDRA UNIFIED — Single Gateway (Quick + FHE)
+# ═══════════════════════════════════════════════
+add_executable(hydra_unified src/hydra_unified.cpp)
+target_link_libraries(hydra_unified Drogon::Drogon pthread SEAL::seal)
