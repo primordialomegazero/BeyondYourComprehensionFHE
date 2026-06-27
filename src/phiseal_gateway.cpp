@@ -65,6 +65,36 @@ int main() {
                     result["homomorphic"] = true;
                     result["operation"] = "ciphertext * ciphertext = ciphertext";
                 }
+                else if(action == "batch_encrypt" && g_seal.ready) {
+                    std::string values_str = (*json)["values"].asString();
+                    std::vector<int64_t> vals;
+                    std::stringstream vss(values_str);
+                    std::string token;
+                    while(std::getline(vss, token, ',')) vals.push_back(atoll(token.c_str()));
+                    std::string ct = g_seal.encrypt_batch(vals);
+                    result["ciphertext"] = ct;
+                    result["ciphertext_bytes"] = (int)ct.length() / 2;
+                    result["batch_size"] = (int)vals.size();
+                }
+                else if(action == "batch_add" && g_seal.ready) {
+                    std::string a = (*json)["ciphertext_a"].asString();
+                    std::string b = (*json)["ciphertext_b"].asString();
+                    std::string sum = g_seal.add_batch(a, b);
+                    result["ciphertext"] = sum;
+                    result["ciphertext_bytes"] = (int)sum.length() / 2;
+                    result["homomorphic"] = true;
+                }
+                else if(action == "batch_decrypt" && g_seal.ready) {
+                    std::string ct = (*json)["ciphertext"].asString();
+                    auto vals = g_seal.decrypt_batch(ct);
+                    std::ostringstream oss;
+                    for(size_t i = 0; i < vals.size(); i++) {
+                        if(i > 0) oss << ",";
+                        oss << vals[i];
+                    }
+                    result["plaintext"] = oss.str();
+                    result["batch_size"] = (int)vals.size();
+                }
                 else if(action == "status") {
                     result["ready"] = g_seal.ready;
                     result["noise"] = g_seal.ready ? g_seal.get_noise() : 0;

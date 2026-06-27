@@ -124,6 +124,39 @@ namespace phi_seal {
             std::stringstream ss; ca.save(ss);
             return to_hex(ss.str());
         }
+
+        std::string encrypt_batch(const std::vector<int64_t>& values) {
+            if (!ready) return "";
+            seal::Plaintext pt;
+            benc->encode(values, pt);
+            seal::Ciphertext ct;
+            enc->encrypt(pt, ct);
+            std::stringstream ss; ct.save(ss);
+            return to_hex(ss.str());
+        }
+
+        std::vector<int64_t> decrypt_batch(const std::string& hex_ct) {
+            if (!ready) return {};
+            std::string raw = from_hex(hex_ct);
+            std::stringstream ss(raw);
+            seal::Ciphertext ct;
+            ct.load(*ctx, ss);
+            seal::Plaintext pt;
+            dec->decrypt(ct, pt);
+            std::vector<int64_t> out;
+            benc->decode(pt, out);
+            return out;
+        }
+
+        std::string add_batch(const std::string& hex_a, const std::string& hex_b) {
+            if (!ready) return "";
+            seal::Ciphertext ca, cb;
+            std::stringstream sa(from_hex(hex_a)), sb(from_hex(hex_b));
+            ca.load(*ctx, sa); cb.load(*ctx, sb);
+            eval->add_inplace(ca, cb);
+            std::stringstream ss; ca.save(ss);
+            return to_hex(ss.str());
+        }
         int get_noise() {
             if (!ready) return 0;
             seal::Plaintext pt; benc->encode(std::vector<int64_t>{0}, pt);
