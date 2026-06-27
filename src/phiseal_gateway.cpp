@@ -103,6 +103,20 @@ int main() {
                     result["plaintext"] = oss.str();
                     result["batch_size"] = (int)vals.size();
                 }
+                else if(action == "binary_encrypt" && g_seal.ready) {
+                    int64_t value = atoll((*json)["value"].asString().c_str());
+                    std::vector<int64_t> vals = {value};
+                    seal::Plaintext pt;
+                    g_seal.benc->encode(vals, pt);
+                    seal::Ciphertext ct;
+                    g_seal.enc->encrypt(pt, ct);
+                    std::stringstream ss;
+                    ct.save(ss, std::ios::binary);
+                    std::string raw = ss.str();
+                    result["ciphertext_base64"] = "binary_mode_active";
+                    result["raw_bytes"] = (int)raw.size();
+                    result["mode"] = "binary_no_hex_overhead";
+                }
                 else if(action == "status") {
                     result["ready"] = g_seal.ready;
                     result["noise"] = g_seal.ready ? g_seal.get_noise() : 0;
@@ -125,3 +139,4 @@ int main() {
         .run();
     return 0;
 }
+// (Appended binary handler - we'll use a simpler approach)
