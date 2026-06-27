@@ -76,6 +76,14 @@ int main() {
                     result["ciphertext_bytes"] = (int)ct.length() / 2;
                     result["batch_size"] = (int)vals.size();
                 }
+                else if(action == "batch_multiply" && g_seal.ready) {
+                    std::string a = (*json)["ciphertext_a"].asString();
+                    std::string b = (*json)["ciphertext_b"].asString();
+                    std::string prod = g_seal.multiply_batch(a, b);
+                    result["ciphertext"] = prod;
+                    result["ciphertext_bytes"] = (int)prod.length() / 2;
+                    result["homomorphic"] = true;
+                }
                 else if(action == "batch_add" && g_seal.ready) {
                     std::string a = (*json)["ciphertext_a"].asString();
                     std::string b = (*json)["ciphertext_b"].asString();

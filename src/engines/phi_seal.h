@@ -148,6 +148,15 @@ namespace phi_seal {
             return out;
         }
 
+        std::string multiply_batch(const std::string& hex_a, const std::string& hex_b) {
+            if (!ready) return "";
+            seal::Ciphertext ca, cb;
+            std::stringstream sa(from_hex(hex_a)), sb(from_hex(hex_b));
+            ca.load(*ctx, sa); cb.load(*ctx, sb);
+            eval->multiply_inplace(ca, cb);
+            std::stringstream ss; ca.save(ss);
+            return to_hex(ss.str());
+        }
         std::string add_batch(const std::string& hex_a, const std::string& hex_b) {
             if (!ready) return "";
             seal::Ciphertext ca, cb;
