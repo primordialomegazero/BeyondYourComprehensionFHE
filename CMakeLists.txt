@@ -138,4 +138,4 @@ target_link_libraries(phiopt_gateway Drogon::Drogon pthread SEAL::seal)
 #   HYDRA UNIFIED — Single Gateway (Quick + FHE)
 # ═══════════════════════════════════════════════
 add_executable(hydra_unified src/hydra_unified.cpp)
-target_link_libraries(hydra_unified Drogon::Drogon pthread SEAL::seal)
+target_link_libraries(hydra_unified Drogon::Drogon pthread SEAL::seal ${TFHE_LIBS} ${OPENFHE_PKE} ${OPENFHE_CORE} ${OPENFHE_BINFHE})
