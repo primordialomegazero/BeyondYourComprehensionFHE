@@ -1,4 +1,4 @@
-#  B6 HYDRA v7.0 — Three FHE Gateways: Quick + BFV + CKKS
+#  B6 HYDRA v9.0 — 4-Engine Unified FHE + Batch + CKKS
 
 **6-Engine Lock-Free Harmonization + Multi-Recursive Fractal FHE + ZKP + PQC + Supply Chain Security + HTTP API Gateway**
 
