@@ -206,7 +206,7 @@ void handle(int fd, State& s, std::atomic<uint64_t>& reqs,
     }
     else if(action == "supply_chain") {
         std::vector<std::string> names = {"kernel","init","fhe_core","api"};
-        auto chain = s.scs.build_chain(names, "v1.0");
+        auto chain = s.scs.build_chain(names);
         resp = ok(O({
             J("action", "supply_chain"), I("artifacts", (int64_t)chain.size()),
             B("all_verified", s.scs.verify_chain(chain)),
