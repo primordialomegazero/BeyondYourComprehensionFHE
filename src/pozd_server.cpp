@@ -197,7 +197,7 @@ void handle(int fd, State& s, std::atomic<uint64_t>& reqs,
         }));
     }
     else if(action == "zkp") {
-        auto proof = s.zkp.prove(42, 7);
+        auto proof = s.zkp.prove(42, 7, 0);
         resp = ok(O({
             J("action", "zkp"), I("secret", 42), I("challenge", 7),
             I("response", s.fhe.decrypt(proof.response)),
@@ -206,7 +206,7 @@ void handle(int fd, State& s, std::atomic<uint64_t>& reqs,
     }
     else if(action == "supply_chain") {
         std::vector<std::string> names = {"kernel","init","fhe_core","api"};
-        auto chain = s.scs.generate_chain(names);
+        auto chain = s.scs.build_chain(names, "v1.0");
         resp = ok(O({
             J("action", "supply_chain"), I("artifacts", (int64_t)chain.size()),
             B("all_verified", s.scs.verify_chain(chain)),
