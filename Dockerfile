@@ -1,24 +1,18 @@
-# Stage 1: Build liboqs (PQC)
-FROM gcc:13-bookworm AS oqs
-RUN apt-get update && apt-get install -y cmake ninja-build git && rm -rf /var/lib/apt/lists/*
-RUN git clone --depth 1 --branch main https://github.com/open-quantum-safe/liboqs.git /tmp/liboqs \
-    && cd /tmp/liboqs && mkdir build && cd build \
-    && cmake -GNinja -DCMAKE_BUILD_TYPE=Release .. \
-    && ninja && ninja install
+FROM ubuntu:22.04 AS builder
+RUN apt-get update && apt-get install -y g++ libc6-dev && rm -rf /var/lib/apt/lists/*
+WORKDIR /build
+COPY src/pozd_fhe.h .
+COPY src/fractal.h .
+COPY src/antimatter.h .
+COPY src/pqc.h .
+COPY src/zkp.h .
+COPY src/supply_chain.h .
+COPY src/pozd_server.cpp .
+RUN g++ -std=c++17 -O3 -march=native -pthread -static -o pozd_server pozd_server.cpp -lm
 
-# Stage 2: Build pozDF-FHE
-FROM gcc:13-bookworm AS builder
-COPY --from=oqs /usr/local/lib/liboqs.a /usr/local/lib/
-COPY --from=oqs /usr/local/include/oqs /usr/local/include/oqs
+FROM ubuntu:22.04
 WORKDIR /app
-COPY src/ .
-RUN g++ -std=c++17 -O3 -march=native -pthread -static \
-    -o pozd_server pozd_server.cpp -lm \
-    /usr/local/lib/liboqs.a -lssl -lcrypto
-
-# Stage 3: Minimal runtime
-FROM debian:bookworm-slim
-RUN apt-get update && apt-get install -y libssl3 && rm -rf /var/lib/apt/lists/*
-COPY --from=builder /app/pozd_server .
+COPY --from=builder /build/pozd_server .
 EXPOSE 8093
-CMD ["./pozd_server"]
+HEALTHCHECK --interval=10s --timeout=3s CMD /app/pozd_server --health-check || exit 1
+ENTRYPOINT ["./pozd_server"]

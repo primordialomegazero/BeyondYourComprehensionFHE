@@ -1,6 +1,6 @@
 {
   "name": "@primordialomegazero/pozd-fhe-client",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "pozDF-FHE Client Library — Override Architect Edition. Zero-Knowledge Fully Homomorphic Encryption with Anti-Matter Shield, 8 PQC, Fractal ZKP, Supply Chain Security.",
   "main": "index.js",
   "types": "index.d.ts",
