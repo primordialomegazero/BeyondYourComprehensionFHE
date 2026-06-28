@@ -1,0 +1,39 @@
+{
+  "name": "@primordialomegazero/pozd-fhe-client",
+  "version": "7.0.0",
+  "description": "pozDF-FHE Client Library — Override Architect Edition. Zero-Knowledge Fully Homomorphic Encryption with Anti-Matter Shield, 8 PQC, Fractal ZKP, Supply Chain Security.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "fhe",
+    "fully-homomorphic-encryption",
+    "zero-knowledge",
+    "banach-contraction",
+    "golden-ratio",
+    "anti-matter",
+    "post-quantum",
+    "pqc",
+    "zero-knowledge-proof",
+    "supply-chain",
+    "top-down",
+    "override-architect"
+  ],
+  "author": "Dan Joseph M. Fernandez / Primordial Omega Zero",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git"
+  },
+  "homepage": "https://github.com/primordialomegazero/BeyondYourComprehensionFHE#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
