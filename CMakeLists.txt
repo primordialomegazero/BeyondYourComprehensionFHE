@@ -139,3 +139,20 @@ target_link_libraries(phiopt_gateway Drogon::Drogon pthread SEAL::seal)
 # ═══════════════════════════════════════════════
 add_executable(hydra_unified src/hydra_unified.cpp)
 target_link_libraries(hydra_unified Drogon::Drogon pthread SEAL::seal ${TFHE_LIBS} ${OPENFHE_PKE} ${OPENFHE_CORE} ${OPENFHE_BINFHE})
+
+# ═══════════════════════════════════════════
+# HYDRA ENTERPRISE — Φ-FHE Full System
+# ═══════════════════════════════════════════
+# HYDRA ENTERPRISE — STANDALONE (No Drogon)
+add_executable(hydra_enterprise src/hydra_enterprise_standalone.cpp)
+target_link_libraries(hydra_enterprise PRIVATE pthread)
+target_include_directories(hydra_enterprise PRIVATE ${CMAKE_SOURCE_DIR}/src/engines)
+
+# DROGON Φ-FHE GATEWAY
+add_executable(drogon_phi_fhe src/drogon_phi_fhe.cpp)
+target_link_libraries(drogon_phi_fhe PRIVATE drogon pthread)
+target_include_directories(drogon_phi_fhe PRIVATE ${CMAKE_SOURCE_DIR}/src/engines)
+
+# LOCK-FREE Φ-FHE DROGON
+add_executable(hydra_lockfree src/hydra_lockfree.cpp)
+target_link_libraries(hydra_lockfree PRIVATE drogon pthread)
