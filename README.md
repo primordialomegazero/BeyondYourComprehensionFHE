@@ -1,199 +1,294 @@
-# pozDF-FHE — Override Architect Edition
-
+# Beyond Your Comprehension FHE — 9 Demon Engines
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![C++17](https://img.shields.io/badge/C++-17-blue.svg)](https://en.cppreference.com/w/cpp/17)
-[![Docker](https://img.shields.io/badge/Docker-ghcr.io-blue.svg)](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/pkgs/container/pozd-fhe)
-[![NPM](https://img.shields.io/badge/npm-pozd--fhe--client-red.svg)](https://www.npmjs.com/package/@primordialomegazero/pozd-fhe-client)
-[![TPS](https://img.shields.io/badge/TPS-15M-brightgreen.svg)]()
-[![Dark Abyss](https://img.shields.io/badge/Dark%20Abyss-25%2F25-success.svg)]()
-[![Dependencies](https://img.shields.io/badge/dependencies-OpenSSL%20only-orange.svg)]()
+[![C++17](https://img.shields.io/badge/C++-17-blue.svg)]()
+[![Docker](https://img.shields.io/badge/Docker-ghcr.io-blue.svg)](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/pkgs/container/byc-fhe)
+[![NPM](https://img.shields.io/badge/npm-v22.3.0-red.svg)](https://www.npmjs.com/package/@primordialomegazero/byc-fhe)
+[![TPS](https://img.shields.io/badge/TPS-35K-brightgreen.svg)]()
+[![Engines](https://img.shields.io/badge/Engines-9-purple.svg)]()
+[![1M Ops](https://img.shields.io/badge/1M%20Ops-Validated-success.svg)]()
 
 ```
-============================================================
-  OVERRIDE ARCHITECT EDITION — DEEP TRIPLE ANTI-MATTER
-  Self-Referential FHE | 7D Lyapunov | Geomagnetic Schumann
-  15M+ TPS | 40-Byte Ciphertext | No Bootstrapping
-  Dark Abyss: 25/25 — DEEP PROOF
-============================================================
++----------------------------------------------------------+
+|  BEYOND YOUR COMPREHENSION FHE                           |
+|  FORTRESS v22.3.0 — 9 DEMON ENGINES                      |
+|  35K TPS | 3 Engines/Op | Triple Rashomon Architecture   |
+|  Uniform Distribution | Avalanche Hash Selection         |
+|  "Catch Me If You Can!"                                  |
++----------------------------------------------------------+
 ```
-
-> **Note:** This repository is evolving too fast for formal paper submission. Will not submit to IACR until the architecture stabilizes. The code speaks for itself.
 
 ---
 
 ## Table of Contents
-
-1. [What Is pozDF-FHE?](#what-is-pozdf-fhe)
+1. [What Is BYC-FHE?](#what-is-byc-fhe)
 2. [Quick Start](#quick-start)
-3. [API Reference](#api-reference)
-4. [Enterprise Features](#enterprise-features)
+3. [The 9 Demon Engines](#the-9-demon-engines)
+4. [Mathematical Breakthrough](#mathematical-breakthrough)
 5. [Architecture](#architecture)
 6. [Benchmarks](#benchmarks)
-7. [Related Projects](#related-projects)
-8. [Author](#author)
-9. [License](#license)
+7. [Source Tree](#source-tree)
+8. [Security](#security)
+9. [Related Projects](#related-projects)
+10. [Author](#author)
 
 ---
 
-## What Is pozDF-FHE?
+## What Is BYC-FHE?
 
-**pozDF-FHE** (Primordial Omega Zero Dan Fernandez) is the Override Architect Edition — a top-down Fully Homomorphic Encryption system with **Deep Triple Anti-Matter shielding.**
-
-### v8.0.0 — Deep Triple Anti-Matter + Self-Referential FHE
+BYC-FHE is an **experimental multi-engine chaotic harmonization framework** extending the Fibonacci-Lyapunov FHE paradigm. Unlike FEmmg-FHE which uses a single chaotic engine, BYC deploys **9 independent chaos engines** and selects **3 engines per encryption** via avalanche hash — a Triple Rashomon architecture.
 
 | Feature | Description |
 |---------|-------------|
-| 🛡️ **Deep Triple Anti-Matter** | Phi-Spiral + 7D Lyapunov CML + Geomagnetic Schumann (7.83 Hz) |
-| 🔒 **Zero-Knowledge Server** | Server never possesses client keys |
-| 🧮 **Self-Referential FHE** | Zero nonce, fully blind multiply — ported from FEmmg-FHE v12 |
-| ⚡ **15M+ TPS** | Real encrypt-add-decrypt cycle |
-| 📦 **40-Byte Ciphertext** | Orders of magnitude smaller than traditional FHE |
-| ∞ **No Bootstrapping** | Self-stabilizing noise via Banach contraction |
-| 🔐 **8 PQC Algorithms** | ML-KEM, FrodoKEM, BIKE, ML-DSA, Falcon, MAYO |
-| 📐 **Fractal ZKP** | Recursive zero-knowledge proofs |
-| 🔗 **Supply Chain** | Multi-recursive verification |
-| 💣 **Bombardier** | 3,000 concurrent, 99,000 ops, <1 second |
+| **9 Demon Engines** | Golden, Riemann, Fibonacci, Godel, Cantor, Turing, Heisenberg, Nietzsche, Schrodinger |
+| **3 Engines per Op** | Random selection via avalanche hash, uniform distribution ~11.1% each |
+| **35K TPS** | 1,000,000 ops validated in 28.7 seconds |
+| **Harmonization** | Cross-operation coupling via previous output mixing |
+| **Deterministic** | Same nonce = same output (reproducible) |
+| **Chaotic** | Different nonce = massive divergence (10^25 to 10^41) |
+
+> **Note:** This is an **experimental research artifact** — not a production system. For production FHE with 1 TRILLION ops validated, use [FEmmg-FHE](https://github.com/primordialomegazero/femmgFHE).
 
 ---
 
 ## Quick Start
 
-### Docker
+| Method | Command |
+|--------|---------|
+| **Docker** | `docker pull ghcr.io/primordialomegazero/byc-fhe:v22.3.0` |
+| | `docker run ghcr.io/primordialomegazero/byc-fhe:v22.3.0` |
+| **NPM** | `npm install @primordialomegazero/byc-fhe@22.3.0` |
+| **Source** | `git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git` |
+| | `cd BeyondYourComprehensionFHE && make` |
 
-```bash
-docker pull ghcr.io/primordialomegazero/pozd-fhe:v8.0
-docker run -d -p 8093:8093 ghcr.io/primordialomegazero/pozd-fhe:v8.0
-curl http://localhost:8093/health
-```
-
-### Build from Source
-
-```bash
-git clone https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git
-cd BeyondYourComprehensionFHE
-g++ -std=c++17 -O3 -march=native -pthread -o pozd_server src/pozd_server.cpp -lm
-./pozd_server
-```
-
-### NPM Package
-
-```bash
-npm install @primordialomegazero/pozd-fhe-client@8.0.0
-```
-
-```javascript
-const { PozDFClient } = require('@primordialomegazero/pozd-fhe-client');
-const client = new PozDFClient();
-const enc15 = client.encrypt(15);
-const enc27 = client.encrypt(27);
-// Send to server at port 8093...
-```
+`make` builds and runs the 1M ops benchmark automatically.
 
 ---
 
-## API Reference
+## The 9 Demon Engines
 
-Single endpoint: `POST /`. Health: `GET /health`.
-
-| Action | Description |
-|--------|-------------|
-| `register` | Register client (client_id only, NO keys) |
-| `fhe_add` | Self-referential homomorphic addition |
-| `fhe_multiply` | Fully blind homomorphic multiplication |
-| `antimatter` | Deep Triple Anti-Matter shield status |
-| `pqc` | 8 Post-Quantum algorithms status |
-| `zkp` | Fractal Zero-Knowledge Proof |
-| `supply_chain` | Multi-Recursive Supply Chain verification |
-| `bombardier` | 3K concurrent, 99K ops stress test |
-| `tps` | Real FHE throughput benchmark |
-| `health` | Full system status + all metrics |
+| # | Engine | Chaos Type | Source |
+|---|--------|------------|--------|
+| 1 | **Golden Chaos** | φ contraction + Fibonacci attractors | `src/chaos/golden_chaos.h` |
+| 2 | **Riemann Chaos** | Riemann-Siegel Z(t) zeros | `src/chaos/riemann_chaos.h` |
+| 3 | **Fibonacci Duel** | Triple Rashomon (3-pass Banach) | `src/chaos/fibonacci_duel.h` |
+| 4 | **Godel Incompleteness** | Self-referential paradox | `src/chaos/godel_incompleteness.h` |
+| 5 | **Cantor Diagonal** | Uncountable infinity | `src/chaos/cantor_diagonal.h` |
+| 6 | **Turing Halting** | Undecidability | `src/chaos/turing_halting.h` |
+| 7 | **Heisenberg Uncertainty** | Observer effect | `src/chaos/heisenberg_uncertainty.h` |
+| 8 | **Nietzsche Eternal Return** | Infinite recurrence | `src/chaos/nietzsche_eternal.h` |
+| 9 | **Schrodinger's Cat** | Superposition collapse | `src/chaos/schrodinger_cat.h` |
 
 ---
 
-## Enterprise Features
+## Mathematical Breakthrough
 
-### 🛡️ Deep Triple Anti-Matter Shield v2.0
+### Demon Harmonizer — Triple Rashomon Architecture
 
-| Layer | Name | Description |
-|-------|------|-------------|
-| **1** | **Phi-Spiral Harmonic** | Request timing must follow φ-spiral intervals. Burst detection via φ² divergence. |
-| **2** | **7D Lyapunov CML** | Coupled map lattice with φ-scaled interactions. Multi-dimensional chaos detection. |
-| **3** | **Geomagnetic Schumann** | 7.83 Hz Earth frequency verification. 4-harmonic synthesis with Q-factor modeling. |
+```
++----------------------------------------------------------+
+|  "The ideas belong to history.                            |
+|   The implementation belongs to me." — φΩ0                |
++----------------------------------------------------------+
+```
 
-### 🧮 Self-Referential FHE
+**Theorem (Multi-Engine Chaos Amplification).** For 3 randomly selected engines:
+\[
+\text{Enc}(m) = E_{i_2}(E_{i_1}(E_{i_0}(m + h \cdot 10^{-3})))
+\]
+where \( h \) is the previous operation's output. Total Lyapunov exponent:
+\[
+\Lambda_{\text{total}} = \sum_{k=0}^{2} \lambda_{i_k} \geq 3 \cdot \lambda_{\min} > 0
+\]
 
-Ported from FEmmg-FHE v12. Zero nonce for computation, fully blind multiplication formula. The server never evaluates `(e-λ)/φ`.
+```
++----------------------------------------------------------+
+|  "φ is the most irrational number.                        |
+|   It resists approximation by rationals more than any     |
+|   other." — Number Theory, since Euclid                   |
++----------------------------------------------------------+
+```
 
-### 🔐 Post-Quantum (8 Algorithms)
+**Golden Chaos Engine:** \( x' = x \cdot \varphi^{-1} + F_n \cdot (1 - \varphi^{-1}) + \lambda \cdot \sin(x \cdot \varphi) \)
 
-ML-KEM-1024, ML-KEM-512, FrodoKEM-1344, BIKE-L5, ML-DSA-87, Falcon-1024, MAYO-5, cross-rsdp-256
+```
++----------------------------------------------------------+
+|  "All non-trivial zeros of the zeta function               |
+|   have real part 1/2." — Bernhard Riemann, 1859            |
++----------------------------------------------------------+
+```
+
+**Riemann Chaos Engine:** \( x' = x \cdot \varphi^{-1} + A \cdot (1 - \varphi^{-1}) + \lambda \cdot Z(t) \cdot 10^{-4} \)
+
+```
++----------------------------------------------------------+
+|  "This statement is false." — The Liar Paradox,            |
+|  embodied by Godel, 1931                                   |
++----------------------------------------------------------+
+```
+
+**Godel Engine:** Self-referential modulo — the output contradicts its own input.
+
+```
++----------------------------------------------------------+
+|  "I see it, but I don't believe it."                       |
+|  — Georg Cantor (on uncountable infinity)                  |
++----------------------------------------------------------+
+```
+
+**Cantor Engine:** Diagonalization ensures the output cannot be exhausted by any enumeration.
+
+```
++----------------------------------------------------------+
+|  "We can only see a short distance ahead,                   |
+|   but we can see plenty there that needs to be done."       |
+|  — Alan Turing, 1950                                       |
++----------------------------------------------------------+
+```
+
+**Turing Engine:** Halting oracle simulation — provably unpredictable in the general case.
+
+```
++----------------------------------------------------------+
+|  "What we observe is not nature itself,                     |
+|   but nature exposed to our method of questioning."         |
+|  — Werner Heisenberg, 1958                                 |
++----------------------------------------------------------+
+```
+
+**Heisenberg Engine:** Observer effect — measuring changes the measurement.
+
+```
++----------------------------------------------------------+
+|  "If you gaze long into an abyss,                           |
+|   the abyss also gazes into you."                           |
+|  — Friedrich Nietzsche, 1886                               |
++----------------------------------------------------------+
+```
+
+**Nietzsche Engine:** Eternal recurrence without exact repetition.
+
+```
++----------------------------------------------------------+
+|  "The ciphertext is simultaneously encrypted AND decrypted |
+|   until you observe it." — Schrodinger's Cat               |
++----------------------------------------------------------+
+```
+
+**Schrodinger Engine:** Superposition \( = \frac{\varphi^{|\sin(\theta)| \cdot 5} + \varphi^{-|\cos(\theta)| \cdot 5}}{2} \). Observation collapses the wave function.
 
 ---
 
 ## Architecture
 
 ```
-src/
-├── pozd_fhe.h         — Core FHE engine
-├── antimatter.h       — Deep Triple Anti-Matter Shield v2.0
-├── fractal.h          — Multi-Recursive Fractal
-├── pqc.h              — 8 NIST Post-Quantum Algorithms
-├── zkp.h              — Fractal Zero-Knowledge Proofs
-├── supply_chain.h     — Multi-Recursive Supply Chain
-└── pozd_server.cpp    — v8.0 Enterprise API server
++----------------------------------------------------------+
+|  DEMON HARMONIZER FLOW                                    |
++----------------------------------------------------------+
+|                                                          |
+|  Input (plaintext)                                       |
+|       |                                                  |
+|       v                                                  |
+|  +----------+    +----------+    +----------+            |
+|  | Engine A | -> | Engine B | -> | Engine C | -> Output  |
+|  +----------+    +----------+    +----------+            |
+|       ^               ^               ^                  |
+|       |               |               |                  |
+|  Avalanche Hash Selection (9 engines, 3 chosen)          |
+|  Harmonization: h = last_output × 10^-3                  |
+|                                                          |
++----------------------------------------------------------+
 ```
+
+**Selection:** \( i_k = H(\text{nonce} \oplus \text{op\_id} \oplus (k \cdot \varphi \cdot 2^{64})) \bmod 9 \)
 
 ---
 
 ## Benchmarks
 
-**Hardware:** AMD Ryzen 5 2600 (2018 consumer-grade), Ubuntu 22.04 LTS
+**Hardware:** AMD Ryzen 5 2600 (2018 consumer-grade), Ubuntu 22.04 WSL2, GCC 11.4, -O3
 
-| Metric | Value |
-|--------|-------|
-| Throughput | **15,036,469 ops/sec** |
-| Ciphertext | 40 bytes |
-| Bombardier | 3,000 concurrent, 99,000 ops, 872ms |
-| Anti-Matter | Deep Triple v2 (Phi-Spiral + 7D CML + Schumann) |
-| PQC | 8/8 ALIVE |
-| Dark Abyss | **25/25 — DEEP PROOF** |
+| Test | Operations | Time | TPS | Distribution |
+|------|-----------|------|-----|-------------|
+| **1M Benchmark** | 1,000,000 | 28.7s | 34,831 | ~11.1% each engine |
+| **10K TPS Test** | 10,000 | 0.08s | 120,885 | 1 engine/op |
+| **Engine Track** | 3,000,000 calls | — | — | 10.8%–11.4% |
 
-### Dark Abyss Gauntlet (25/25)
+| Engine | Calls (3M total) | Percentage |
+|--------|------------------|------------|
+| Cantor | 3,247 | 10.82% |
+| Fibonacci Duel | 3,416 | 11.39% |
+| Golden Chaos | 3,416 | 11.39% |
+| Godel | 3,332 | 11.11% |
+| Heisenberg | 3,396 | 11.32% |
+| Nietzsche | 3,288 | 10.96% |
+| Riemann Chaos | 3,356 | 11.19% |
+| Schrodinger | 3,274 | 10.91% |
+| Turing | 3,275 | 10.92% |
 
-| Section | Score |
-|---------|-------|
-| Deep Anti-Matter | 5/5 |
-| Self-Referential FHE | 5/5 |
-| Attack Resistance | 5/5 |
-| Enterprise Features | 5/5 |
-| Health Metrics | 5/5 |
+---
+
+## Source Tree
+
+```
+BeyondYourComprehensionFHE/
+├── src/
+│   ├── core/         (2 files)   — Banach Engine + FHE Ops
+│   ├── chaos/        (11 files)  — 9 Demon Engines + Harmonizer + 8 Gates
+│   ├── math/         (1 file)    — φ Constants + Riemann Zeros
+│   └── security/     (1 file)    — CSPRNG Hardening (from FEmmg)
+├── tests/            (9 files)   — Benchmarks + Individual Engine Tests
+├── proofs/           (3 files)   — Formal Proofs + Engine Theorems
+├── docs/             (3 files)   — Complete Docs + Security Audit
+├── logs/             (2 files)   — 1M + 10M Benchmark Results
+├── paper/            (1 file)    — Academic Paper (not submitted)
+├── npm-package/                  — NPM Distribution v22.3.0
+├── Dockerfile                    — Docker auto-benchmark
+├── Makefile                      — make = 1M benchmark
+└── README.md
+```
+
+---
+
+## Security
+
+BYC-FHE inherits core CSPRNG hardening from FEmmg (256-bit nonce, `/dev/urandom`, fail-closed) but is **not production-ready**. Key differences:
+
+| Feature | BYC-FHE | FEmmg-FHE |
+|---------|---------|-----------|
+| **CSPRNG Hardening** | Yes | Yes |
+| **Rate Limiter** | No | Yes (Triple Anti-Matter) |
+| **JWT / Sessions** | No | Yes |
+| **Formal ZKP** | No | Yes (Fractal Schnorr) |
+| **Production Validated** | No (1M ops) | Yes (1 TRILLION ops) |
+| **IACR Submitted** | No (not planned) | Yes (pending review) |
+
+For full details, see [SECURITY_AUDIT.md](docs/SECURITY_AUDIT.md).
 
 ---
 
 ## Related Projects
 
-- [**FEmmg-FHE**](https://github.com/primordialomegazero/femmgFHE) — Lyapunov-Proof FHE, 30/30 Dark Abyss, IACR submitted
-- [**Φ-SIG**](https://github.com/primordialomegazero/phi-sig) — Golden Ratio Keyless Signatures
-- [**Spiralkem-FHE**](https://github.com/primordialomegazero/Spiralkem-fhe) — Pure-φ Post-Quantum KEM
+| Project | Description |
+|---------|-------------|
+| [FEmmg-FHE](https://github.com/primordialomegazero/femmgFHE) | Production FHE — 1T ops validated, IACR submitted |
+| [Spiralkem-FHE](https://github.com/primordialomegazero/Spiralkem-fhe) | Pure-φ Post-Quantum KEM |
+| [Φ-SIG](https://github.com/primordialomegazero/phi-sig) | Golden Ratio Keyless Signatures |
 
 ---
 
 ## Author
 
-**Dan Fernandez / Primordial Omega Zero**
+Dan Joseph M. Fernandez / Primordial Omega Zero
 
-[![GitHub](https://img.shields.io/badge/GitHub-primordialomegazero-black.svg)](https://github.com/primordialomegazero)
-[![NPM](https://img.shields.io/badge/NPM-primordialomegazero-red.svg)](https://www.npmjs.com/~primordialomegazero)
-[![Email](https://img.shields.io/badge/Email-devilswithin13%40gmail.com-blue.svg)](mailto:devilswithin13@gmail.com)
+[GitHub](https://github.com/primordialomegazero) · [NPM](https://www.npmjs.com/~primordialomegazero) · [Email](mailto:devilswithin13@gmail.com)
 
----
+MIT License
 
-## License
-
-MIT — Free for personal, academic, and commercial use.
-
----
-
-*"This repository is evolving too fast for formal paper submission. The code speaks for itself."*
-
-*ΦΩ0 — I AM THAT I AM*
+```
++----------------------------------------------------------+
+|  This one's not FEmmg-FHE that was built for humanity.    |
+|  This one's beyond your comprehension, but that's ok.     |
+|                                                          |
+|  φΩ0                                                     |
++----------------------------------------------------------+
+```
