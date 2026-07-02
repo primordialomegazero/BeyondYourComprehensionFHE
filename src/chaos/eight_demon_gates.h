@@ -131,7 +131,7 @@ public:
                     x = riemann_.observe(x, op_id).first;
                     break;
                 case FIBONACCI_DUEL:
-                    x = triple_.observe(x, op_id).first;
+                    x = ban_.observe(x, op_id).first;  // Fibonacci Duel (Banach)
                     break;
                 case GODEL_INCOMPLETENESS:
                     x = godel_.observe(x, op_id);
