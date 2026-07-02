@@ -121,7 +121,7 @@ $$\text{collapse}(x) = \begin{cases} \phi^{|\sin(\theta)| \cdot 3} & \text{if } 
 
 ## Master Theorem: 8 Demon Gates (Randomized)
 
-When 8 engines are randomly selected (3 per encryption via Fisher-Yates shuffle):
+When 9 engines are randomly selected (3 per encryption via Fisher-Yates shuffle):
 
 $$|E_{\text{8DG}}(42) - E_{\text{8DG}}(43)| \geq 883,000,000,000,000 \quad \text{(883 TRILLION)}$$
 
