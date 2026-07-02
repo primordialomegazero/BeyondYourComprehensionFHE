@@ -29,6 +29,8 @@
 #include "nietzsche_eternal.h"
 #include "fibonacci_duel.h"
 #include "schrodinger_cat.h"
+#include "fibonacci_duel.h"
+#include "schrodinger_cat.h"
 #include <array>
 #include <cstdint>
 #include <algorithm>
@@ -83,12 +85,13 @@ private:
     // Individual engines
     golden_chaos::GoldenChaosEngine golden_;
     riemann_chaos::RiemannChaosEngine riemann_;
-    // triple_rashomon removed — using 8 gates
+    fibonacci_duel::FibonacciDuelEngine fibonacci_;
     godel_incompleteness::GodelEngine godel_;
     cantor_diagonal::CantorEngine cantor_;
     turing_halting::TuringEngine turing_;
     heisenberg_uncertainty::HeisenbergEngine heisenberg_;
     nietzsche_eternal::NietzscheEngine nietzsche_;
+    schrodinger_cat::SchrodingerEngine schrodinger_;
     
     bool maximum_mode_ = false;  // false = standard (4/8), true = ALL 8
     
