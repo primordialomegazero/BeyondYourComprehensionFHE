@@ -27,6 +27,8 @@
 #include "turing_halting.h"
 #include "heisenberg_uncertainty.h"
 #include "nietzsche_eternal.h"
+#include "fibonacci_duel.h"
+#include "schrodinger_cat.h"
 #include <array>
 #include <cstdint>
 #include <algorithm>
@@ -131,7 +133,7 @@ public:
                     x = riemann_.observe(x, op_id).first;
                     break;
                 case FIBONACCI_DUEL:
-                    x = ban_.observe(x, op_id).first;  // Fibonacci Duel (Banach)
+                    x = fibonacci_.observe(x, op_id).first;  // Fibonacci Duel
                     break;
                 case GODEL_INCOMPLETENESS:
                     x = godel_.observe(x, op_id);
