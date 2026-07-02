@@ -19,6 +19,7 @@
 #pragma once
 #include <cmath>
 #include <cstdint>
+#include "fast_math.h"
 
 namespace nietzsche_eternal {
 
@@ -50,7 +51,7 @@ public:
         
         // Step 1: ETERNAL OSCILLATION — sin(θ·π)
         // This pattern WILL repeat. The demon guarantees it.
-        double eternal = std::sin(theta * M_PI + nonce * PHI_INV);
+        double eternal = fast_math::fast_sin(theta * M_PI + nonce * PHI_INV);
         
         // Step 2: ETERNAL RETURN detection
         // If this value is similar to the last, the demon is watching!
@@ -68,11 +69,11 @@ public:
         // Step 4: Complex rotation — e^(i·π·θ)
         // cos component (real) + sin component (imaginary magnitude)
         double cos_comp = std::cos(theta * M_PI);
-        double sin_comp = std::sin(theta * M_PI + nonce * PHI_INV);
+        double sin_comp = fast_math::fast_sin(theta * M_PI + nonce * PHI_INV);
         double complex_mag = std::sqrt(cos_comp * cos_comp + sin_comp * sin_comp);
         
         // Step 5: Eternal amplification — φ^(|eternal|)
-        double eternal_amp = std::pow(PHI, std::abs(eternal) * 10.0);
+        double eternal_amp = fast_math::fast_phi_pow( std::abs(eternal) * 10.0);
         
         // Step 6: Value-based scaling
         double value_scale = std::abs(value) * PHI * 10000.0 + 1.0;

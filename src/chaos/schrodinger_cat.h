@@ -16,6 +16,7 @@
 #pragma once
 #include <cmath>
 #include <cstdint>
+#include "fast_math.h"
 
 namespace schrodinger_cat {
 
@@ -46,11 +47,11 @@ public:
         double theta = x_mod * M_PI / PHI;
 
         // SUPERPOSITION: sin AND cos simultaneously!
-        double sin_val = std::sin(theta + nonce * PHI_INV);
+        double sin_val = fast_math::fast_sin(theta + nonce * PHI_INV);
         double cos_val = std::cos(theta + nonce * PHI_INV);
         
         // The cat is BOTH alive and dead
-        double alive = std::pow(PHI, std::abs(sin_val) * 5.0);
+        double alive = fast_math::fast_phi_pow( std::abs(sin_val) * 5.0);
         double dead = std::pow(PHI_INV, std::abs(cos_val) * 5.0);
         
         // Superposition amplitude
@@ -62,7 +63,7 @@ public:
         
         // Collapse amplification — the act of measuring changes the result
         double collapse = cat_alive_ ? 
-            std::pow(PHI, std::abs(sin_val) * 3.0) : 
+            fast_math::fast_phi_pow( std::abs(sin_val) * 3.0) : 
             std::pow(PHI_INV, std::abs(cos_val) * 3.0);
         
         // Value-based scaling

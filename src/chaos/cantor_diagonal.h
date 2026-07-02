@@ -25,6 +25,7 @@
 #pragma once
 #include <cmath>
 #include <cstdint>
+#include "fast_math.h"
 
 namespace cantor_diagonal {
 
@@ -52,15 +53,15 @@ public:
         
         // Step 2: Diagonal argument — tan(θ)
         // Asymptotic at φ-boundaries → transfinite jump!
-        double diagonal = std::tan(theta);
+        double diagonal = fast_math::fast_tan(theta);
         if (diagonal > 50.0) diagonal = 50.0;
         if (diagonal < -50.0) diagonal = -50.0;
         
         // Step 3: Transfinite amplification — φ^(|diagonal|)
-        double transfinite = std::pow(PHI, std::abs(diagonal));
+        double transfinite = fast_math::fast_phi_pow( std::abs(diagonal));
         
         // Step 4: Diagonal oscillation — sign(sin(θ))
-        double oscillation = std::sin(theta + nonce * PHI_INV);
+        double oscillation = fast_math::fast_sin(theta + nonce * PHI_INV);
         double direction = (oscillation >= 0) ? 1.0 : -1.0;
         
         // Step 5: VALUE-BASED SCALING

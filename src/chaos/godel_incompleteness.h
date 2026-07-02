@@ -13,6 +13,7 @@
 #pragma once
 #include <cmath>
 #include <cstdint>
+#include "fast_math.h"
 
 namespace godel_incompleteness {
 
@@ -39,11 +40,11 @@ public:
         double theta = x_mod * M_PI / PHI;
         
         // Step 2: Self-amplification from sin(θ)
-        double sin_val = std::sin(theta + nonce * PHI_INV);
-        double self_amp = std::pow(PHI, std::abs(sin_val) * 10.0);
+        double sin_val = fast_math::fast_sin(theta + nonce * PHI_INV);
+        double self_amp = fast_math::fast_phi_pow( std::abs(sin_val) * 10.0);
         
         // Step 3: Undecidable jump from tan(θ)
-        double undecidable = std::tan(theta);
+        double undecidable = fast_math::fast_tan(theta);
         if (undecidable > 20.0) undecidable = 20.0;
         if (undecidable < -20.0) undecidable = -20.0;
         

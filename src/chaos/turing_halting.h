@@ -22,6 +22,7 @@
 #pragma once
 #include <cmath>
 #include <cstdint>
+#include "fast_math.h"
 
 namespace turing_halting {
 
@@ -49,7 +50,7 @@ public:
         
         // Step 2: Halting oscillation — sin(x·ln(x+1))
         // Will this converge (near 0) or diverge (near ±1)?
-        double halting = std::sin(theta * std::log(theta + 1.0) + nonce * PHI_INV);
+        double halting = fast_math::fast_sin(theta * std::log(theta + 1.0) + nonce * PHI_INV);
         
         // Step 3: Halting oracle H(x, nonce)
         // If sin > 0 → "program halts" → normal amplification
@@ -57,7 +58,7 @@ public:
         double halted = (halting > 0) ? 1.0 : PHI_SQ;  // Non-halting = φ² amplification!
         
         // Step 4: Exponential amplification for non-halting
-        double self_amp = std::pow(PHI, std::abs(halting) * 10.0);
+        double self_amp = fast_math::fast_phi_pow( std::abs(halting) * 10.0);
         
         // Step 5: Value-based scaling
         double value_scale = std::abs(value) * PHI * 10000.0 + 1.0;

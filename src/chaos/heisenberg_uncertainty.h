@@ -17,6 +17,7 @@
 #pragma once
 #include <cmath>
 #include <cstdint>
+#include "fast_math.h"
 
 namespace heisenberg_uncertainty {
 
@@ -45,15 +46,15 @@ public:
         
         // Step 1: POSITION measurement
         // "Where is the plaintext?"
-        double position = std::sin(theta + nonce * PHI_INV);
-        double pos_amplitude = std::pow(PHI, std::abs(position) * 10.0);
+        double position = fast_math::fast_sin(theta + nonce * PHI_INV);
+        double pos_amplitude = fast_math::fast_phi_pow( std::abs(position) * 10.0);
         
         // Step 2: MOMENTUM measurement (complementary!)
         // "How fast is the plaintext changing?"
         // Slightly shifted theta = complementary observable
         double momentum_theta = theta + HBAR * 0.01;  // Shift by φ/2 * 0.01
         double momentum = std::cos(momentum_theta + nonce * PHI_INV * 2.0);
-        double mom_amplitude = std::pow(PHI, std::abs(momentum) * 10.0);
+        double mom_amplitude = fast_math::fast_phi_pow( std::abs(momentum) * 10.0);
         
         // Step 3: UNCERTAINTY PRINCIPLE
         // Δx · Δp ≥ φ/2
