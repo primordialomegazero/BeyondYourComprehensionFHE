@@ -180,60 +180,26 @@ where \( h \) is the previous operation's output. Total Lyapunov exponent:
 
 ## Architecture
 
-### Demon Harmonizer — Triple Rashomon Flow
+| Component | Detail |
+|-----------|--------|
+| **Engine Selection** | Avalanche hash: \( i_k = H(\text{nonce} \oplus \text{op\_id} \oplus (k \cdot \varphi \cdot 2^{64})) \bmod 9 \) |
+| **Triple Rashomon** | 3 engines per op, sequential application: \( \text{Enc}(m) = E_{i_2}(E_{i_1}(E_{i_0}(m))) \) |
+| **Harmonization** | Cross-op coupling: \( h = \text{last\_output} \times 10^{-3} \) |
+| **9 Available Engines** | Golden, Riemann, Fibonacci Duel, Godel, Cantor, Turing, Heisenberg, Nietzsche, Schrodinger |
+| **Determinism** | Same nonce → Same output (fully reproducible) |
+| **Chaos Amplification** | Different nonce → \( 10^{25} \) to \( 10^{41} \) divergence |
 
 ```mermaid
-graph TD
-    subgraph Input["Input Layer"]
-        A[Plaintext m] --> B[Harmonization: h = last_output × 10^-3]
-        B --> C[Avalanche Hash Engine Selection]
-    end
-
-    subgraph Engines["3 Random Engines (from 9)"]
-        C --> D[Engine i₀: 7 Chaos Layers]
-        D --> E[Engine i₁: 7 Chaos Layers]
-        E --> F[Engine i₂: 7 Chaos Layers]
-    end
-
-    subgraph Output["Output Layer"]
-        F --> G[Ciphertext ct]
-        G --> H[Next Operation Harmonization]
-    end
-
-    H -.-> B
-
-    style Input fill:#1a1a2e,stroke:#e94560,color:#fff
-    style Engines fill:#0f3460,stroke:#00ff88,color:#fff
-    style Output fill:#16213e,stroke:#ffd700,color:#fff
+graph LR
+    A[Input] --> B[Hash Select 3/9]
+    B --> C[Engine Chain]
+    C --> D[Output]
+    D -.->|harmonize| A
+    style A fill:#1a1a2e,stroke:#e94560,color:#fff
+    style B fill:#0f3460,stroke:#00ff88,color:#fff
+    style C fill:#0f3460,stroke:#00ff88,color:#fff
+    style D fill:#16213e,stroke:#ffd700,color:#fff
 ```
-
-### Security System Flow
-
-```mermaid
-graph TD
-    subgraph Selection["Engine Selection"]
-        A[256-bit Nonce] --> B[Avalanche Hash]
-        B --> C[9 Engines Available]
-        C --> D[3 Selected per Op]
-    end
-
-    subgraph Execution["Triple Rashomon Execution"]
-        D --> E[Engine A: Chaos Injection]
-        E --> F[Engine B: Cross-Coupling]
-        F --> G[Engine C: Final Amplification]
-    end
-
-    subgraph Verification["Deterministic Verification"]
-        G --> H[Same Nonce = Same Output]
-        H --> I[Different Nonce = 10^25 Divergence]
-    end
-
-    style Selection fill:#1a1a2e,stroke:#e94560,color:#fff
-    style Execution fill:#0f3460,stroke:#00ff88,color:#fff
-    style Verification fill:#16213e,stroke:#ffd700,color:#fff
-```
-
-**Engine Selection Formula:** \( i_k = H(\text{nonce} \oplus \text{op\_id} \oplus (k \cdot \varphi \cdot 2^{64})) \bmod 9 \)
 
 ---
 
@@ -312,17 +278,14 @@ For full details, see [SECURITY_AUDIT.md](docs/SECURITY_AUDIT.md).
 
 ## Author
 
-Dan Joseph M. Fernandez / Primordial Omega Zero
+| Field | Detail |
+|-------|--------|
+| **Name** | Dan Joseph M. Fernandez / Primordial Omega Zero |
+| **GitHub** | [primordialomegazero/BeyondYourComprehensionFHE](https://github.com/primordialomegazero/BeyondYourComprehensionFHE) |
+| **NPM** | [@primordialomegazero/byc-fhe](https://www.npmjs.com/package/@primordialomegazero/byc-fhe) |
+| **Docker** | [ghcr.io/primordialomegazero/byc-fhe](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/pkgs/container/byc-fhe) |
+| **License** | MIT |
 
-[GitHub](https://github.com/primordialomegazero) · [NPM](https://www.npmjs.com/~primordialomegazero) · [Email](mailto:devilswithin13@gmail.com)
+> *"The ideas belong to history. The implementation belongs to me."*
 
-MIT License
-
-```
-+----------------------------------------------------------+
-|  This one's not FEmmg-FHE that was built for humanity.    |
-|  This one's beyond your comprehension, but that's ok.     |
-|                                                          |
-|  φΩ0                                                     |
-+----------------------------------------------------------+
-```
+> *"This one's not FEmmg-FHE that was built for humanity. This one's beyond your comprehension, but that's ok."* — φΩ0
