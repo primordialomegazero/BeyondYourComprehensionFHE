@@ -180,26 +180,60 @@ where \( h \) is the previous operation's output. Total Lyapunov exponent:
 
 ## Architecture
 
-```
-+----------------------------------------------------------+
-|  DEMON HARMONIZER FLOW                                    |
-+----------------------------------------------------------+
-|                                                          |
-|  Input (plaintext)                                       |
-|       |                                                  |
-|       v                                                  |
-|  +----------+    +----------+    +----------+            |
-|  | Engine A | -> | Engine B | -> | Engine C | -> Output  |
-|  +----------+    +----------+    +----------+            |
-|       ^               ^               ^                  |
-|       |               |               |                  |
-|  Avalanche Hash Selection (9 engines, 3 chosen)          |
-|  Harmonization: h = last_output × 10^-3                  |
-|                                                          |
-+----------------------------------------------------------+
+### Demon Harmonizer — Triple Rashomon Flow
+
+```mermaid
+graph TD
+    subgraph Input["Input Layer"]
+        A[Plaintext m] --> B[Harmonization: h = last_output × 10^-3]
+        B --> C[Avalanche Hash Engine Selection]
+    end
+
+    subgraph Engines["3 Random Engines (from 9)"]
+        C --> D[Engine i₀: 7 Chaos Layers]
+        D --> E[Engine i₁: 7 Chaos Layers]
+        E --> F[Engine i₂: 7 Chaos Layers]
+    end
+
+    subgraph Output["Output Layer"]
+        F --> G[Ciphertext ct]
+        G --> H[Next Operation Harmonization]
+    end
+
+    H -.-> B
+
+    style Input fill:#1a1a2e,stroke:#e94560,color:#fff
+    style Engines fill:#0f3460,stroke:#00ff88,color:#fff
+    style Output fill:#16213e,stroke:#ffd700,color:#fff
 ```
 
-**Selection:** \( i_k = H(\text{nonce} \oplus \text{op\_id} \oplus (k \cdot \varphi \cdot 2^{64})) \bmod 9 \)
+### Security System Flow
+
+```mermaid
+graph TD
+    subgraph Selection["Engine Selection"]
+        A[256-bit Nonce] --> B[Avalanche Hash]
+        B --> C[9 Engines Available]
+        C --> D[3 Selected per Op]
+    end
+
+    subgraph Execution["Triple Rashomon Execution"]
+        D --> E[Engine A: Chaos Injection]
+        E --> F[Engine B: Cross-Coupling]
+        F --> G[Engine C: Final Amplification]
+    end
+
+    subgraph Verification["Deterministic Verification"]
+        G --> H[Same Nonce = Same Output]
+        H --> I[Different Nonce = 10^25 Divergence]
+    end
+
+    style Selection fill:#1a1a2e,stroke:#e94560,color:#fff
+    style Execution fill:#0f3460,stroke:#00ff88,color:#fff
+    style Verification fill:#16213e,stroke:#ffd700,color:#fff
+```
+
+**Engine Selection Formula:** \( i_k = H(\text{nonce} \oplus \text{op\_id} \oplus (k \cdot \varphi \cdot 2^{64})) \bmod 9 \)
 
 ---
 
