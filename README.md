@@ -32,6 +32,56 @@
 
 BeyondYourComprehensionFHE is the **maximum-security chaos engine** behind FEmmg-FHE. While FEmmg uses 3 engines for production-grade performance, this repository contains **all 9 engines** — the complete arsenal of mathematical chaos.
 
+### System Flow
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'primaryColor': '#D4A017', 'primaryTextColor': '#000000', 'primaryBorderColor': '#D4A017', 'lineColor': '#D4A017', 'secondaryColor': '#2E0854', 'tertiaryColor': '#1a1a2e', 'background': '#0d1117', 'mainBkg': '#0d1117', 'nodeBorder': '#D4A017', 'clusterBkg': '#0d1117', 'clusterBorder': '#4B0082', 'titleColor': '#D4A017', 'edgeLabelBackground':'#0d1117', 'nodeTextColor': '#000000'}}}%%
+graph TB
+    subgraph INPUT["PLAINTEXT"]
+        M["Message m"]
+    end
+
+    subgraph SHUFFLE["FISHER-YATES SHUFFLE"]
+        M --> SHUF["Shuffle 9 Engines<br/>84 Combinations<br/>Nonce-based Seed"]
+    end
+
+    subgraph SELECTION["RANDOM SELECTION"]
+        SHUF --> ENG1["Engine 1<br/>(random)"]
+        SHUF --> ENG2["Engine 2<br/>(random)"]
+        SHUF --> ENG3["Engine 3<br/>(random)"]
+    end
+
+    subgraph ENGINES["9 CHAOS ENGINES"]
+        ENG1 --> CHAOS1["Fibonacci / Riemann / Banach<br/>Gödel / Cantor / Turing<br/>Heisenberg / Nietzsche / Schrödinger"]
+        ENG2 --> CHAOS1
+        ENG3 --> CHAOS1
+    end
+
+    subgraph OUTPUT["CIPHERTEXT"]
+        CHAOS1 --> CT["883 TRILLION Avalanche<br/>Quantum-Resistant<br/>Catch Me If You Can"]
+    end
+
+    subgraph ABANGERS["ABANGERS (Standby)"]
+        SHUF -.-> AB1["Engine 4"]
+        SHUF -.-> AB2["Engine 5"]
+        SHUF -.-> AB3["Engine 6"]
+        SHUF -.-> AB4["Engine 7"]
+        SHUF -.-> AB5["Engine 8"]
+        SHUF -.-> AB6["Engine 9"]
+    end
+
+    style INPUT fill:#1a1a2e,stroke:#D4A017,stroke-width:2px,color:#D4A017
+    style SHUFFLE fill:#1a1a2e,stroke:#D4A017,stroke-width:2px,color:#D4A017
+    style SELECTION fill:#1a1a2e,stroke:#4B0082,stroke-width:2px,color:#D4A017
+    style ENGINES fill:#1a1a2e,stroke:#D4A017,stroke-width:2px,color:#D4A017
+    style OUTPUT fill:#1a1a2e,stroke:#D4A017,stroke-width:2px,color:#D4A017
+    style ABANGERS fill:#1a1a2e,stroke:#4B0082,stroke-width:2px,color:#888888
+    style M fill:#2E0854,stroke:#D4A017,stroke-width:2px,color:#000000
+    style CT fill:#2E0854,stroke:#D4A017,stroke-width:2px,color:#000000
+    style SHUF fill:#D4A017,stroke:#D4A017,stroke-width:2px,color:#000000
+    style CHAOS1 fill:#D4A017,stroke:#D4A017,stroke-width:2px,color:#000000
+```
+
 ### How It Works
 
 | Feature | Description |
