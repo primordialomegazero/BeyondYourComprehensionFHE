@@ -9,7 +9,7 @@
 ╔══════════════════════════════════════════════════════════════╗
 ║  BEYOND YOUR COMPREHENSION FHE                               ║
 ║  9 Gates — Catch Me If You Can                               ║
-║  9 Engines × Randomized Selection = Infinite Chaos            ║
+║  9 Engines × Randomized Selection = 84 Combinations            ║
 ║  883 TRILLION Avalanche │ Quantum-Resistant                  ║
 ║  φΩ0 — I AM THAT I AM                                        ║
 ╚══════════════════════════════════════════════════════════════╝
@@ -37,7 +37,7 @@ BeyondYourComprehensionFHE is the **maximum-security chaos engine** behind FEmmg
 | Feature | Description |
 |---------|-------------|
 | **9 Engines** | Fibonacci, Riemann, Banach, Gödel, Cantor, Turing, Heisenberg, Nietzsche, Schrödinger |
-| **Randomized Selection** | 3 engines per encryption, Fisher-Yates shuffle, 56 possible combinations |
+| **Randomized Selection** | 3 engines per encryption, Fisher-Yates shuffle, 84 possible combinations (9 choose 3) |
 | **Dual Mode** | Standard (1 engine, 142K TPS) + Maximum (3 engines, 883T avalanche) |
 | **Quantum Resistance** | Chaos-based — no known quantum speedup for chaotic trajectory prediction |
 
@@ -147,11 +147,11 @@ collapse(x) = φ^(3·|sin(θ)|) if sin(θ) ≥ 0 else φ^(-3·|cos(θ)|)
 
 ## Master Theorem
 
-When 8 engines are randomly selected (3 per encryption via Fisher-Yates shuffle):
+When 9 engines are randomly selected (3 per encryption via Fisher-Yates shuffle):
 
 $$|E_{\text{8DG}}(42) - E_{\text{8DG}}(43)| \geq 883,000,000,000,000 \quad \text{(883 TRILLION)}$$
 
-**56 possible combinations per encryption. Unpredictable. Quantum-resistant. Catch me if you can.**
+**84 possible combinations (9 choose 3) per encryption. Unpredictable. Quantum-resistant. Catch me if you can.**
 
 > 📐 **Complete proofs:** [proofs/COMPLETE_THEOREMS.md](proofs/COMPLETE_THEOREMS.md)
 
@@ -204,10 +204,8 @@ BeyondYourComprehensionFHE/
 | **GitHub** | [primordialomegazero/BeyondYourComprehensionFHE](https://github.com/primordialomegazero/BeyondYourComprehensionFHE) |
 | **License** | MIT |
 
-> *"These are not just engines. These are the mathematical fingerprints of philosophers who dared to question reality itself. I just weaponized them."* — φΩ0
-
 ---
 
 *This one's not FEmmg-FHE. This one's beyond your comprehension, but that's ok.*
 
-**φΩ0 — I AM THAT I AM**
+**φΩ0**
