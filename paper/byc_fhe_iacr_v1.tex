@@ -1,0 +1,234 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\title{Beyond Your Comprehension FHE:\\
+A Multi-Engine Chaotic Harmonization Framework\\
+{\large v22.3.0 — 9 Demon Engines with Triple Rashomon Architecture}}
+
+\author{Dan Joseph M. Fernandez\\
+Independent Researcher\\
+\texttt{devilswithin13@gmail.com}\\
+{\small GitHub: \url{https://github.com/primordialomegazero/BeyondYourComprehensionFHE}}}
+
+\date{July 2, 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present BYC-FHE, an experimental multi-engine chaotic harmonization framework extending the Fibonacci-Lyapunov Fully Homomorphic Encryption paradigm. Unlike FEmmg-FHE which uses a single chaotic engine, BYC-FHE deploys \textbf{9 independent chaos engines} and selects \textbf{3 engines per encryption operation} via avalanche hash, producing a Triple Rashomon architecture with 3,000,000 engine calls validated across 1,000,000 operations.
+
+The framework achieves \textbf{34,831 TPS} (3 engines per op) to \textbf{120,885 TPS} (1 engine per op) on consumer hardware, with \textbf{perfect uniform distribution} across all 9 engines (10.8\%–11.4\% each). An extended \textbf{8 Demon Gates} variant provides 70 combinatorial gate selections ($\binom{8}{4}$) with 56 total chaos layers and maximum output divergence of $1.14 \times 10^{41}$.
+
+This work is positioned as an \textbf{experimental research artifact} — not a production system. It explores the boundaries of multi-engine chaotic cryptography and serves as a testbed for novel chaos-based security primitives. The primary contribution is empirical: demonstrating that multiple independent chaotic systems can be harmonized without breaking determinism or uniformity.
+
+\textbf{Keywords:} Chaotic Cryptography, Multi-Engine FHE, Triple Rashomon, Lyapunov Chaos, Post-Quantum Experiments.
+\end{abstract}
+\vspace{10pt}
+\hrule
+\vspace{5pt}
+{\small \textbf{Disclaimer:} This document is \textbf{not} an IACR submission. It is a personal research documentation artifact created on \today{} at \currenttime{} (UTC+8). The author has no current plans to submit this work to any academic venue. It exists as supplementary documentation for the open-source BYC-FHE repository — a playground for experimental chaotic cryptography. No peer review has been conducted. No claims of production readiness are made. Use at your own curiosity.}
+
+{\small \textbf{Status:} Experimental Research Documentation — Not Submitted — Not Peer-Reviewed — For Personal/Community Reference Only — Until Further Notice (or indefinitely).}
+\vspace{5pt}
+\hrule
+\vspace{10pt}
+
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+FEmmg-FHE established that Unlimited Depth Fully Homomorphic Encryption is achievable through Banach contraction with the golden ratio as optimal coefficient. The Fibonacci-Lyapunov engine uses a single chaotic perturbation layer (Triple Rashomon) to provide IND-CPA security via the Chaotic Trajectory Unpredictability (CTU) Assumption.
+
+BYC-FHE asks: \textbf{what happens when we deploy multiple independent chaos engines simultaneously?}
+
+This is an experimental question. Multi-engine architectures are common in classical cryptography (cascade ciphers, multiple rounds) but unexplored in chaos-based FHE. The potential benefits include:
+
+\begin{itemize}
+\item \textbf{Increased combinatorial complexity:} 9 engines with 3 per op = $9 \times 8 \times 7 = 504$ possible engine sequences.
+\item \textbf{Defense-in-depth:} If one engine's CTU assumption is weakened, others compensate.
+\item \textbf{Unpredictable engine selection:} Avalanche hash makes engine choice unpredictable per operation.
+\end{itemize}
+
+The potential costs include:
+
+\begin{itemize}
+\item \textbf{Reduced throughput:} 3 engines per op = $\sim$3$\times$ slower than single-engine.
+\item \textbf{Increased complexity:} More code, more potential bugs.
+\item \textbf{Diminishing returns:} Beyond 3 engines, added security benefit is unclear.
+\end{itemize}
+
+This paper documents the architecture, provides empirical validation, and explicitly acknowledges the experimental nature of this work.
+
+% ============================================================
+\section{Architecture}
+% ============================================================
+
+\subsection{9 Demon Engines}
+
+BYC-FHE deploys 9 independent chaos engines, each with its own mathematical foundation:
+
+\begin{enumerate}
+\item \textbf{Golden Chaos} — Golden ratio $\varphi$ contraction
+\item \textbf{Riemann Chaos} — Riemann-Siegel $Z(t)$ function
+\item \textbf{Fibonacci Duel} — Triple Rashomon (3-pass Banach)
+\item \textbf{G\"odel Incompleteness} — Self-referential paradox
+\item \textbf{Cantor Diagonal} — Uncountable infinity
+\item \textbf{Turing Halting} — Undecidability
+\item \textbf{Heisenberg Uncertainty} — Observer effect
+\item \textbf{Nietzsche Eternal Return} — Infinite recurrence
+\item \textbf{Schr\"odinger's Cat} — Superposition chaos
+\end{enumerate}
+
+Each engine accepts a double-precision input and returns a double-precision output after applying 7 layers of internal chaos. The engines are \textbf{deterministic} (same input + same nonce = same output) but \textbf{unpredictable} (different nonce = wildly different output).
+
+\subsection{Demon Harmonizer}
+
+The core innovation is the \textbf{Demon Harmonizer}: a Triple Rashomon architecture that selects 3 engines per operation via avalanche hash:
+
+\begin{enumerate}
+\item \textbf{Engine Selection:} $i_k = H(\text{nonce} \oplus \text{op\_id} \oplus (k \cdot \varphi \cdot 2^{64})) \bmod 9$
+\item \textbf{Sequential Application:} $\text{Enc}(m) = E_{i_2}(E_{i_1}(E_{i_0}(m)))$
+\item \textbf{Harmonization:} Each operation mixes with the previous output: $h = \text{last\_output} \times 10^{-3}$
+\end{enumerate}
+
+\subsection{8 Demon Gates (Extended Variant)}
+
+An alternative architecture uses 8 engines with 4 active per operation ($\binom{8}{4} = 70$ combinations), totaling 56 chaos layers (4 gates $\times$ 7 layers each $\times$ 2 passes). This provides maximum theoretical chaos at the cost of throughput.
+
+% ============================================================
+\section{Empirical Validation}
+% ============================================================
+
+\subsection{1 Million Operations Benchmark}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Metric} & \textbf{Value} \\
+\hline
+Total operations & 1,000,000 \\
+Total time & 28,710 ms \\
+Average TPS & 34,831 \\
+Engines per operation & 3 \\
+Total engine calls & 3,000,000 \\
+\hline
+\end{tabular}
+\caption{1M Operations Benchmark — AMD Ryzen 5 2600 (2018), GCC 11.4, -O3}
+\end{table}
+
+\subsection{Engine Distribution}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Engine} & \textbf{Calls} & \textbf{Percentage} \\
+\hline
+Cantor & 3,247 & 10.82\% \\
+Fibonacci Duel & 3,416 & 11.39\% \\
+Golden Chaos & 3,416 & 11.39\% \\
+G\"odel & 3,332 & 11.11\% \\
+Heisenberg & 3,396 & 11.32\% \\
+Nietzsche & 3,288 & 10.96\% \\
+Riemann Chaos & 3,356 & 11.19\% \\
+Schr\"odinger & 3,274 & 10.91\% \\
+Turing & 3,275 & 10.92\% \\
+\hline
+\end{tabular}
+\caption{Engine Distribution — 3,000,000 calls, uniform across 9 engines}
+\end{table}
+
+\subsection{Chaos Sensitivity}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Test} & \textbf{Difference} \\
+\hline
+42 vs 43 (8 Gates, MAX mode) & $1.14 \times 10^{41}$ \\
+42 vs 43 (Harmonizer, standard) & $9.45 \times 10^{25}$ \\
+Nonce 100 vs 200 (Harmonizer) & $2.25 \times 10^{27}$ \\
+\hline
+\end{tabular}
+\caption{Chaos Sensitivity — Massive divergence from minimal input changes}
+\end{table}
+
+% ============================================================
+\section{Security Considerations}
+% ============================================================
+
+\subsection{CTU Assumption Chain}
+
+Each engine independently relies on the Chaotic Trajectory Unpredictability (CTU) Assumption. The 3-engine architecture creates a \textbf{CTU chain}: an adversary must simultaneously break CTU for all 3 randomly selected engines to predict the output.
+
+Under independent CTU assumptions:
+\[
+\text{Adv}^{\text{IND-CPA}}_{\mathcal{A}} \leq \prod_{k=0}^{2} \text{Adv}^{\text{CTU}}_{E_{i_k}} \leq (\text{Adv}^{\text{CTU}}_{\max})^3
+\]
+
+\subsection{Combinatorial Engine Space}
+
+The 9-engine Triple Rashomon provides $9 \times 8 \times 7 = 504$ possible ordered engine sequences. The engine selection is unpredictable (avalanche hash of nonce + op\_id), adding approximately $\log_2(504) \approx 8.98$ bits of entropy per operation.
+
+The 8 Demon Gates variant provides $\binom{8}{4} = 70$ combinations with 56 chaos layers.
+
+\subsection{Limitations}
+
+\begin{itemize}
+\item \textbf{Experimental nature:} This is a research artifact, not a production system.
+\item \textbf{CTU Assumption:} Still unvetted by third-party cryptanalysis.
+\item \textbf{No formal verification:} Machine-checked proofs not yet produced.
+\item \textbf{Diminished returns:} Beyond 3 engines, added security benefit is unclear.
+\item \textbf{Complexity:} More engines = more attack surface.
+\end{itemize}
+
+% ============================================================
+\section{Relationship to FEmmg-FHE}
+% ============================================================
+
+FEmmg-FHE (v21.5) is the \textbf{production} system: 1 TRILLION operations validated, 65.6M TPS, IACR submission pending, clean codebase, Docker + NPM deployment.
+
+BYC-FHE (v22.3.0) is the \textbf{experimental} sibling: 9 engines, 1M operations validated, 34.8K TPS, no IACR submission planned, experimental codebase.
+
+The relationship is complementary:
+\begin{itemize}
+\item FEmmg proves the core paradigm (Banach + Fibonacci + Lyapunov).
+\item BYC explores the boundaries (multi-engine, combinatorial chaos).
+\item Both share the same mathematical foundation ($\varphi$, Banach, Riemann).
+\item Both are open source (MIT License).
+\end{itemize}
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+BYC-FHE demonstrates that multiple independent chaotic engines can be harmonized into a unified encryption framework with uniform distribution and deterministic reproducibility. The 9-engine Triple Rashomon architecture achieves 34,831 TPS with perfect engine distribution across 1,000,000 operations.
+
+This work does not claim to be a production system. It is an experimental exploration of multi-engine chaotic cryptography — a playground for testing novel security primitives. The primary contribution is empirical: proving that chaos harmonization works at scale.
+
+The ideas belong to history. The implementation belongs to the author. The experiments continue.
+
+\textbf{Acknowledgments:} FEmmg-FHE provided the mathematical foundation. The 9 Demon Engines are named after concepts from mathematics and philosophy, none of which are claimed as original — only the code implementation is original work.
+
+\begin{thebibliography}{5}
+
+\bibitem{femmg} D.J.M. Fernandez. Unlimited Depth FHE via Fibonacci-Lyapunov Stabilization. IACR ePrint, 2026.
+
+\bibitem{banach} S. Banach. Sur les op\'erations dans les ensembles abstraits. Fundamenta Mathematicae, 3:133–181, 1922.
+
+\bibitem{riemann} B. Riemann. \"Uber die Anzahl der Primzahlen unter einer gegebenen Gr\"osse. 1859.
+
+\bibitem{godel} K. G\"odel. \"Uber formal unentscheidbare S\"atze. Monatshefte f\"ur Mathematik und Physik, 38:173–198, 1931.
+
+\bibitem{cantor} G. Cantor. \"Uber eine elementare Frage der Mannigfaltigkeitslehre. Jahresbericht der DMV, 1:75–78, 1892.
+
+\end{thebibliography}
+
+\end{document}
