@@ -1,5 +1,5 @@
 /*
- * FEmmg-FHE v22.2 — Nietzsche Eternal Return Engine
+ * FEmmg-FHE v22.1 — Nietzsche Eternal Return Engine
  * 
  * "What if a demon were to steal after you into your loneliest loneliness
  *  and say: This life as you now live it, you will have to live once more

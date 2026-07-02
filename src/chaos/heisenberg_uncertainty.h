@@ -1,5 +1,5 @@
 /*
- * FEmmg-FHE v22.2 — Heisenberg Uncertainty Engine
+ * FEmmg-FHE v22.1 — Heisenberg Uncertainty Engine
  * 
  * "The more precisely the position is determined, the less precisely
  *  the momentum is known." — Werner Heisenberg, 1927

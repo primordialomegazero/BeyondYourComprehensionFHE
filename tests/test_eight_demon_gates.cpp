@@ -11,7 +11,7 @@ int main() {
     std::cout << "╚══════════════════════════════════════════╝\n\n";
     
     EightDemonGatesEngine engine;
-    engine.set_maximum_mode(false);  // Standard: 4/8 gates
+    engine.set_maximum_mode(false);  // Standard: 9 gates
     
     // Test 1: Basic observation
     std::cout << "═══ TEST 1: GATE SELECTION ═══\n";
@@ -48,7 +48,7 @@ int main() {
     std::cout << "Diff = " << nonce_diff << "\n";
     std::cout << (nonce_diff > 1e6 ? "✅ NONCE CHAOS!" : "⚠️  Weak") << "\n\n";
     
-    // Test 4: MAXIMUM MODE (all 8 gates)
+    // Test 4: MAXIMUM MODE (all 9 gates)
     std::cout << "═══ TEST 4: MAXIMUM MODE (8/8 GATES) ═══\n";
     engine.set_maximum_mode(true);
     double v_max = engine.observe(42.0, 999);

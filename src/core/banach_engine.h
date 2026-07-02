@@ -1,5 +1,5 @@
 /*
- * FEmmg-FHE v22.0.0 — Banach Contraction Engine
+ * FEmmg-FHE v22.1.0 — Banach Contraction Engine
  * 
  * Core mathematical engine for Unlimited Depth FHE.
  * 
@@ -21,7 +21,7 @@
  * INCLUDED BY: femmg_operations.h
  */
 /*
- * FEmmg-FHE — FLOATING-INTEGER MERGED BANACH ENGINE (FORTRESS v21.5)
+ * FEmmg-FHE — FLOATING-INTEGER MERGED BANACH ENGINE (FORTRESS v22.1)
  *
  * TRUE UNLIMITED FHE:
  * - Integer core: exact arithmetic, no precision loss (unlimited plaintext)
@@ -57,7 +57,7 @@ struct NDimCiphertext {
     std::array<double, DIMS> perturbation;
     double expanded_dim0;
     double lyapunov_spectrum[DIMS];
-    double chaos_history[14];  // CTU v3: store chaos for exact decryption
+    double chaos_history[8];  // CTU v5.0: store chaos for exact decryption
     int64_t value_int;         // Integer domain — exact value
     double phi_state;          // φ-scaled state
     double noise;
@@ -167,7 +167,7 @@ public:
         ct.noise = ct.noise * OCC + NOISE_FLOOR * (1.0 - OCC);
     }
 
-    static const char* description() { return "Floating-Integer Merged v21.5 — phi_constants.h"; }
+    static const char* description() { return "Floating-Integer Merged v22.1 — phi_constants.h"; }
 };
 
 } // namespace banach

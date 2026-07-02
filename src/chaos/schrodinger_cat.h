@@ -1,5 +1,5 @@
 /*
- * FEmmg-FHE v22.2 — Schrödinger's Cat Engine
+ * FEmmg-FHE v22.1 — Schrödinger's Cat Engine
  *
  * "The ciphertext is simultaneously encrypted AND decrypted
  *  until you observe it. Then it collapses into one state."

@@ -81,7 +81,7 @@ private:
     // Individual engines
     golden_chaos::GoldenChaosEngine golden_;
     riemann_chaos::RiemannChaosEngine riemann_;
-    triple_rashomon::TripleRashomonEngine triple_;
+    // triple_rashomon removed — using 8 gates
     godel_incompleteness::GodelEngine godel_;
     cantor_diagonal::CantorEngine cantor_;
     turing_halting::TuringEngine turing_;

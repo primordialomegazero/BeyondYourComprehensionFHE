@@ -9,7 +9,7 @@
 #include <cstdint>
 #include <array>
 
-namespace triple_rashomon {
+namespace fibonacci_duel {
 
 constexpr double PHI = 1.6180339887498948482;
 constexpr double PHI_INV = 0.6180339887498948482;
@@ -107,4 +107,4 @@ public:
     int total_layers() const { return LAYERS; }
 };
 
-} // namespace triple_rashomon
+} // namespace fibonacci_duel

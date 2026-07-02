@@ -1,5 +1,5 @@
 /*
- * FEmmg-FHE v22.2 — Cantor Diagonal Engine
+ * FEmmg-FHE v22.1 — Cantor Diagonal Engine
  * 
  * "The diagonal argument proves there are more real numbers 
  *  than natural numbers — an uncountable infinity." — Georg Cantor, 1891

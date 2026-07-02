@@ -1,5 +1,5 @@
 /*
- * FEmmg-FHE v22.2 — Gödel Incompleteness Engine v3 (AGGRESSIVE)
+ * FEmmg-FHE v22.1 — Gödel Incompleteness Engine v3 (AGGRESSIVE)
  * 
  * "Some truths are not just unprovable — they're chaotic." — Gödel, reimagined
  * 

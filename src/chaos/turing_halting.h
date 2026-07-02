@@ -1,5 +1,5 @@
 /*
- * FEmmg-FHE v22.2 — Turing Halting Engine
+ * FEmmg-FHE v22.1 — Turing Halting Engine
  * 
  * "There is no algorithm that can determine whether an arbitrary
  *  program will halt or run forever." — Alan Turing, 1936

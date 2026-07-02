@@ -1,5 +1,5 @@
 /*
- * FEmmg-FHE v22.0.0 — Fibonacci-Lyapunov Fully Homomorphic Encryption
+ * FEmmg-FHE v22.1.0 — Fibonacci-Lyapunov Fully Homomorphic Encryption
  * 
  * Main entry point for the FEmmg-FHE library.
  * Include this single header to access all FHE functionality.
