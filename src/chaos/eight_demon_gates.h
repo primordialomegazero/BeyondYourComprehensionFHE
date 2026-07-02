@@ -85,7 +85,7 @@ private:
     // Individual engines
     golden_chaos::GoldenChaosEngine golden_;
     riemann_chaos::RiemannChaosEngine riemann_;
-    fibonacci_duel::FibonacciDuelEngine fibonacci_;
+    fibonacci_duel::TripleRashomonEngine fibonacci_;  // Fibonacci Duel (Banach)
     godel_incompleteness::GodelEngine godel_;
     cantor_diagonal::CantorEngine cantor_;
     turing_halting::TuringEngine turing_;
