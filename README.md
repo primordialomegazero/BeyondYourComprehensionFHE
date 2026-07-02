@@ -82,101 +82,17 @@ BYC-FHE is an **experimental multi-engine chaotic harmonization framework** exte
 
 ## Mathematical Breakthrough
 
-### Demon Harmonizer — Triple Rashomon Architecture
-
-```
-+----------------------------------------------------------+
-|  "The ideas belong to history.                            |
-|   The implementation belongs to me." — φΩ0                |
-+----------------------------------------------------------+
-```
-
-**Theorem (Multi-Engine Chaos Amplification).** For 3 randomly selected engines:
-\[
-\text{Enc}(m) = E_{i_2}(E_{i_1}(E_{i_0}(m + h \cdot 10^{-3})))
-\]
-where \( h \) is the previous operation's output. Total Lyapunov exponent:
-\[
-\Lambda_{\text{total}} = \sum_{k=0}^{2} \lambda_{i_k} \geq 3 \cdot \lambda_{\min} > 0
-\]
-
-```
-+----------------------------------------------------------+
-|  "φ is the most irrational number.                        |
-|   It resists approximation by rationals more than any     |
-|   other." — Number Theory, since Euclid                   |
-+----------------------------------------------------------+
-```
-
-**Golden Chaos Engine:** \( x' = x \cdot \varphi^{-1} + F_n \cdot (1 - \varphi^{-1}) + \lambda \cdot \sin(x \cdot \varphi) \)
-
-```
-+----------------------------------------------------------+
-|  "All non-trivial zeros of the zeta function               |
-|   have real part 1/2." — Bernhard Riemann, 1859            |
-+----------------------------------------------------------+
-```
-
-**Riemann Chaos Engine:** \( x' = x \cdot \varphi^{-1} + A \cdot (1 - \varphi^{-1}) + \lambda \cdot Z(t) \cdot 10^{-4} \)
-
-```
-+----------------------------------------------------------+
-|  "This statement is false." — The Liar Paradox,            |
-|  embodied by Godel, 1931                                   |
-+----------------------------------------------------------+
-```
-
-**Godel Engine:** Self-referential modulo — the output contradicts its own input.
-
-```
-+----------------------------------------------------------+
-|  "I see it, but I don't believe it."                       |
-|  — Georg Cantor (on uncountable infinity)                  |
-+----------------------------------------------------------+
-```
-
-**Cantor Engine:** Diagonalization ensures the output cannot be exhausted by any enumeration.
-
-```
-+----------------------------------------------------------+
-|  "We can only see a short distance ahead,                   |
-|   but we can see plenty there that needs to be done."       |
-|  — Alan Turing, 1950                                       |
-+----------------------------------------------------------+
-```
-
-**Turing Engine:** Halting oracle simulation — provably unpredictable in the general case.
-
-```
-+----------------------------------------------------------+
-|  "What we observe is not nature itself,                     |
-|   but nature exposed to our method of questioning."         |
-|  — Werner Heisenberg, 1958                                 |
-+----------------------------------------------------------+
-```
-
-**Heisenberg Engine:** Observer effect — measuring changes the measurement.
-
-```
-+----------------------------------------------------------+
-|  "If you gaze long into an abyss,                           |
-|   the abyss also gazes into you."                           |
-|  — Friedrich Nietzsche, 1886                               |
-+----------------------------------------------------------+
-```
-
-**Nietzsche Engine:** Eternal recurrence without exact repetition.
-
-```
-+----------------------------------------------------------+
-|  "The ciphertext is simultaneously encrypted AND decrypted |
-|   until you observe it." — Schrodinger's Cat               |
-+----------------------------------------------------------+
-```
-
-**Schrodinger Engine:** Superposition \( = \frac{\varphi^{|\sin(\theta)| \cdot 5} + \varphi^{-|\cos(\theta)| \cdot 5}}{2} \). Observation collapses the wave function.
-
----
+| Theorem | Quote | Formula |
+|---------|-------|---------|
+| **Demon Harmonizer** | *The ideas belong to history. The implementation belongs to me.* | \( \text{Enc}(m) = E_{i_2}(E_{i_1}(E_{i_0}(m + h \cdot 10^{-3}))) \), \( \Lambda_{\text{total}} \geq 3 \cdot \lambda_{\min} > 0 \) |
+| **Golden Chaos** | *"φ is the most irrational number. It resists approximation by rationals more than any other."* — Number Theory, since Euclid | \( x' = x \cdot \varphi^{-1} + F_n \cdot (1 - \varphi^{-1}) + \lambda \cdot \sin(x \cdot \varphi) \) |
+| **Riemann Chaos** | *"All non-trivial zeros of the zeta function have real part 1/2."* — Bernhard Riemann, 1859 | \( x' = x \cdot \varphi^{-1} + A \cdot (1 - \varphi^{-1}) + \lambda \cdot Z(t) \cdot 10^{-4} \) |
+| **Godel Incompleteness** | *"This statement is false."* — The Liar Paradox, 1931 | Self-referential modulo — output contradicts its own input |
+| **Cantor Diagonal** | *"I see it, but I don't believe it."* — Georg Cantor | Diagonalization — output cannot be exhausted by any enumeration |
+| **Turing Halting** | *"We can only see a short distance ahead, but we can see plenty there that needs to be done."* — Alan Turing, 1950 | Halting oracle simulation — provably unpredictable |
+| **Heisenberg Uncertainty** | *"What we observe is not nature itself, but nature exposed to our method of questioning."* — Werner Heisenberg, 1958 | Observer effect — measuring changes the measurement |
+| **Nietzsche Eternal Return** | *"If you gaze long into an abyss, the abyss also gazes into you."* — Friedrich Nietzsche, 1886 | Eternal recurrence without exact repetition |
+| **Schrodinger's Cat** | *"The ciphertext is simultaneously encrypted AND decrypted until you observe it."* | \( \text{superposition} = \frac{\varphi^{|\sin(\theta)| \cdot 5} + \varphi^{-|\cos(\theta)| \cdot 5}}{2} \) |
 
 ## Architecture
 
@@ -285,7 +201,5 @@ For full details, see [SECURITY_AUDIT.md](docs/SECURITY_AUDIT.md).
 | **NPM** | [@primordialomegazero/byc-fhe](https://www.npmjs.com/package/@primordialomegazero/byc-fhe) |
 | **Docker** | [ghcr.io/primordialomegazero/byc-fhe](https://github.com/primordialomegazero/BeyondYourComprehensionFHE/pkgs/container/byc-fhe) |
 | **License** | MIT |
-
-> *"The ideas belong to history. The implementation belongs to me."*
 
 > *"This one's not FEmmg-FHE that was built for humanity. This one's beyond your comprehension, but that's ok."* — φΩ0
