@@ -259,7 +259,7 @@ g++ -std=c++17 -O3 -march=native -o test_gates tests/test_eight_gates.cpp -lm
 ```
 BeyondYourComprehensionFHE/
 ├── src/
-│   ├── chaos/                    ← 9 Chaos Engines
+│   ├── chaos/                    ← 10 Files — 9 Engines + Master
 │   │   ├── golden_chaos.h       ← Gate 1: Fibonacci
 │   │   ├── riemann_chaos.h      ← Gate 2: Riemann
 │   │   ├── fibonacci_duel.h     ← Gate 3: Banach
@@ -269,11 +269,14 @@ BeyondYourComprehensionFHE/
 │   │   ├── heisenberg_uncertainty.h ← Gate 7: Heisenberg
 │   │   ├── nietzsche_eternal.h  ← Gate 8: Nietzsche
 │   │   ├── schrodinger_cat.h    ← Gate 9: Schrödinger
-│   │   └── eight_demon_gates.h  ← Master: Randomized 8 Gates
-│   └── ...
-├── proofs/                       ← Complete Mathematical Theorems
-│   └── COMPLETE_THEOREMS.md     ← All 9 theorems with proofs
-├── tests/
+│   │   └── eight_demon_gates.h  ← Master: Randomized 9 Gates
+│   ├── core/                    ← Core FHE Engine
+│   └── security/                ← Security Layers
+├── tests/                       ← Test Suite + Benchmarks
+├── proofs/                      ← Complete Mathematical Theorems
+│   └── COMPLETE_THEOREMS.md    ← All 9 theorems with proofs
+├── docs/                        ← Documentation
+├── npm-package/                 ← NPM Distribution
 └── README.md
 ```
 
