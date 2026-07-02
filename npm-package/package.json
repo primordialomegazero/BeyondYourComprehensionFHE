@@ -1,39 +1,17 @@
 {
-  "name": "@primordialomegazero/pozd-fhe-client",
-  "version": "8.0.0",
-  "description": "pozDF-FHE Client Library — Override Architect Edition. Zero-Knowledge Fully Homomorphic Encryption with Anti-Matter Shield, 8 PQC, Fractal ZKP, Supply Chain Security.",
+  "name": "@primordialomegazero/byc-fhe",
+  "version": "22.3.0",
+  "description": "Beyond Your Comprehension FHE — 9 Demon Engines",
   "main": "index.js",
-  "types": "index.d.ts",
-  "files": [
-    "index.js",
-    "index.d.ts",
-    "README.md"
-  ],
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "benchmark": "node benchmark.js"
   },
-  "keywords": [
-    "fhe",
-    "fully-homomorphic-encryption",
-    "zero-knowledge",
-    "banach-contraction",
-    "golden-ratio",
-    "anti-matter",
-    "post-quantum",
-    "pqc",
-    "zero-knowledge-proof",
-    "supply-chain",
-    "top-down",
-    "override-architect"
-  ],
+  "keywords": ["FHE", "chaos", "homomorphic-encryption", "post-quantum"],
   "author": "Dan Joseph M. Fernandez / Primordial Omega Zero",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git"
-  },
-  "homepage": "https://github.com/primordialomegazero/BeyondYourComprehensionFHE#readme",
-  "engines": {
-    "node": ">=14.0.0"
+    "url": "https://github.com/primordialomegazero/BeyondYourComprehensionFHE.git"
   }
 }
